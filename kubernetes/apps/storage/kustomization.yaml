@@ -8,3 +8,4 @@ resources:
   # Flux-Kustomizations
   - ./nfs-csi/ks.yaml
   - ./nfs/ks.yaml
+  - ./minio/ks.yaml
