@@ -7,15 +7,14 @@ metadata:
   labels:
     substitution.flux.home.arpa/enabled: "true"
 spec:
-  interval: 10m
   path: "./kubernetes/apps/databases/cnpg/operator"
   prune: true
   sourceRef:
     kind: GitRepository
     name: home-kubernetes
-  wait: true
-  dependsOn:
-    - name: cluster-apps-minio-app
+  interval: 10m
+  retryInterval: 1m
+  timeout: 3m
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
@@ -25,12 +24,16 @@ metadata:
   labels:
     substitution.flux.home.arpa/enabled: "true"
 spec:
-  interval: 10m
   path: "./kubernetes/apps/databases/cnpg/config"
   prune: true
   sourceRef:
     kind: GitRepository
     name: home-kubernetes
-  wait: true
   dependsOn:
     - name: cluster-apps-cloudnative-pg
+    - name: cluster-apps-kyverno
+    - name: cluster-apps-minio
+  wait: true
+  interval: 10m
+  retryInterval: 1m
+  timeout: 3m
