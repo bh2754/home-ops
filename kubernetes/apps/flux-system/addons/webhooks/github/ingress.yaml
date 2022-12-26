@@ -8,6 +8,7 @@ metadata:
     cert-manager.io/cluster-issuer: letsencrypt-production
   # external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN}"
     auth.home.arpa/enabled: "true"
+    external-dns/is-public: "true"
     external-dns.home.arpa/enabled: "true"
     hajimari.io/enable: "false"
 spec:
