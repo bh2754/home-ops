@@ -32,7 +32,7 @@ spec:
   dependsOn:
     - name: cluster-apps-cloudnative-pg
     - name: cluster-apps-kyverno
-    - name: cluster-apps-minio
+    - name: cluster-apps-minio-app
   wait: true
   interval: 10m
   retryInterval: 1m
