@@ -28,6 +28,6 @@ spec:
       pullPolicy: IfNotPresent
     nfs:
       server: "${NFS_SERVER}"
-      path: "/volume1/kubernetes-nfs"
+      path: "/volume1/minio-nfs"
     storageClass:
       defaultClass: false
