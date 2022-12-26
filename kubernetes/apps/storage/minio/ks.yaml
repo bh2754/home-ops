@@ -20,6 +20,3 @@ spec:
   interval: 10m
   retryInterval: 1m
   timeout: 3m
-  dependsOn:
-    - name: cluster-apps-nfs
-    - name: cluster-apps-nfs-csi
