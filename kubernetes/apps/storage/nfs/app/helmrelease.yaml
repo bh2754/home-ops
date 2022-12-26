@@ -27,7 +27,7 @@ spec:
       tag: v4.0.2
       pullPolicy: IfNotPresent
     nfs:
-      server: "${NFS_SERVER}"
+      server: "10.0.109.29"
       path: "/volume1/minio-nfs"
     storageClass:
       defaultClass: false
