@@ -9,3 +9,4 @@ resources:
   - ./k8s-gateway/ks.yaml
   - ./metallb/ks.yaml
   - ./kyverno/ks.yaml
+  - ./theme-park/ks.yaml

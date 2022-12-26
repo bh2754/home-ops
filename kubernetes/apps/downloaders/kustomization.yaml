@@ -5,3 +5,5 @@ kind: Kustomization
 resources:
   # Flux-Kustomizations
   - ./sabnzbd/ks.yaml
+  - ./openbooks/ks.yaml
+  - ./qbittorrent/ks.yaml
