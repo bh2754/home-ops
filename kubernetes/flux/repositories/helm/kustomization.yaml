@@ -16,4 +16,4 @@ resources:
   - ./longhorn.yaml
   - ./k8s-at-home.yaml
   - ./k8s-at-home-charts.yaml
-  - ./kyverno
+  - ./kyverno.yaml
