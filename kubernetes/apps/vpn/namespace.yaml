@@ -9,7 +9,7 @@ metadata:
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: downloads
+  name: downloaders
   labels:
     routed-gateway: "true"
     goldilocks.fairwinds.com/enabled: "true"
