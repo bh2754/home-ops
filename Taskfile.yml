@@ -11,7 +11,7 @@ vars:
 dotenv: [".config.env"]
 
 env:
-  KUBECONFIG: "{{.PROJECT_DIR}}/kubeconfig"
+  KUBECONFIG: "{{.PROJECT_DIR}}/provision/kubeconfig"
 
 includes:
   ansible: .taskfiles/AnsibleTasks.yml
@@ -19,6 +19,7 @@ includes:
   precommit: .taskfiles/PrecommitTasks.yml
   terraform: .taskfiles/TerraformTasks.yml
   sops: .taskfiles/SopsTasks.yml
+  snapshot: .taskfiles/SnapshotTasks.yml
 
 tasks:
 
