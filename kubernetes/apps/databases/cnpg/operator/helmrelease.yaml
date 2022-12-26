@@ -9,28 +9,8 @@ spec:
   chart:
     spec:
       chart: cloudnative-pg
-      version: 0.16.1
+      version: 0.16.0
       sourceRef:
         kind: HelmRepository
-        name: cloudnative-pg-charts
+        name: cloudnative-pg
         namespace: flux-system
-  install:
-    createNamespace: true
-    remediation:
-      retries: 5
-  upgrade:
-    remediation:
-      retries: 5
-  postRenderers:
-    - kustomize:
-        patches:
-          - target:
-              group: apiextensions.k8s.io
-              version: v1
-              kind: CustomResourceDefinition
-            patch: |-
-              $patch: delete
-              apiVersion: apiextensions.k8s.io/v1
-              kind: CustomResourceDefinition
-              metadata:
-                name: not-used
