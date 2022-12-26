@@ -17,3 +17,6 @@ resources:
   - ./k8s-at-home.yaml
   - ./k8s-at-home-charts.yaml
   - ./kyverno.yaml
+  - ./cloudnative-pg.yaml
+  - ./nfs.yaml
+  - ./nfs-csi.yaml
