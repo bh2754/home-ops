@@ -14,3 +14,5 @@ resources:
   - ./stakater.yaml
   - ./weave-gitops.yaml
   - ./longhorn.yaml
+  - ./k8s-at-home.yaml
+  - ./k8s-at-home-charts.yaml
