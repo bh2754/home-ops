@@ -62,7 +62,7 @@ spec:
             type: tcp
 
     routed_namespaces:
-      - downloads
+      - downloaders
       - organizers
 
     settings:
