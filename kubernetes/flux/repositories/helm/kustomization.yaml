@@ -20,3 +20,4 @@ resources:
   - ./cloudnative-pg.yaml
   - ./nfs.yaml
   - ./nfs-csi.yaml
+  - ./external-secrets.yaml
