@@ -14,3 +14,4 @@ resources:
   - ./ombi/ks.yaml
   - ./stash/ks.yaml
   - ./tautulli/ks.yaml
+  - ./tdarr/ks.yaml
