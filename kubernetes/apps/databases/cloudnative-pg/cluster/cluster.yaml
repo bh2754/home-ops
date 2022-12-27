@@ -14,7 +14,7 @@ spec:
     size: 50Gi
     storageClass: longhorn
   superuserSecret:
-    name: postgre-superuser
+    name: postgres-superuser
   monitoring:
     enablePodMonitor: true
   backup:
