@@ -2,7 +2,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: &app readarr-audio
+  name: &app radarr
   namespace: organizers
 spec:
   interval: 15m
@@ -28,14 +28,14 @@ spec:
       namespace: vpn
   values:
     image:
-      repository: ghcr.io/onedr0p/readarr-nightly
-      tag: 0.1.1.1504@sha256:01a89eee7629549d2bb780fdef9ee046486ed3afecbfd7b5ed4120a9414acbcf
-
+      repository: ghcr.io/onedr0p/radarr-develop
+      tag: 4.3.1.6822@sha256:8b3167caff215443e1fd0cdcb417f85dc307faa97a216479df2c4257487c369e
     env:
       TZ: "${TZ}"
-      READARR__INSTANCE_NAME: Readarr
-      READARR__PORT: &port 80
-      READARR__LOG_LEVEL: info
+      RADARR__INSTANCE_NAME: Radarr
+      RADARR__PORT: &port 7878
+      RADARR__APPLICATION_URL: "https://radarr.${SECRET_DOMAIN}"
+      RADARR__LOG_LEVEL: info
     envFrom:
       - secretRef:
           name: *app
@@ -43,63 +43,119 @@ spec:
       main:
         ports:
           http:
-            port: *port
-
+            port: 7878
     ingress:
       main:
         enabled: true
-        ingressClassName: "nginx"
+        ingressClassName: nginx
         annotations:
           cert-manager.io/cluster-issuer: "letsencrypt-production"
           auth.home.arpa/enabled: "true"
           external-dns.home.arpa/enabled: "true"
           external-dns/is-public: "true"
-          hajimari.io/enable: "true"
-          hajimari.io/icon: "book-open-page-variant"
           nginx.ingress.kubernetes.io/configuration-snippet: |
             proxy_set_header Accept-Encoding "";
-            sub_filter '</head>' '<link rel="stylesheet" type="text/css" href="https://theme-park.${SECRET_PUBLIC_DOMAIN}/css/base/readarr/hotline.css"></head>';
+            sub_filter '</head>' '<link rel="stylesheet" type="text/css" href="https://theme-park.${SECRET_PUBLIC_DOMAIN}/css/base/radarr/hotline.css"></head>';
             sub_filter_once on;
+          hajimari.io/enable: "true"
+          hajimari.io/icon: "filmstrip"
         hosts:
-          - host: &host "audio.${SECRET_DOMAIN}"
+          - host: &host "{{ .Release.Name }}.${SECRET_DOMAIN}"
             paths:
               - path: /
                 pathType: Prefix
         tls:
-          - hosts:
+          - secretName: &tls "radarr-tls"
+            hosts:
               - *host
-            secretName: "readarr-audio-tls"
-    podSecurityContext:
-      runAsUser: 568
-      runAsGroup: 568
-      fsGroup: 568
-      fsGroupChangePolicy: "OnRootMismatch"
-      supplementalGroups:
-        - 100
-
+      api:
+        enabled: true
+        ingressClassName: "nginx"
+        annotations:
+          auth.home.arpa/enabled: "true"
+        hosts:
+          - host: *host
+            paths:
+              - path: /api
+                pathType: Prefix
+        tls:
+          - secretName: *tls
+            hosts:
+              - *host
+    probes:
+      liveness:
+        enabled: true
+        custom: true
+        spec:
+          exec:
+            command:
+              - /usr/bin/env
+              - bash
+              - -c
+              - curl --fail localhost:7878/api/v3/system/status?apiKey=`IFS=\> && while
+                read -d \< E C; do if [[ $E = "ApiKey" ]]; then echo $C; fi; done < /config/config.xml`
+          failureThreshold: 5
+          initialDelaySeconds: 60
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 10
+    podAnnotations:
+      backup.velero.io/backup-volumes: config
     persistence:
       config:
         enabled: true
-        existingClaim: readarr-audio-config-v1
-      books:
+        existingClaim: radarr-config-v1
+      media:
         enabled: true
         type: nfs
-        server: &nas "${NFS_SERVER}"
-        path: ${NFS_MEDIA}/audiobooks
-        mountPath: /audiobooks
-      downloads:
+        server: "${NFS_SERVER}"
+        path: ${NFS_MEDIA}
+        mountPath: /media
+        readOnly: false
+      download:
         enabled: true
         type: nfs
-        server: *nas
+        server: "${NFS_SERVER}"
         path: ${NFS_DOWNLOAD}
-        mountPath: /downloads
-    podAnnotations:
-      backup.velero.io/backup-volumes: config
+        mountPath: /download
+        readOnly: false
+
+    podSecurityContext:
+      supplementalGroups:
+        - 1001
+        - 100
+      runAsUser: 568
+      runAsGroup: 568
+      fsGroup: 568
+      fsGroupChangePolicy: OnRootMismatch
+    metrics:
+      # -- Enable and configure Exportarr sidecar and Prometheus serviceMonitor.
+      # @default -- See values.yaml
+      enabled: true
+      serviceMonitor:
+        interval: 3m
+        scrapeTimeout: 1m
+        labels: {}
+      # -- Enable and configure Prometheus Rules for the chart under this key.
+      # @default -- See values.yaml
+      prometheusRule:
+        enabled: true
+        rules:
+          - alert: SonarrDown
+            annotations:
+              description: Sonarr service is down.
+              summary: Sonarr is down.
+            expr: |
+              sonarr_system_status == 0
+            for: 5m
+            labels:
+              severity: critical
+
     resources:
       requests:
         cpu: 10m
-        memory: 512M
+        memory: 1283M
         ephemeral-storage: "2Gi"
       limits:
-        memory: 1904M
+        memory: 1800M
         ephemeral-storage: "4Gi"
