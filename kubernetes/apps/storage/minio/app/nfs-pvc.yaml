@@ -14,7 +14,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   nfs:
     server: "${NFS_SERVER}"
-    path: "/volume1/kubernetes-nfs"
+    path: "/volume1/kubernetes-nfs/minio"
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
