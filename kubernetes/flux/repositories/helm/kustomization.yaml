@@ -21,3 +21,4 @@ resources:
   - ./nfs.yaml
   - ./nfs-csi.yaml
   - ./external-secrets.yaml
+  - ./dandydeveloper-charts.yaml
