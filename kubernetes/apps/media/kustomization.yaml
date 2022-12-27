@@ -10,4 +10,4 @@ resources:
   - ./calibre-web/ks.yaml
   - ./calibre/ks.yaml
   - ./komga/ks.yaml
-  - ./ples/ks.yaml
+  - ./plex/ks.yaml
