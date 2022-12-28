@@ -16,4 +16,5 @@ spec:
   snapshotTemplate:
     snapshotClassName: csi-ceph-blockpool
     labels:
-      setGateway: "false"
+      additionalProperties:
+        setGateway: "false"
