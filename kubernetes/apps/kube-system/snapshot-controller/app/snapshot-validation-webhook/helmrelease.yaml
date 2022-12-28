@@ -3,13 +3,13 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: snapshot-controller
+  name: snapshot-validation-webhook
   namespace: kube-system
 spec:
   interval: 15m
   chart:
     spec:
-      chart: snapshot-controller
+      chart: snapshot-validation-webhook
       version: 1.6.2
       sourceRef:
         kind: HelmRepository
@@ -17,19 +17,12 @@ spec:
         namespace: flux-system
   install:
     createNamespace: true
-    crds: CreateReplace
+    crds: Skip
     remediation:
       retries: 3
   upgrade:
-    crds: CreateReplace
+    crds: Skip
     remediation:
       retries: 3
-  values:
-    replicaCount: 3
-    volumeSnapshotClasses:
-      - name: csi-ceph-blockpool
-        driver: rook-ceph.rbd.csi.ceph.com
-        annotations:
-          snapshot.storage.kubernetes.io/is-default-class: "true"
-    serviceMonitor:
-      create: true
+  dependsOn:
+    - name: snapshot-controller
