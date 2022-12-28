@@ -59,13 +59,13 @@ spec:
         nodes:
           - name: k8s-worker1
             devices:
-              - name: "/dev/disk/by-path/pci-0000:03:00.0-scsi-0:0:2:0"
+              - name: "/dev/sdc"
           - name: k8s-worker2
             devices:
-              - name: "/dev/disk/by-path/pci-0000:03:00.0-scsi-0:0:2:0"
+              - name: "/dev/sdc"
           - name: k8s-worker3
             devices:
-              - name: "/dev/disk/by-path/pci-0000:03:00.0-scsi-0:0:2:0"
+              - name: "/dev/sdc"
     cephBlockPools:
       - name: ceph-blockpool
         spec:
