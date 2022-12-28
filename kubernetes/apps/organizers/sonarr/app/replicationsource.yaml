@@ -1,0 +1,23 @@
+---
+# yaml-language-server: $schema=https://kubernetes-schemas.devbu.io/replicationsource_v1alpha1.json
+apiVersion: volsync.backube/v1alpha1
+kind: ReplicationSource
+metadata:
+  name: sonarr
+  namespace: organizers
+spec:
+  sourcePVC: sonarr-config-v1
+  trigger:
+    schedule: "0 0 * * *"
+  restic:
+    copyMethod: Snapshot
+    pruneIntervalDays: 10
+    repository: sonarr
+    cacheCapacity: 5Gi
+    volumeSnapshotClassName: longhorn
+    storageClassName: longhorn
+    retain:
+      hourly: 0
+      daily: 10
+      weekly: 0
+      monthly: 0
