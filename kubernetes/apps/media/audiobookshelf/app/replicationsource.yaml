@@ -1,0 +1,23 @@
+---
+# yaml-language-server: $schema=https://kubernetes-schemas.devbu.io/replicationsource_v1alpha1.json
+apiVersion: volsync.backube/v1alpha1
+kind: ReplicationSource
+metadata:
+  name: audiobookshelf
+  namespace: media
+spec:
+  sourcePVC: audiobookshelf-config-v1
+  trigger:
+    schedule: "0 0 * * *"
+  restic:
+    copyMethod: Snapshot
+    pruneIntervalDays: 10
+    repository: abs-restic-secret
+    cacheCapacity: 5Gi
+    volumeSnapshotClassName: csi-ceph-blockpool
+    storageClassName: ceph-block
+    retain:
+      hourly: 0
+      daily: 10
+      weekly: 0
+      monthly: 0
