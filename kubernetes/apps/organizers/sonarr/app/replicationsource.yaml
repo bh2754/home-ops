@@ -5,6 +5,8 @@ kind: ReplicationSource
 metadata:
   name: sonarr
   namespace: organizers
+  labels:
+    setGateway: "false"
 spec:
   sourcePVC: sonarr-config-v1
   trigger:
