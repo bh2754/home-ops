@@ -15,3 +15,5 @@ spec:
   schedule: "@daily"
   snapshotTemplate:
     snapshotClassName: csi-ceph-blockpool
+    labels:
+      setGateway: "false"
