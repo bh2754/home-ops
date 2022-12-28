@@ -15,9 +15,6 @@
     "github>bh2754/home-ops//.github/renovate/semanticCommits.json5",
     "helpers:pinGitHubActionDigests"
   ],
-  "platform": "github"
-  "repositories": ["bh2754/home-ops"],
-  "dependencyDashboard": true,
   "dependencyDashboardTitle": "Renovate Dashboard 🤖",
   "suppressNotifications": ["prIgnoreNotification"],
   "rebaseWhen": "conflicted",
