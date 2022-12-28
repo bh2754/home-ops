@@ -34,12 +34,23 @@
   "kubernetes": {
     "fileMatch": ["kubernetes/.+\\.ya?ml$"]
   },
-  "regexManagers": [
+   "regexManagers": [
     {
-      "description": "Process custom dependencies",
+      "description": "Process CRD dependencies",
+      "fileMatch": ["cluster/crds/.+\\.ya?ml$"],
+      "matchStrings": [
+        // GitRepository and Flux Kustomization where 'Git release/tag' matches 'Helm' version
+        "registryUrl=(?<registryUrl>\\S+) chart=(?<depName>\\S+)\n.*?(?<currentValue>[^-\\s]*)\n",
+        // Kustomization where 'GitHub release artifact URL' matches 'Docker image' version
+        "datasource=(?<datasource>\\S+) image=(?<depName>\\S+)\n.*?-\\s(.*?)\/(?<currentValue>[^/]+)\/[^/]+\n"
+      ],
+      "datasourceTemplate": "{{#if datasource}}{{{datasource}}}{{else}}helm{{/if}}"
+    },
+    {
+      "description": "Process various other dependencies",
       "fileMatch": [
-        "ansible/.+\\.ya?ml$",
-        "kubernetes/.+\\.ya?ml$"
+        "provision/ansible/.+\\.ya?ml$",
+        "cluster/.+\\.ya?ml$"
       ],
       "matchStrings": [
         "datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)( versioning=(?<versioning>\\S+))?\n.*?\"(?<currentValue>.*)\"\n"
@@ -49,17 +60,58 @@
     }
   ],
   "packageRules": [
+    // setup datasources
     {
-      "description": "Loose versioning for non-semver packages",
+      "matchDatasources": ["helm"],
+      "separateMinorPatch": true,
+      "ignoreDeprecated": true
+    },
+    // global docker datasource settings
+    {
       "matchDatasources": ["docker"],
-      "versioning": "loose",
-      "matchPackagePatterns": ["changedetection", "immich", "plex", "qbittorrent"]
+      "enabled": true,
+      "commitMessageTopic": "container image {{depName}}",
+      "commitMessageExtra": "to {{#if isSingleVersion}}v{{{newVersion}}}{{else}}{{{newValue}}}{{/if}}",
+      "matchUpdateTypes": ["major", "minor", "patch"]
     },
     {
-      "description": "Use custom versioning for Minio",
+      "description": "Group Cert-Manager image (for CRDs) and chart",
+      "groupName": "Cert-Manager",
+      "matchPackagePatterns": ["cert-manager"],
+      "matchDatasources": ["docker", "helm"],
+      "group": { "commitMessageTopic": "{{{groupName}}} group" },
+      "separateMinorPatch": true
+    },
+    // add labels according to package and update types
+    {
       "matchDatasources": ["docker"],
-      "versioning": "regex:^RELEASE\\.(?<major>\\d+)-(?<minor>\\d+)-(?<patch>\\d+)T.*Z$",
-      "matchPackagePatterns": ["minio"]
+      "matchUpdateTypes": ["major"],
+      "labels": ["renovate/image", "dep/major"]
+    },
+    {
+      "matchDatasources": ["docker"],
+      "matchUpdateTypes": ["minor"],
+      "labels": ["renovate/image", "dep/minor"]
+    },
+    {
+      "matchDatasources": ["docker"],
+      "matchUpdateTypes": ["patch"],
+      "labels": ["renovate/image", "dep/patch"]
+    },
+    {
+      "matchDatasources": ["helm"],
+      "matchUpdateTypes": ["major"],
+      "labels": ["renovate/helm", "dep/major"]
+    },
+    {
+      "matchDatasources": ["helm"],
+      "matchUpdateTypes": ["minor"],
+      "labels": ["renovate/helm", "dep/minor"]
+    },
+    {
+      "matchDatasources": ["helm"],
+      "matchUpdateTypes": ["patch"],
+      "labels": ["renovate/helm", "dep/patch"]
     }
   ]
 }
