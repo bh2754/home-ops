@@ -26,3 +26,4 @@ resources:
   - ./backube.yaml
   - ./rook-ceph.yaml
   - ./prometheus-community.yaml
+  - ./grafana.yaml
