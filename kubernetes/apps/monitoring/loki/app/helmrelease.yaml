@@ -116,7 +116,7 @@ spec:
         tls:
           - hosts:
               - *host
-            secretName: {loki-tls}
+            secretName: "loki-tls"
     write:
       replicas: 3
       persistence:
