@@ -109,7 +109,7 @@ spec:
           cert-manager.io/cluster-issuer: "letsencrypt-production"
           hajimari.io/enable: "false"
         hosts:
-          - host: &host loki.${SECRET_DOMAIN}
+          - host: &host loki.bharris.local
             paths:
               - path: /
                 pathType: Prefix
