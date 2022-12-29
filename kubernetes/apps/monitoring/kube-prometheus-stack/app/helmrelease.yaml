@@ -161,10 +161,6 @@ spec:
           - hosts:
               - *host_prometheus
 
-      prometheusSpec:
-        podAnnotations:
-          secret.reloader.stakater.com/reload: *secret
-
         additionalScrapeConfigs:
           - job_name: minio
             scrape_interval: 1m
