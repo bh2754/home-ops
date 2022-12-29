@@ -25,3 +25,4 @@ resources:
   - ./piraeus.yaml
   - ./backube.yaml
   - ./rook-ceph.yaml
+  - ./prometheus-community.yaml
