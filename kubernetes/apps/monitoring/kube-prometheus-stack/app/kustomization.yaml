@@ -5,3 +5,4 @@ resources:
   - ./helmrelease.yaml
   - ./discord-secret.sops.yaml
   - ./exporters
+  - ./discord-secret.sops.yaml
