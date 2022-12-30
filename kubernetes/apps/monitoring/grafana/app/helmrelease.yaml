@@ -33,6 +33,8 @@ spec:
     replicas: 3
     rbac:
       pspEnabled: false
+    admin:
+      existingSecret: grafana-secret
     testFramework:
       enabled: false
       admin:
