@@ -147,6 +147,7 @@ spec:
       tls:
         - hosts:
             - *host
+          secretName: "grafana-tls"
     imageRenderer:
       enabled: true
       replicas: 3
