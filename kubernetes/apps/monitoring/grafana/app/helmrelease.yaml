@@ -39,8 +39,8 @@ spec:
       pspEnabled: false
     testFramework:
       enabled: false
-    # admin:
-      # existingSecret: grafana-secret
+      admin:
+        existingSecret: grafana-secret
     envFromSecrets:
       - name: grafana-secret
     grafana.ini:
@@ -65,9 +65,6 @@ spec:
        #role_attribute_path: |
         # contains(groups[*], 'admins') && 'Admin' || contains(groups[*], 'people') && 'Viewer'
       # org_id: 1
-      auth.basic:
-        enabled: true
-        disable_login_form: false
     # auth.anonymous:
       # enabled: true
       # org_name: HomeOps
