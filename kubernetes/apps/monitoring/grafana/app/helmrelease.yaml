@@ -107,11 +107,9 @@ spec:
               implementation: prometheus
     dashboards:
       default:
-        # Ref: https://grafana.com/grafana/dashboards/7845
-        zfs:
-          gnetId: 7845
-          revision: 4
+        node-exporter-full:
           datasource: Prometheus
+          url: https://grafana.com/api/dashboards/1860/revisions/22/download
         # Ref: https://grafana.com/grafana/dashboards/13502
         minio:
           gnetId: 13502
