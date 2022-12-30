@@ -37,8 +37,8 @@ spec:
       existingSecret: grafana-secret
     testFramework:
       enabled: false
-      admin:
-        existingSecret: grafana-secret
+    # admin:
+      # existingSecret: grafana-secret
     envFromSecrets:
       - name: grafana-secret
     grafana.ini:
