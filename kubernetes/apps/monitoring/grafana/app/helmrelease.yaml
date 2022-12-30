@@ -31,6 +31,10 @@ spec:
           - secretRef:
               name: grafana-secret
     replicas: 3
+    admin:
+      existingSecret: grafana-secret
+      userKey: "admin-user"
+      passwordKey: "admin-password"
     rbac:
       pspEnabled: false
     testFramework:
