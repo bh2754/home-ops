@@ -140,6 +140,7 @@ spec:
       enabled: true
       ingressClassName: nginx
       annotations:
+        cert-manager.io/cluster-issuer: "letsencrypt-production"
         external-dns.home.arpa/enabled: "true"
         hajimari.io/icon: simple-icons:grafana
       hosts:
