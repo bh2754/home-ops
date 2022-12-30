@@ -38,6 +38,7 @@ spec:
       main:
         enabled: true
         annotations:
+          cert-manager.io/cluster-issuer: "letsencrypt-production"
           hajimari.io/enable: "true"
           hajimari.io/icon: logos:ubuntu
           hajimari.io/info: Ubuntu
