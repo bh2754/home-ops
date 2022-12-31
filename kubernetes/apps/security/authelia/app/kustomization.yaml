@@ -4,7 +4,7 @@ kind: Kustomization
 namespace: security
 resources:
 # - ./secret.sops.yaml
-  - ./externalsecret.yaml
+# - ./externalsecret.yaml
   - ./helmrelease.yaml
 commonLabels:
   app.kubernetes.io/name: authelia
