@@ -116,6 +116,7 @@ spec:
       accessModes:
         - ReadWriteOnce
       size: 10Gi
+      storageClassName: ceph-block
     prometheusRule:
       # prometheusRule.enabled -- If true, creates a Prometheus Operator PrometheusRule.
       enabled: false
