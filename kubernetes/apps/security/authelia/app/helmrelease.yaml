@@ -19,8 +19,6 @@ spec:
     controller:
       replicas: 3
       strategy: RollingUpdate
-      annotations:
-        reloader.stakater.com/auto: "true"
 
     podSecurityContext:
       runAsUser: 568
@@ -36,11 +34,11 @@ spec:
       repository: ghcr.io/authelia/authelia
       tag: 4.37.5
 
+    enableServiceLinks: false
+
     envFrom:
       - secretRef:
           name: authelia
-
-    enableServiceLinks: false
 
     service:
       main:
