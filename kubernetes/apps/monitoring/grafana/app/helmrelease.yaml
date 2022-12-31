@@ -35,15 +35,18 @@ spec:
           - secretRef:
               name: grafana-secret
 
-    admin:
-      existingSecret: grafana-admin
-
     envFromSecrets:
       - name: grafana-secret
+
+    adminPassword: "${SECRET_PASSWORD}"
 
     grafana.ini:
       auth.basic:
         enabled: true
+      auth.anonymous:
+        enabled: true
+        org_name: "Main Org."
+        org_role: "Viewer"
 
     dashboardProviders:
       dashboardproviders.yaml:
