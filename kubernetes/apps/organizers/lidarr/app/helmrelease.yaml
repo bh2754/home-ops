@@ -36,7 +36,8 @@ spec:
       TZ: ${TZ}
     envFrom:
       - secretRef:
-          name: *app
+        # name: *app
+          name: lidarr-secret
 
     service:
       main:
