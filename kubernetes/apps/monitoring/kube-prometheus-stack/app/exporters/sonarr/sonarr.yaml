@@ -77,7 +77,7 @@ spec:
             - name: APIKEY
               valueFrom:
                 secretKeyRef:
-                  name: sonarr
+                  name: sonarr-secret
                   key: SONARR__API_KEY
             - name: ENABLE_ADDITIONAL_METRICS
               value: "true"
