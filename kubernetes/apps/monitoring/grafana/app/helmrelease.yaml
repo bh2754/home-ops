@@ -141,7 +141,7 @@ spec:
         cert-manager.io/cluster-issuer: "letsencrypt-production"
         hajimari.io/icon: simple-icons:grafana
       hosts:
-        - &host grafana.devbu.io
+        - &host grafana.${SECRET_DOMAIN}
       tls:
         - hosts:
             - *host
