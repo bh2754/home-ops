@@ -73,7 +73,7 @@ spec:
             - name: APIKEY
               valueFrom:
                 secretKeyRef:
-                  name: radarr
+                  name: radarr-secret
                   key: RADARR__API_KEY
             - name: ENABLE_ADDITIONAL_METRICS
               value: "true"
