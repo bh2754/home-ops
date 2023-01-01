@@ -6,7 +6,7 @@ resources:
   - ./servicemonitor.yaml
 configMapGenerator:
   - name: speedtest-dashboard
-    namespace: downloads
+    namespace: downloaders
     files:
       - speedtest-dashboard.json=https://raw.githubusercontent.com/MiguelNdeCarvalho/speedtest-exporter/main/Dashboard/Speedtest-Exporter.json
 generatorOptions:
