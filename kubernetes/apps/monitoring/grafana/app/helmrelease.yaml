@@ -65,7 +65,7 @@ spec:
           contains(groups[*], 'Domain Admins') && 'Admin' || contains(groups[*], 'Domain Users') && 'Viewer'
         org_id: 1
       auth.basic:
-        enabled: false
+        enabled: true
         # disable_login_form: false
       auth.anonymous:
         enabled: true
