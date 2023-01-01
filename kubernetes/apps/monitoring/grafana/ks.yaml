@@ -10,6 +10,8 @@ metadata:
 spec:
   dependsOn:
     - name: cluster-apps-cloudnative-pg-app
+    - name: cluster-apps-external-secrets
+    - name: cluster-apps-onepassword-connect
   path: ./kubernetes/apps/monitoring/grafana/app
   prune: true
   sourceRef:
