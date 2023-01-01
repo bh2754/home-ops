@@ -116,7 +116,7 @@ spec:
       accessModes:
         - ReadWriteOnce
       size: 10Gi
-      storageClassName: ceph-block
+      storageClassName: longhorn
     prometheusRule:
       # prometheusRule.enabled -- If true, creates a Prometheus Operator PrometheusRule.
       enabled: false
