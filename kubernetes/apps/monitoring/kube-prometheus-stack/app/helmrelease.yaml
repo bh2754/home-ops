@@ -329,7 +329,7 @@ spec:
           memory: 99M
   valuesFrom:
     - kind: Secret
-      name: discord-webhook
+      name: discord-webhook-secret
       valuesKey: ALERT_MANAGER_DISCORD_WEBHOOK
       targetPath: alertmanager.config.global.slack_api_url
       optional: false
