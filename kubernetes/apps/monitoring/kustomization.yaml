@@ -10,6 +10,6 @@ resources:
   - ./kube-prometheus-stack/ks.yaml
   - ./loki/ks.yaml
   - ./thanos/ks.yaml
-# - ./vector/ks.yaml
+  - ./vector/ks.yaml
   # Standard Resources
 # - ./rules
