@@ -66,10 +66,6 @@ spec:
         enabled: true
         type: emptyDir
         mountPath: /vector-data-dir
-      geoip:
-        enabled: true
-        type: emptyDir
-        mountPath: /usr/share/GeoIP
     topologySpreadConstraints:
       - maxSkew: 1
         topologyKey: kubernetes.io/hostname
