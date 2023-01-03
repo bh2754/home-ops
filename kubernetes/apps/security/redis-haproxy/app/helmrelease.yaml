@@ -15,6 +15,7 @@ spec:
         name: dandydeveloper-charts
         namespace: flux-system
       interval: 15m
+  timeout: 10m
   install:
     createNamespace: true
     remediation:
