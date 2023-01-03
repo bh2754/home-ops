@@ -4,12 +4,12 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   # Flux-Kustomizations
-# - ./lidarr/ks.yaml
-# - ./mylar/ks.yaml
+  - ./lidarr/ks.yaml
+  - ./mylar/ks.yaml
 # - ./nzbhydra2/ks.yaml
-# - ./prowlarr/ks.yaml
-# - ./radarr/ks.yaml
-# - ./readarr-audio/ks.yaml
-# - ./readarr/ks.yaml
-# - ./sonarr/ks.yaml
-# - ./whisparr/ks.yaml
+  - ./prowlarr/ks.yaml
+  - ./radarr/ks.yaml
+  - ./readarr-audio/ks.yaml
+  - ./readarr/ks.yaml
+  - ./sonarr/ks.yaml
+  - ./whisparr/ks.yaml
