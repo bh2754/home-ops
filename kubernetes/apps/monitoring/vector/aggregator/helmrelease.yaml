@@ -39,7 +39,7 @@ spec:
     service:
       main:
         type: LoadBalancer
-        externalIPs: ["${METALLB_SYSLOG_ADDR}"]
+        externalIPs: ["${SVC_SYSLOG_ADDR}"]
         externalTrafficPolicy: Local
         ports:
           http:
@@ -66,6 +66,10 @@ spec:
         enabled: true
         type: emptyDir
         mountPath: /vector-data-dir
+      geoip:
+        enabled: true
+        type: emptyDir
+        mountPath: /usr/share/GeoIP
     topologySpreadConstraints:
       - maxSkew: 1
         topologyKey: kubernetes.io/hostname
