@@ -30,6 +30,8 @@ spec:
     - name: cluster-apps-cloudnative-pg-app
     - name: cluster-apps-kyverno
     - name: cluster-apps-minio-app
+    - name: cluster-apps-external-secrets
+    - name: cluster-apps-onepassword-connect
   path: ./kubernetes/apps/databases/cloudnative-pg/cluster
   prune: true
   sourceRef:
