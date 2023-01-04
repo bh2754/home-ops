@@ -3,7 +3,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: immich-redis
+  name: immich-proxy
   namespace: media
 spec:
   interval: 15m
@@ -26,27 +26,46 @@ spec:
       retries: 3
   uninstall:
     keepHistory: false
+  dependsOn:
+    - name: immich-server
   values:
     controller:
       annotations:
         reloader.stakater.com/auto: "true"
     image:
-      repository: public.ecr.aws/docker/library/redis
-      tag: 7.0.7
-    env:
-      REDIS_REPLICATION_MODE: master
+      repository: ghcr.io/immich-app/immich-proxy
+      tag: v1.40.1_63-dev
     envFrom:
       - secretRef:
           name: immich-secret
-    command: ["redis-server", "--requirepass", "$(REDIS_PASSWORD)"]
+      - configMapRef:
+          name: immich-configmap
     service:
       main:
         ports:
           http:
-            port: 6379
+            port: 8080
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: nginx
+        annotations:
+          cert-manager.io/cluster-issuer: letsencrypt-production
+          nginx.ingress.kubernetes.io/proxy-body-size: "0"
+          hajimari.io/appName: "Immich"
+          hajimari.io/icon: heroicons:photo
+        hosts:
+          - host: &host photos.${SECRET_DOMAIN}
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - hosts:
+              - *host
+            secretName: "photos-tls"
     resources:
       requests:
-        cpu: 10m
-        memory: 10Mi
+        cpu: 100m
+        memory: 250Mi
       limits:
-        memory: 100Mi
+        memory: 2000Mi
