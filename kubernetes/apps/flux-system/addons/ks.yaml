@@ -26,7 +26,7 @@ metadata:
     substitution.flux.home.arpa/enabled: "true"
 spec:
   interval: 10m
-  path: ./kubernetes/apps/flux-system/add-ons/monitoring
+  path: ./kubernetes/apps/flux-system/addons/monitoring
   prune: true
   sourceRef:
     kind: GitRepository
