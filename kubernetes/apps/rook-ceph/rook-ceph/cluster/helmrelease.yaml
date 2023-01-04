@@ -30,6 +30,7 @@ spec:
       dashboard:
         ingressClassName: nginx
         annotations:
+          cert-manager.io/cluster-issuer: letsencrypt-production
           hajimari.io/appName: "Rook"
           hajimari.io/icon: mdi:chess-rook
         host:
@@ -38,6 +39,7 @@ spec:
         tls:
           - hosts:
               - *host
+            secretName: "rook-tls"
     configOverride: |
       [global]
       bdev_enable_discard = true
