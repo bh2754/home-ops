@@ -10,7 +10,7 @@ metadata:
 spec:
   dependsOn:
     - name: cluster-apps-rook-ceph-cluster
-    - name: clouster-apps-longhorn-app
+    - name: cluster-apps-longhorn-app
   path: ./kubernetes/apps/goldilocks/vpa/app
   prune: true
   sourceRef:
