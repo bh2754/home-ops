@@ -10,4 +10,4 @@ resources:
   - ./rdesktop/ks.yaml
   - ./vnc/ks.yaml
   - ./webtop/ks.yaml
-# - ./speedtest/ks.yaml
+  - ./speedtest/ks.yaml

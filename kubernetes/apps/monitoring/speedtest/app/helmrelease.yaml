@@ -1,9 +1,9 @@
---- #
+---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: speedtest-exporter
-  namespace: downloaders
+  namespace: monitoring
 spec:
   interval: 15m
   chart:
@@ -22,12 +22,10 @@ spec:
     remediation:
       retries: 5
   dependsOn:
-    - name: downloads-gateway
-      namespace: vpn
-    - name: kube-prometheus-stack
-      namespace: monitoring
     - name: ingress-nginx
       namespace: nginx
+    - name: grafana
+      namespace: monitoring
   values:
     image:
       repository: ghcr.io/miguelndecarvalho/speedtest-exporter
@@ -44,7 +42,7 @@ spec:
             port: 9798
     resources:
       requests:
-        cpu: 10m
-        memory: 53M
+        cpu: 15m
+        memory: 50M
       limits:
-        memory: 53M
+        memory: 100M
