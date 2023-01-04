@@ -27,3 +27,4 @@ resources:
   - ./rook-ceph.yaml
   - ./prometheus-community.yaml
   - ./grafana.yaml
+  - ./fairwinds.yaml
