@@ -1,0 +1,87 @@
+---
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: stash-restic
+  namespace: media
+spec:
+  secretStoreRef:
+    kind: ClusterSecretStore
+    name: onepassword-connect
+  target:
+    name: stash-restic-secret
+    creationPolicy: Owner
+    template:
+      engineVersion: v2
+      data:
+        RESTIC_REPOSITORY: '{{ .REPOSITORY_TEMPLATE }}/stash'
+        RESTIC_PASSWORD: '{{ .RESTIC_PASSWORD }}'
+        AWS_ACCESS_KEY_ID: '{{ .AWS_ACCESS_KEY_ID }}'
+        AWS_SECRET_ACCESS_KEY: '{{ .AWS_SECRET_ACCESS_KEY }}'
+  dataFrom:
+    - extract:
+        key: volsync-restic-template
+---
+apiVersion: volsync.backube/v1alpha1
+kind: ReplicationSource
+metadata:
+  name: stash
+  namespace: downloads
+spec:
+  sourcePVC: stash-config-v1
+  trigger:
+    schedule: "0 */12 * * *"
+  restic:
+    copyMethod: Snapshot
+    pruneIntervalDays: 14
+    repository: stash-restic-secret
+    retain:
+      daily: 14
+---
+apiVersion: volsync.backube/v1alpha1
+kind: ReplicationSource
+metadata:
+  name: stash
+  namespace: downloads
+spec:
+  sourcePVC: stash-cache-v1
+  trigger:
+    schedule: "0 */12 * * *"
+  restic:
+    copyMethod: Snapshot
+    pruneIntervalDays: 14
+    repository: stash-restic-secret
+    retain:
+      daily: 14
+---
+apiVersion: volsync.backube/v1alpha1
+kind: ReplicationSource
+metadata:
+  name: stash
+  namespace: downloads
+spec:
+  sourcePVC: stash-generate-v1
+  trigger:
+    schedule: "0 */12 * * *"
+  restic:
+    copyMethod: Snapshot
+    pruneIntervalDays: 14
+    repository: stash-restic-secret
+    retain:
+      daily: 14
+---
+apiVersion: volsync.backube/v1alpha1
+kind: ReplicationSource
+metadata:
+  name: stash
+  namespace: downloads
+spec:
+  sourcePVC: stash-metadata-v1
+  trigger:
+    schedule: "0 */12 * * *"
+  restic:
+    copyMethod: Snapshot
+    pruneIntervalDays: 14
+    repository: stash-restic-secret
+    retain:
+      daily: 14
