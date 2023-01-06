@@ -25,8 +25,8 @@ spec:
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationSource
 metadata:
-  name: stash
-  namespace: downloads
+  name: stash-config
+  namespace: media
 spec:
   sourcePVC: stash-config-v1
   trigger:
@@ -41,8 +41,8 @@ spec:
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationSource
 metadata:
-  name: stash
-  namespace: downloads
+  name: stash-cache
+  namespace: media
 spec:
   sourcePVC: stash-cache-v1
   trigger:
@@ -57,8 +57,8 @@ spec:
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationSource
 metadata:
-  name: stash
-  namespace: downloads
+  name: stash-generated
+  namespace: media
 spec:
   sourcePVC: stash-generate-v1
   trigger:
@@ -73,8 +73,8 @@ spec:
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationSource
 metadata:
-  name: stash
-  namespace: downloads
+  name: stash-metadata
+  namespace: media
 spec:
   sourcePVC: stash-metadata-v1
   trigger:
