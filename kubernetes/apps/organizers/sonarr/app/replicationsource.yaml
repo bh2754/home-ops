@@ -26,7 +26,7 @@ apiVersion: volsync.backube/v1alpha1
 kind: ReplicationSource
 metadata:
   name: sonarr
-  namespace: downloads
+  namespace: organizers
 spec:
   sourcePVC: sonarr-config
   trigger:
