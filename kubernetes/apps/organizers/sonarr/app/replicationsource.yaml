@@ -28,7 +28,7 @@ metadata:
   name: sonarr
   namespace: organizers
 spec:
-  sourcePVC: sonarr-config
+  sourcePVC: sonarr-config-v1
   trigger:
     schedule: "0 */12 * * *"
   restic:
