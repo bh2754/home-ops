@@ -25,8 +25,8 @@ spec:
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationSource
 metadata:
-  name: sonarr
-  namespace: organizers
+  name: plex
+  namespace: media
 spec:
   sourcePVC: plex-config-v1
   trigger:
