@@ -20,7 +20,7 @@ includes:
   tf: .taskfiles/TerraformTasks.yml
   sops: .taskfiles/SopsTasks.yml
   ss: .taskfiles/SnapshotTasks.yml
-  vs: .taskfiles/VolSync/Tasks.yml
+  vs: .taskfiles/VolSync/Tasks.yaml
   es: .taskfiles/ExternalSecrets/Tasks.yml
 
 tasks:
