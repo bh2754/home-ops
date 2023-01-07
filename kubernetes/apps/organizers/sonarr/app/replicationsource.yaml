@@ -28,9 +28,6 @@ metadata:
   name: sonarr
   namespace: organizers
 spec:
-  metadata:
-    labels:
-      setGatway: false
   sourcePVC: sonarr-config-v1
   trigger:
     schedule: "0 */12 * * *"
