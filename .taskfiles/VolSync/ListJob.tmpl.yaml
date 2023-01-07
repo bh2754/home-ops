@@ -8,6 +8,9 @@ spec:
   ttlSecondsAfterFinished: 3600
   template:
     spec:
+      metadata:
+        labels:
+          setGateway: "false"
       automountServiceAccountToken: false
       restartPolicy: OnFailure
       containers:
