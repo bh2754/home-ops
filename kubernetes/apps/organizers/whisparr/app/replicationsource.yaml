@@ -27,10 +27,9 @@ kind: ReplicationSource
 metadata:
   name: whisparr
   namespace: organizers
+  labels:
+    setGateway: False
 spec:
-  metadata:
-    labels:
-      setGatway: false
   sourcePVC: whisparr-config-v1
   trigger:
     schedule: "0 */12 * * *"
