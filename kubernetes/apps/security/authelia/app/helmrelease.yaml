@@ -16,6 +16,13 @@ spec:
         name: bjw-s-charts
         namespace: flux-system
   values:
+    initContainers:
+      init-db:
+        image: ghcr.io/onedr0p/postgres-initdb:14.6
+        envFrom:
+          - secretRef:
+              name: authelia-secret
+
     controller:
       replicas: 3
       strategy: RollingUpdate
