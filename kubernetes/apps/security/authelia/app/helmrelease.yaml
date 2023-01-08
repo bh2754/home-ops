@@ -28,7 +28,7 @@ spec:
 
     podAnnotations:
       configmap.reloader.stakater.com/reload: authelia
-      secret.reloader.stakater.com/reload: authelia
+      secret.reloader.stakater.com/reload: authelia-secret
 
     image:
       repository: ghcr.io/authelia/authelia
