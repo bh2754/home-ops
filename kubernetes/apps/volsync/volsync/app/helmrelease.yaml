@@ -30,3 +30,5 @@ spec:
     manageCRDs: true
     metrics:
       disableAuth: true
+    podAnnotations:
+      setGateway: "false"
