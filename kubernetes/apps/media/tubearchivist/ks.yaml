@@ -9,7 +9,7 @@ metadata:
     substitution.flux.home.arpa/enabled: "true"
 spec:
   dependsOn:
-    - name: cluster-apps-cloudnative-pg
+    - name: cluster-apps-cloudnative-pg-app
   path: ./kubernetes/apps/default/tubearchivist/app
   prune: true
   sourceRef:
