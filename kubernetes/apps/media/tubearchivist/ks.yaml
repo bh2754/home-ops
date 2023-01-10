@@ -10,7 +10,7 @@ metadata:
 spec:
   dependsOn:
     - name: cluster-apps-cloudnative-pg-app
-  path: ./kubernetes/apps/default/tubearchivist/app
+  path: ./kubernetes/apps/media/tubearchivist/app
   prune: true
   sourceRef:
     kind: GitRepository
