@@ -11,7 +11,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   nfs:
     server: ${NFS_SERVER}
-    path: /volume1/kubernetes/App/TubeArchivist
+    path: /volume1/kubernetes/Apps/TubeArchivist
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
