@@ -17,4 +17,4 @@ resources:
   - ./tdarr/ks.yaml
   - ./webtop/ks.yaml
   - ./immich/ks.yaml
-# - ./tubearchivist/ks.yaml
+  - ./tubearchivist/ks.yaml

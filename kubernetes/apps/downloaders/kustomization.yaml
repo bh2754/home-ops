@@ -5,7 +5,7 @@ kind: Kustomization
 resources:
   # Flux-Kustomizations
   - ./sabnzbd/ks.yaml
-  - ./openbooks/ks.yaml
+# - ./openbooks/ks.yaml
   - ./qbittorrent/ks.yaml
   - ./rdesktop/ks.yaml
   - ./vnc/ks.yaml
