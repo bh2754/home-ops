@@ -339,14 +339,6 @@ By default in this template Kubernetes ingresses are set to use the [Let's Encry
 
 Once you have confirmed there are no issues requesting your certificates replace `letsencrypt-staging` with `letsencrypt-production` in your ingress annotations for `cert-manager.io/cluster-issuer`
 
-### 🤖 Renovatebot
-
-[Renovatebot](https://www.mend.io/free-developer-tools/renovate/) will scan your repository and offer PRs when it finds dependencies out of date. Common dependencies it will discover and update are Flux, Ansible Galaxy Roles, Terraform Providers, Kubernetes Helm Charts, Kubernetes Container Images, Pre-commit hooks updates, and more!
-
-The base Renovate configuration provided in your repository can be view at [.github/renovate.json5](https://github.com/onedr0p/flux-cluster-template/blob/main/.github/renovate.json5). If you notice this only runs on weekends and you can [change the schedule to anything you want](https://docs.renovatebot.com/presets-schedule/) or simply remove it.
-
-To enable Renovate on your repository, click the 'Configure' button over at their [Github app page](https://github.com/apps/renovate) and choose your repository. Over time Renovate will create PRs for out-of-date dependencies it finds. Any merged PRs that are in the kubernetes directory Flux will deploy.
-
 ### 🪝 Github Webhook
 
 Flux is pull-based by design meaning it will periodically check your git repository for changes, using a webhook you can enable Flux to update your cluster on `git push`. In order to configure Github to send `push` events from your repository to the Flux webhook receiver you will need two things:
@@ -374,18 +366,6 @@ Flux is pull-based by design meaning it will periodically check your git reposit
     **Note:** Don't forget to update the `BOOTSTRAP_FLUX_GITHUB_WEBHOOK_SECRET` variable in your `.config.env` file so it matches the generated secret if applicable
 
 Now that you have the webhook url and secret, it's time to set everything up on the Github repository side. Navigate to the settings of your repository on Github, under "Settings/Webhooks" press the "Add webhook" button. Fill in the webhook url and your secret.
-
-### 💾 Storage
-
-Rancher's `local-path-provisioner` is a great start for storage but soon you might find you need more features like replicated block storage, or to connect to a NFS/SMB/iSCSI server. Check out the projects below to read up more on some storage solutions that might work for you.
-
-- [rook-ceph](https://github.com/rook/rook)
-- [longhorn](https://github.com/longhorn/longhorn)
-- [openebs](https://github.com/openebs/openebs)
-- [nfs-subdir-external-provisioner](https://github.com/kubernetes-sigs/nfs-subdir-external-provisioner)
-- [democratic-csi](https://github.com/democratic-csi/democratic-csi)
-- [csi-driver-nfs](https://github.com/kubernetes-csi/csi-driver-nfs)
-- [synology-csi](https://github.com/SynologyOpenSource/synology-csi)
 
 ### 🔏 Authenticate Flux over SSH
 
