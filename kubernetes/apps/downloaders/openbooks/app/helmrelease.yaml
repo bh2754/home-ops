@@ -21,6 +21,15 @@ spec:
       repository: docker.io/evanbuss/openbooks
       tag: latest@sha256:3f2e59a75b68950d57cfec5dc2b1b31d6c6b02706097c70b5438499b59fbdea2
 
+    args:
+      - server
+      - --dir
+      - /books
+      - --port
+      - &port '8080'
+      - --name
+      - openbooks82937
+
     podSecurityContext:
       runAsUser: 568
       runAsGroup: 568
@@ -33,7 +42,7 @@ spec:
       main:
         ports:
           http:
-            port: 80
+            port: *port
 
     ingress:
       main:
