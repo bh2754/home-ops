@@ -57,8 +57,7 @@ spec:
         externalTrafficPolicy: Local
 
     podAnnotations:
-      setGateway: "true"
-      backup.velero.io/backup-volumes: config
+      setGateway: "false"
     ingress:
       main:
         enabled: true
