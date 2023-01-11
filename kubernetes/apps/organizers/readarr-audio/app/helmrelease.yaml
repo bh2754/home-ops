@@ -94,7 +94,7 @@ spec:
         path: ${NFS_DOWNLOAD}
         mountPath: /downloads
     podAnnotations:
-      backup.velero.io/backup-volumes: config
+      setGateway: "true"
     resources:
       requests:
         cpu: 10m

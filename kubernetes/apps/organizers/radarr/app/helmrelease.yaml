@@ -100,7 +100,7 @@ spec:
           successThreshold: 1
           timeoutSeconds: 10
     podAnnotations:
-      backup.velero.io/backup-volumes: config
+      setGateway: "true"
     persistence:
       config:
         enabled: true

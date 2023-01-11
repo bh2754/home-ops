@@ -98,4 +98,4 @@ spec:
         memory: 1428M
         ephemeral-storage: "4Gi"
     podAnnotations:
-      backup.velero.io/backup-volumes: config
+      setGateway: "true"

@@ -82,7 +82,7 @@ spec:
         server: "${NFS_SERVER}"
         path: "${NFS_DOWNLOAD}"
     podAnnotations:
-      backup.velero.io/backup-volumes: config
+      setGateway: "true"
     resources:
       requests:
         cpu: 10m
