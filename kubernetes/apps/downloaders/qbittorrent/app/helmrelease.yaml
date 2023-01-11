@@ -57,7 +57,8 @@ spec:
         externalTrafficPolicy: Local
 
     podAnnotations:
-      setGateway: "false"
+      setGateway: "true"
+
     ingress:
       main:
         enabled: true

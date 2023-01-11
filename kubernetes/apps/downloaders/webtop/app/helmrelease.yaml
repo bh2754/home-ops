@@ -28,6 +28,8 @@ spec:
     - name: downloads-gateway
       namespace: vpn
   values:
+    podAnnotations:
+      setGateway: "true"
     image:
       pullPolicy: IfNotPresent
       repository: linuxserver/webtop

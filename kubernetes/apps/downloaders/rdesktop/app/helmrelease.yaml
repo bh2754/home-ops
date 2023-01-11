@@ -60,3 +60,5 @@ spec:
           http:
             port: 3389
             protocol: TCP
+    podAnnotations:
+      setGateway: "true"

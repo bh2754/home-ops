@@ -1,4 +1,4 @@
---- #
+---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
@@ -48,3 +48,5 @@ spec:
         memory: 53M
       limits:
         memory: 53M
+    podAnnotations:
+      setGateway: "true"
