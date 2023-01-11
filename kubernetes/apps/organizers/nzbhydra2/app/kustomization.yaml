@@ -5,3 +5,4 @@ namespace: organizers
 resources:
   - ./helmrelease.yaml
   - ./config-pvc.yaml
+  - ./replicationsource.yaml
