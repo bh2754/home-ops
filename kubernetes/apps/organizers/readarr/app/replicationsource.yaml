@@ -35,5 +35,9 @@ spec:
     copyMethod: Snapshot
     pruneIntervalDays: 14
     repository: readarr-restic-secret
+    cacheCapacity: 2Gi
+    volumeSnapshotClassName: csi-ceph-blockpool
+    storageClassName: ceph-block
+    cacheStorageClassName: ceph-block
     retain:
       daily: 14
