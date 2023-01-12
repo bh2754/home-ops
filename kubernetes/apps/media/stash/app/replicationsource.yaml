@@ -2,19 +2,19 @@
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
 metadata:
-  name: stash-restic
+  name: stash-config-restic
   namespace: media
 spec:
   secretStoreRef:
     kind: ClusterSecretStore
     name: onepassword-connect
   target:
-    name: stash-restic-secret
+    name: stash-config-restic-secret
     creationPolicy: Owner
     template:
       engineVersion: v2
       data:
-        RESTIC_REPOSITORY: '{{ .REPOSITORY_TEMPLATE }}/stash'
+        RESTIC_REPOSITORY: '{{ .REPOSITORY_TEMPLATE }}/stash-config'
         RESTIC_PASSWORD: '{{ .RESTIC_PASSWORD }}'
         AWS_ACCESS_KEY_ID: '{{ .AWS_ACCESS_KEY_ID }}'
         AWS_SECRET_ACCESS_KEY: '{{ .AWS_SECRET_ACCESS_KEY }}'
@@ -34,9 +34,36 @@ spec:
   restic:
     copyMethod: Snapshot
     pruneIntervalDays: 14
-    repository: stash-restic-secret
+    repository: stash-config-restic-secret
+    cacheCapacity: 2Gi
+    volumeSnapshotClassName: csi-ceph-blockpool
+    storageClassName: ceph-block
+    cacheStorageClassName: ceph-block
     retain:
       daily: 14
+---
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: stash-cache-restic
+  namespace: media
+spec:
+  secretStoreRef:
+    kind: ClusterSecretStore
+    name: onepassword-connect
+  target:
+    name: stash-cache-restic-secret
+    creationPolicy: Owner
+    template:
+      engineVersion: v2
+      data:
+        RESTIC_REPOSITORY: '{{ .REPOSITORY_TEMPLATE }}/stash-cache'
+        RESTIC_PASSWORD: '{{ .RESTIC_PASSWORD }}'
+        AWS_ACCESS_KEY_ID: '{{ .AWS_ACCESS_KEY_ID }}'
+        AWS_SECRET_ACCESS_KEY: '{{ .AWS_SECRET_ACCESS_KEY }}'
+  dataFrom:
+    - extract:
+        key: volsync-restic-template
 ---
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationSource
@@ -50,9 +77,36 @@ spec:
   restic:
     copyMethod: Snapshot
     pruneIntervalDays: 14
-    repository: stash-restic-secret
+    repository: stash-cache-restic-secret
+    cacheCapacity: 2Gi
+    volumeSnapshotClassName: csi-ceph-blockpool
+    storageClassName: ceph-block
+    cacheStorageClassName: ceph-block
     retain:
       daily: 14
+---
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: stash-generated-restic
+  namespace: media
+spec:
+  secretStoreRef:
+    kind: ClusterSecretStore
+    name: onepassword-connect
+  target:
+    name: stash-generated-restic-secret
+    creationPolicy: Owner
+    template:
+      engineVersion: v2
+      data:
+        RESTIC_REPOSITORY: '{{ .REPOSITORY_TEMPLATE }}/stash-generated'
+        RESTIC_PASSWORD: '{{ .RESTIC_PASSWORD }}'
+        AWS_ACCESS_KEY_ID: '{{ .AWS_ACCESS_KEY_ID }}'
+        AWS_SECRET_ACCESS_KEY: '{{ .AWS_SECRET_ACCESS_KEY }}'
+  dataFrom:
+    - extract:
+        key: volsync-restic-template
 ---
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationSource
@@ -60,15 +114,42 @@ metadata:
   name: stash-generated
   namespace: media
 spec:
-  sourcePVC: stash-generate-v1
+  sourcePVC: stash-generated-v1
   trigger:
     schedule: "0 */12 * * *"
   restic:
     copyMethod: Snapshot
     pruneIntervalDays: 14
-    repository: stash-restic-secret
+    repository: stash-generated-restic-secret
+    cacheCapacity: 2Gi
+    volumeSnapshotClassName: csi-ceph-blockpool
+    storageClassName: ceph-block
+    cacheStorageClassName: ceph-block
     retain:
       daily: 14
+---
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: stash-metadata-restic
+  namespace: media
+spec:
+  secretStoreRef:
+    kind: ClusterSecretStore
+    name: onepassword-connect
+  target:
+    name: stash-metadata-restic-secret
+    creationPolicy: Owner
+    template:
+      engineVersion: v2
+      data:
+        RESTIC_REPOSITORY: '{{ .REPOSITORY_TEMPLATE }}/stash-metadata'
+        RESTIC_PASSWORD: '{{ .RESTIC_PASSWORD }}'
+        AWS_ACCESS_KEY_ID: '{{ .AWS_ACCESS_KEY_ID }}'
+        AWS_SECRET_ACCESS_KEY: '{{ .AWS_SECRET_ACCESS_KEY }}'
+  dataFrom:
+    - extract:
+        key: volsync-restic-template
 ---
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationSource
@@ -82,6 +163,10 @@ spec:
   restic:
     copyMethod: Snapshot
     pruneIntervalDays: 14
-    repository: stash-restic-secret
+    repository: stash-metadata-restic-secret
+    cacheCapacity: 2Gi
+    volumeSnapshotClassName: csi-ceph-blockpool
+    storageClassName: ceph-block
+    cacheStorageClassName: ceph-block
     retain:
       daily: 14
