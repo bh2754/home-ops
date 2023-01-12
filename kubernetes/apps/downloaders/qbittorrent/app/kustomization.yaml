@@ -5,3 +5,4 @@ namespace: downloaders
 resources:
   - ./helmrelease.yaml
   - ./config-pvc.yaml
+  - ./replicationsource.yaml
