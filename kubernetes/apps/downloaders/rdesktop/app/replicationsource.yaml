@@ -38,5 +38,6 @@ spec:
     cacheCapacity: 2Gi
     volumeSnapshotClassName: csi-ceph-blockpool
     storageClassName: ceph-block
+    cacheStorageClassName: ceph-block
     retain:
       daily: 14
