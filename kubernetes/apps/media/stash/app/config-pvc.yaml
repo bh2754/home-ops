@@ -58,10 +58,6 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
-  labels:
-    app.kubernetes.io/name: &name stash
-    app.kubernetes.io/instance: *name
-    snapshot.home.arpa/enabled: "true"
   resources:
     requests:
       storage: 10Gi
