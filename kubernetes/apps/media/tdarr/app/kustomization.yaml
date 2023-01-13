@@ -5,4 +5,4 @@ resources:
   - ./config-pvc.yaml
   - ./helmrelease.yaml
   - ./worker.yaml
-  - ./replicationsource.yaml
+# - ./replicationsource.yaml
