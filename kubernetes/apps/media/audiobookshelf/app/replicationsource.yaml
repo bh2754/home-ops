@@ -68,7 +68,7 @@ spec:
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationSource
 metadata:
-  name: audiobookshelf-matadata
+  name: audiobookshelf-metadata
   namespace: media
 spec:
   sourcePVC: audiobookshelf-metadata-v1
