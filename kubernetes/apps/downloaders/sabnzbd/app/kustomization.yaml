@@ -5,4 +5,4 @@ resources:
   - ./externalsecret.yaml
   - ./config-pvc.yaml
   - ./helmrelease.yaml
-  - ./replicationsource.yaml
+# - ./replicationsource.yaml
