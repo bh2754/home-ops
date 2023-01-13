@@ -4,13 +4,13 @@ kind: PersistentVolumeClaim
 metadata:
   name: stash-config-v1
   namespace: media
-spec:
-  accessModes:
-    - ReadWriteOnce
   labels:
     app.kubernetes.io/name: &name stash
     app.kubernetes.io/instance: *name
     snapshot.home.arpa/enabled: "true"
+spec:
+  accessModes:
+    - ReadWriteOnce
   resources:
     requests:
       storage: 10Gi
@@ -21,13 +21,13 @@ kind: PersistentVolumeClaim
 metadata:
   name: stash-generated-v1
   namespace: media
-spec:
-  accessModes:
-    - ReadWriteOnce
   labels:
     app.kubernetes.io/name: &name stash
     app.kubernetes.io/instance: *name
     snapshot.home.arpa/enabled: "true"
+spec:
+  accessModes:
+    - ReadWriteOnce
   resources:
     requests:
       storage: 10Gi
@@ -38,13 +38,13 @@ kind: PersistentVolumeClaim
 metadata:
   name: stash-metadata-v1
   namespace: media
-spec:
-  accessModes:
-    - ReadWriteOnce
   labels:
     app.kubernetes.io/name: &name stash
     app.kubernetes.io/instance: *name
     snapshot.home.arpa/enabled: "true"
+spec:
+  accessModes:
+    - ReadWriteOnce
   resources:
     requests:
       storage: 10Gi
@@ -55,6 +55,10 @@ kind: PersistentVolumeClaim
 metadata:
   name: stash-cache-v1
   namespace: media
+  labels:
+    app.kubernetes.io/name: &name stash
+    app.kubernetes.io/instance: *name
+    snapshot.home.arpa/enabled: "true"
 spec:
   accessModes:
     - ReadWriteOnce
