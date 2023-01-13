@@ -4,5 +4,4 @@ apiVersion: snapshot.storage.k8s.io/v1
 driver: driver.longhorn.io
 metadata:
   name: longhorn-snapclass
-  namespace: longhorn-system
 deletionPolicy: Retain
