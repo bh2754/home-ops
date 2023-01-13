@@ -36,9 +36,9 @@ spec:
     pruneIntervalDays: 14
     repository: audiobookshelf-config-restic-secret
     cacheCapacity: 2Gi
-    volumeSnapshotClassName: csi-ceph-blockpool
-    storageClassName: ceph-block
-    cacheStorageClassName: ceph-block
+    volumeSnapshotClassName: csi-longhorn
+    storageClassName: longhorn
+    cacheStorageClassName: longhorn
     retain:
       daily: 14
 ---
@@ -79,8 +79,8 @@ spec:
     pruneIntervalDays: 14
     repository: audiobookshelf-metadata-restic-secret
     cacheCapacity: 2Gi
-    volumeSnapshotClassName: csi-ceph-blockpool
-    storageClassName: ceph-block
-    cacheStorageClassName: ceph-block
+    volumeSnapshotClassName: csi-longhorn
+    storageClassName: longhorn
+    cacheStorageClassName: longhorn
     retain:
       daily: 14
