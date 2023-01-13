@@ -36,7 +36,7 @@ spec:
     pruneIntervalDays: 14
     repository: audiobookshelf-config-restic-secret
     cacheCapacity: 2Gi
-    volumeSnapshotClassName: csi-longhorn
+    volumeSnapshotClassName: longhorn
     storageClassName: longhorn
     cacheStorageClassName: longhorn
     retain:
@@ -79,7 +79,7 @@ spec:
     pruneIntervalDays: 14
     repository: audiobookshelf-metadata-restic-secret
     cacheCapacity: 2Gi
-    volumeSnapshotClassName: csi-longhorn
+    volumeSnapshotClassName: longhorn
     storageClassName: longhorn
     cacheStorageClassName: longhorn
     retain:
