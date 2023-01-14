@@ -141,7 +141,7 @@ spec:
           emptyDir: {}
       persistence:
         size: 10Gi
-        storageClass: ceph-block
+        storageClass: longhorn
     monitoring:
       serviceMonitor:
         enabled: false
