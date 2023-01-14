@@ -59,6 +59,7 @@ spec:
           storage:
             s3:
               s3: null
+              endpoint: minio.bharris.co:9000
               insecure: true
               s3forcepathstyle: true
           ring:
