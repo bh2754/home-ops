@@ -121,7 +121,7 @@ spec:
       replicas: 3
       persistence:
         size: 10Gi
-        storageClass: ceph-block
+        storageClass: longhorn
     read:
       replicas: 3
       extraVolumeMounts:
