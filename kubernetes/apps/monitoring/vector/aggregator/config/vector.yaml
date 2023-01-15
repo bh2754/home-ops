@@ -45,8 +45,8 @@ sinks:
     labels:
       hostname: '{{ host }}'
     out_of_order_action: accept
-    remove_label_fields: true
-    remove_timestamp: true
+    remove_label_fields: false
+    remove_timestamp: false
   kubernetes:
     type: loki
     batch:
@@ -61,5 +61,5 @@ sinks:
       namespace: '{{ kubernetes.pod_namespace }}'
       node: '{{ kubernetes.pod_node_name }}'
     out_of_order_action: accept
-    remove_label_fields: true
-    remove_timestamp: true
+    remove_label_fields: false
+    remove_timestamp: false
