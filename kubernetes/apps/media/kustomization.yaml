@@ -14,6 +14,6 @@ resources:
 # - ./plex/ks.yaml
   - ./ombi/ks.yaml
   - ./stash/ks.yaml
-  - ./tautulli/ks.yaml
+# - ./tautulli/ks.yaml
   - ./tdarr/ks.yaml
   - ./webtop/ks.yaml
