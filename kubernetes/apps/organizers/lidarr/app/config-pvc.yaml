@@ -16,4 +16,5 @@ spec:
     requests:
       storage: 10Gi
 
-  storageClassName: longhorn
+# storageClassName: longhorn
+  storageClassName: ceph-block
