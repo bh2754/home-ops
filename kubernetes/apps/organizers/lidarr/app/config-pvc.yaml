@@ -5,8 +5,8 @@ metadata:
   name: lidarr-config-v1
   namespace: organizers
   labels:
-    app.kubernetes.io/name: &name lidarr
-    app.kubernetes.io/instance: *name
+  # app.kubernetes.io/name: &name lidarr
+  # app.kubernetes.io/instance: *name
     snapshot.home.arpa/enabled: "true"
 spec:
   accessModes:
