@@ -70,9 +70,9 @@ spec:
         enabled: true
         type: emptyDir
         mountPath: /vector-data-dir
-      geoip:
-        enabled: true
-        existingClaim: vector-geoipupdate-config-v1
+    # geoip:
+      # enabled: true
+      # existingClaim: vector-geoipupdate-config-v1
     topologySpreadConstraints:
       - maxSkew: 1
         topologyKey: kubernetes.io/hostname
