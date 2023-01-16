@@ -10,7 +10,7 @@ metadata:
 spec:
   dependsOn:
     - name: cluster-apps-loki-app
-    - name: cluster-apps-geoipupdate-app
+    - name: cluster-apps-vector-geoipupdate-app
   path: ./kubernetes/apps/monitoring/vector/aggregator
   prune: true
   sourceRef:
