@@ -25,7 +25,7 @@ spec:
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationSource
 metadata:
-  name: audiobookshelf
+  name: audiobookshelf-config
   namespace: media
 spec:
   sourcePVC: audiobookshelf-config-v1
