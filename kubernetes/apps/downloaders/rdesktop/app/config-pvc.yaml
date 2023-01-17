@@ -5,8 +5,6 @@ metadata:
   name: rdesktop-config-v1
   namespace: downloaders
   labels:
-    app.kubernetes.io/name: &name rdesktop
-    app.kubernetes.io/instance: *name
     snapshot.home.arpa/enabled: "true"
 spec:
   accessModes:
@@ -14,4 +12,5 @@ spec:
   resources:
     requests:
       storage: 20Gi
-  storageClassName: longhorn
+# storageClassName: longhorn
+  storageClassName: ceph-block

@@ -5,8 +5,6 @@ metadata:
   name: qbittorrent-config-v1
   namespace: downloaders
   labels:
-    app.kubernetes.io/name: &name qbittorrent
-    app.kubernetes.io/instance: *name
     snapshot.home.arpa/enabled: "true"
 spec:
   accessModes:
@@ -16,4 +14,5 @@ spec:
     requests:
       storage: 10Gi
 
-  storageClassName: longhorn
+# storageClassName: longhorn
+  storageClassName: ceph-block
