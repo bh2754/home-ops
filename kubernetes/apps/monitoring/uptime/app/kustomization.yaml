@@ -5,5 +5,5 @@ resources:
   - ./config-pvc.yaml
   - ./helmrelease.yaml
 commonLabels:
-  app.kubernetes.io/name: uptime
-  app.kubernetes.io/instance: uptime
+  app.kubernetes.io/name: uptime-kuma
+  app.kubernetes.io/instance: uptime-kuma
