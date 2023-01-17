@@ -15,6 +15,13 @@ spec:
         kind: HelmRepository
         name: bjw-s-charts
         namespace: flux-system
+  install:
+    createNamespace: true
+    remediation:
+      retries: 5
+  upgrade:
+    remediation:
+      retries: 5
 
   values:
     image:
@@ -23,6 +30,9 @@ spec:
 
     podAnnotations:
       setGateway: "true"
+
+    command:
+      - ./openbooks
 
     args:
       - server
@@ -54,7 +64,7 @@ spec:
         annotations:
           cert-manager.io/cluster-issuer: "letsencrypt-production"
           hajimari.io/enable: "true"
-          hajimari.io/icon: "book-open-outline"
+          hajimari.io/icon: 'mdi:book-search'
         hosts:
           - host: &host openbooks.${SECRET_DOMAIN}
             paths:
@@ -63,6 +73,7 @@ spec:
           - hosts:
               - *host
             secretName: "openbooks-tls"
+
     persistence:
       books:
         enabled: true
