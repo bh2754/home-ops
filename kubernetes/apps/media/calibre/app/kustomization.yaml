@@ -5,3 +5,6 @@ resources:
   - ./config-pvc.yaml
   - ./helmrelease.yaml
 # - ./replicationsource.yaml
+commonLabels:
+  app.kubernetes.io/name: calibre
+  app.kubernetes.io/instance: calibre
