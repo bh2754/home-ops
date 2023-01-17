@@ -7,5 +7,5 @@ resources:
   - ./helmrelease.yaml
 # - ./replicationsource.yaml
 commonLabels:
-  - app.kubernetes.io/name: whisparr
-  - app.kubernetes.io/instance: whisparr
+  app.kubernetes.io/name: whisparr
+  app.kubernetes.io/instance: whisparr
