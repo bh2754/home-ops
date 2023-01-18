@@ -6,3 +6,6 @@ resources:
   - ./helmrelease.yaml
   - ./worker.yaml
 # - ./replicationsource.yaml
+commonLabels:
+  app.kubernetes.io/name: tdarr
+  app.kubernetes.io/instance: tdarr
