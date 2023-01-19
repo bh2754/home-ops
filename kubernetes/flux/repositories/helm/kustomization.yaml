@@ -29,3 +29,4 @@ resources:
   - ./grafana.yaml
   - ./fairwinds.yaml
   - ./descheduler.yaml
+  - ./angelnu.yaml
