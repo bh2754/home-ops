@@ -10,8 +10,8 @@ metadata:
 spec:
   dependsOn:
     - name: cluster-apps-cloudnative-pg-app
-    - name: cluster-apps-external-secrets
     - name: cluster-apps-onepassword-connect
+    - name: cluster-apps-redis-lb
   path: ./kubernetes/apps/media/immich/app
   prune: true
   sourceRef:
@@ -21,14 +21,6 @@ spec:
     - apiVersion: helm.toolkit.fluxcd.io/v2beta1
       kind: HelmRelease
       name: immich-microservices
-      namespace: media
-    - apiVersion: helm.toolkit.fluxcd.io/v2beta1
-      kind: HelmRelease
-      name: immich-proxy
-      namespace: media
-    - apiVersion: helm.toolkit.fluxcd.io/v2beta1
-      kind: HelmRelease
-      name: immich-redis
       namespace: media
     - apiVersion: helm.toolkit.fluxcd.io/v2beta1
       kind: HelmRelease
