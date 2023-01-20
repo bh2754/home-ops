@@ -33,7 +33,7 @@ metadata:
     substitution.flux.home.arpa/enabled: "true"
 spec:
   dependsOn:
-    - name: cluster-apps-redis
+    - name: cluster-apps-redis-app
   path: ./kubernetes/apps/databases/redis/lb
   prune: true
   sourceRef:
