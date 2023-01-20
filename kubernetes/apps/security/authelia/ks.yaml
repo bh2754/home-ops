@@ -10,7 +10,7 @@ metadata:
 spec:
   dependsOn:
     - name: cluster-apps-cloudnative-pg-app
-    - name: cluster-apps-databases-redis-app
+    - name: cluster-apps-redis-haproxy-app
   path: ./kubernetes/apps/security/authelia/app
   prune: true
   sourceRef:
