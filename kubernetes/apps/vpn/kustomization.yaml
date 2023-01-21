@@ -8,4 +8,4 @@ resources:
   # Flux-Kustomizations
 # - ./vpn/ks.yaml
 # - ./test/ks.yaml
-# - ./pod-gateway/ks.yaml
+  - ./pod-gateway/ks.yaml
