@@ -9,9 +9,8 @@ metadata:
     substitution.flux.home.arpa/enabled: "true"
 spec:
   dependsOn:
-    - name: cluster-apps-external-secrets
     - name: cluster-apps-onepassword-connect
-    - name: cluster-apps-vpn-app
+    - name: cluster-apps-pod-gateway
     - name: cluster-apps-ingress-nginx
   path: ./kubernetes/apps/organizers/sonarr/app
   prune: true

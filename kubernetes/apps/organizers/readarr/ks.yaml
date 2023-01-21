@@ -10,7 +10,7 @@ metadata:
 spec:
   dependsOn:
     - name: cluster-apps-onepassword-connect
-    - name: cluster-apps-vpn-app
+    - name: cluster-apps-pod-gateway
     - name: cluster-apps-ingress-nginx
   path: ./kubernetes/apps/organizers/readarr/app
   prune: true
