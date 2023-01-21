@@ -22,11 +22,6 @@ spec:
     remediation:
       retries: 5
   releaseName: whisparr
-  dependsOn:
-    - name: ingress-nginx
-      namespace: nginx
-    - name: downloads-gateway
-      namespace: vpn
   values:
     controller:
       replicas: 1

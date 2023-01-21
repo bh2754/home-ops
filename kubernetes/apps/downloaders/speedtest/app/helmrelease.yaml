@@ -21,13 +21,6 @@ spec:
   upgrade:
     remediation:
       retries: 5
-  dependsOn:
-    - name: downloads-gateway
-      namespace: vpn
-    - name: kube-prometheus-stack
-      namespace: monitoring
-    - name: ingress-nginx
-      namespace: nginx
   values:
     image:
       repository: ghcr.io/miguelndecarvalho/speedtest-exporter

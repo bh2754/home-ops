@@ -17,11 +17,6 @@ spec:
         name: bjw-s-charts
         namespace: flux-system
       interval: 5m
-  dependsOn:
-    - name: ingress-nginx
-      namespace: nginx
-    - name: downloads-gateway
-      namespace: vpn
   install:
     createNamespace: true
     remediation:
