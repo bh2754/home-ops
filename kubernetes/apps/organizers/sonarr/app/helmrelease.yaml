@@ -21,11 +21,6 @@ spec:
   upgrade:
     remediation:
       retries: 5
-  dependsOn:
-    - name: ingress-nginx
-      namespace: nginx
-    - name: downloads-gateway
-      namespace: vpn
   values:
     controller:
       replicas: 1
