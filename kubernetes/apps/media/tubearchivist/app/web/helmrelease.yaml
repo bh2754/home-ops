@@ -40,8 +40,8 @@ spec:
       TZ: America/Indianapolis
       ES_URL: http://tubearchivist-elasticsearch.media.svc.cluster.local:9200
       REDIS_HOST: redis-headless.databases.svc.cluster.local
-      HOST_UID: 1000
-      HOST_GID: 1000
+      HOST_UID: 1
+      HOST_GID: 1
       TA_HOST: &host tubearchivist.${SECRET_DOMAIN}
       TA_USERNAME: admin
     envFrom:
@@ -69,9 +69,9 @@ spec:
               - *host
             secretName: "ta-tls"
     podSecurityContext:
-      runAsUser: 1000
-      runAsGroup: 1000
-      fsGroup: 1000
+      runAsUser: 1
+      runAsGroup: 1
+      fsGroup: 1
       fsGroupChangePolicy: "OnRootMismatch"
       supplementalGroups:
         - 100
