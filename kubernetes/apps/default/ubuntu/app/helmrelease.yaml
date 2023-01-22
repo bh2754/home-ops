@@ -38,4 +38,6 @@ spec:
         externalTrafficPolicy: Local
         ports:
           ssh:
+            enabled: true
             port: 22
+            protocol: TCP
