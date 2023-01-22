@@ -7,3 +7,4 @@ resources:
   - ./hajimari/ks.yaml
   - ./adguard/ks.yaml
   - ./kopia/ks.yaml
+  - ./ubuntu/ks.yaml
