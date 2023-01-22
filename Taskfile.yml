@@ -22,6 +22,8 @@ includes:
   ss: .taskfiles/SnapshotTasks.yml
   vs: .taskfiles/VolSync/Tasks.yaml
   es: .taskfiles/ExternalSecrets/Tasks.yml
+  fx: .taskfiles/Flux/Tasks.yml
+  ku: .taskfiles/Kubernetes/Tasks.yml
 
 tasks:
 
