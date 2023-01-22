@@ -38,8 +38,5 @@ spec:
         externalIPs: ["${METALLB_UBUNTU_ADDR}"]
         externalTrafficPolicy: Local
         ports:
-          ssh:
-            enabled: true
+          http:
             port: 22
-            protocol: TCP
-            targetPort: 22
