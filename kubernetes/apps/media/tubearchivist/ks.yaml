@@ -19,10 +19,10 @@ spec:
       kind: HelmRelease
       name: tubearchivist
       namespace: media
-    - apiVersion: helm.toolkit.fluxcd.io/v2beta1
-      kind: HelmRelease
-      name: tubearchivist-redis
-      namespace: media
+  # - apiVersion: helm.toolkit.fluxcd.io/v2beta1
+    # kind: HelmRelease
+    # name: tubearchivist-redis
+    # namespace: media
     - apiVersion: helm.toolkit.fluxcd.io/v2beta1
       kind: HelmRelease
       name: tubearchivist-elasticsearch

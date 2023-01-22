@@ -16,4 +16,5 @@ resources:
   - ./stash/ks.yaml
   - ./tautulli/ks.yaml
   - ./tdarr/ks.yaml
+  - ./tubearchivist/ks.yaml
   - ./webtop/ks.yaml
