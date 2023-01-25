@@ -21,7 +21,7 @@ spec:
       setGateway: "true"
     image:
       repository: linuxserver/nzbhydra2
-      tag: 5.1.0
+      tag: 5.1.1
     service:
       main:
         enabled: true
