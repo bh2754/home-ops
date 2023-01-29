@@ -12,7 +12,7 @@ spec:
   primaryUpdateStrategy: unsupervised
   storage:
     size: 50Gi
-    storageClass: longhorn
+    storageClass: ceph-block
   superuserSecret:
   # name: postgres-superuser
     name: cloudnative-secret
