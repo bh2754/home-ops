@@ -30,9 +30,7 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    ###
     ### Alertmanager Values
-    ###
     alertmanager:
       config:
         global:
