@@ -1,4 +1,4 @@
---- #
+---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
@@ -67,9 +67,9 @@ spec:
           - name: k8s-master3
             devices:
               - name: "/dev/sdc"
-        # - name: k8s-worker1
-          # devices:
-            # - name: "/dev/sdb"
+          - name: k8s-worker1
+            devices:
+              - name: "/dev/sdb"
           - name: k8s-worker2
             devices:
               - name: "/dev/sdb"
