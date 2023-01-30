@@ -6,6 +6,9 @@ metadata:
   namespace: media
   labels:
     snapshot.home.arpa/enabled: "true"
+    app.kubernetes.io/name: audiobookshelf
+    app.kubernetes.io/instance: audiobookshelf
+
 spec:
   accessModes:
     - ReadWriteOnce
@@ -24,6 +27,9 @@ metadata:
   namespace: media
   labels:
     snapshot.home.arpa/enabled: "true"
+    app.kubernetes.io/name: audiobookshelf
+    app.kubernetes.io/instance: audiobookshelf
+
 spec:
   accessModes:
     - ReadWriteOnce
