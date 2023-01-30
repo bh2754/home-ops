@@ -28,7 +28,7 @@ metadata:
   name: audiobookshelf-config
   namespace: media
 spec:
-  sourcePVC: audiobookshelf-config-v1
+  sourcePVC: abs-config-v1
   trigger:
     schedule: "0 */12 * * *"
   restic:
@@ -71,7 +71,7 @@ metadata:
   name: audiobookshelf-metadata
   namespace: media
 spec:
-  sourcePVC: audiobookshelf-metadata-v1
+  sourcePVC: abs-metadata-v1
   trigger:
     schedule: "0 */12 * * *"
   restic:
