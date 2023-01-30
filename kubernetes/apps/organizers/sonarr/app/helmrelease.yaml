@@ -22,6 +22,9 @@ spec:
     remediation:
       retries: 5
   values:
+    addons:
+      netshoot:
+        enabled: true
     controller:
       replicas: 1
     image:
