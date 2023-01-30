@@ -21,9 +21,6 @@ spec:
   upgrade:
     remediation:
       retries: 5
-# dependsOn:
-  # - name: ingress-nginx
-    # namespace: nginx
   values:
     image:
       repository: ghcr.io/advplyr/audiobookshelf
@@ -69,11 +66,11 @@ spec:
       config:
         enabled: true
         mountPath: /config
-        existingClaim: audiobookshelf-config-v1
+        existingClaim: abs-config-v1
       metadata:
         enabled: true
         mountPath: /metadata
-        existingClaim: audiobookshelf-metadata-v1
+        existingClaim: abs-metadata-v1
       media:
         enabled: true
         mountPath: /audiobooks
