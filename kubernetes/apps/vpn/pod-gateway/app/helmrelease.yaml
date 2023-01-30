@@ -60,6 +60,8 @@ spec:
             value: debug
           - name: VPN_ENDPOINT_PORT
             value: 51820
+          - name: DNS_ADDRESS
+            value: 1.1.1.1
         envFrom:
           - secretRef:
               name: nord-secret
