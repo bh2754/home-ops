@@ -8,6 +8,7 @@ resources:
   - ./bjw-s.yaml
   - ./cloudnative-pg.yaml
   - ./dandydeveloper-charts.yaml
+  - ./democratic-csi.yaml
   - ./descheduler.yaml
   - ./external-dns.yaml
   - ./external-secrets.yaml

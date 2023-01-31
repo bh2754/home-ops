@@ -19,3 +19,10 @@ metadata:
   name: minio
   labels:
     goldilocks.fairwinds.com/enabled: "true"
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: synology
+  labels:
+    goldilocks.fairwinds.com/enabled: "true"
