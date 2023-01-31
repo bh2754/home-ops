@@ -3,7 +3,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: democratic-csi-block
-  namespace: storage
+  namespace: synology
 spec:
   interval: 15m
   releaseName: syno-iscsi
