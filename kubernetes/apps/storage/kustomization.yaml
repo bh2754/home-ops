@@ -6,8 +6,7 @@ resources:
   # Pre Flux-Kustomizations
   - ./namespaces.yaml
   # Flux-Kustomizations
-# - ./democratic-csi/ks.yaml
+  - ./democratic-csi/ks.yaml
   - ./minio/ks.yaml
   - ./nfs-csi/ks.yaml
   - ./nfs/ks.yaml
-  - ./syno/ks.yaml

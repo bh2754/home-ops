@@ -88,7 +88,8 @@ spec:
             volume: /volume1
 
         iscsi:
-          targetPortal: "${NAS_SERVER}[:3260]"
+        # targetPortal: "${NAS_SERVER}[:3260]"
+          targetPortal: "${NAS_SERVER}:3260"
           # for multipath
           targetPortals: [] # [ "server[:port]", "server[:port]", ... ]
           # leave empty to omit usage of -I with iscsiadm
@@ -98,8 +99,8 @@ spec:
 
           # MUST ensure uniqueness
           # full iqn limit is 223 bytes, plan accordingly
-          namePrefix: ""
-          nameSuffix: ""
+          namePrefix: "csi-"
+          nameSuffix: "-volume"
 
           # documented below are several blocks
           # pick the option appropriate for you based on what your backing fs is and desired features
