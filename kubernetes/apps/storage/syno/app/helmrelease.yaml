@@ -1,0 +1,75 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: synology-csi
+  namespace: synology
+spec:
+  interval: 10m0s
+  chart:
+    spec:
+      chart: .
+      sourceRef:
+        kind: GitRepository
+        name: synology-csi-chart
+  values:
+    images:
+      attacher:
+        image: k8s.gcr.io/sig-storage/csi-attacher
+        pullPolicy: IfNotPresent
+        tag: v3.4.0@sha256:8b9c313c05f54fb04f8d430896f5f5904b6cb157df261501b29adc04d2b2dc7b
+      nodeDriverRegistrar:
+        image: k8s.gcr.io/sig-storage/csi-node-driver-registrar
+        pullPolicy: IfNotPresent
+        tag: v2.5.0@sha256:4fd21f36075b44d1a423dfb262ad79202ce54e95f5cbc4622a6c1c38ab287ad6
+      provisioner:
+        image: k8s.gcr.io/sig-storage/csi-provisioner
+        pullPolicy: IfNotPresent
+        tag: v3.1.0@sha256:122bfb8c1edabb3c0edd63f06523e6940d958d19b3957dc7b1d6f81e9f1f6119
+      resizer:
+        image: k8s.gcr.io/sig-storage/csi-resizer
+        pullPolicy: IfNotPresent
+        tag: v1.4.0@sha256:9ebbf9f023e7b41ccee3d52afe39a89e3ddacdbb69269d583abfc25847cfd9e4
+      snapshotter:
+        image: k8s.gcr.io/sig-storage/csi-snapshotter
+        pullPolicy: IfNotPresent
+        tag: v5.0.1@sha256:89e900a160a986a1a7a4eba7f5259e510398fa87ca9b8a729e7dec59e04c7709
+      plugin:
+        image: ghcr.io/invakid404/synology-csi
+        pullPolicy: IfNotPresent
+        tag: latest@sha256:aee30267ce4ca8397669a7e950599b7ba40a38b112590624597cd45fb1ea4150
+    connections:
+      - host: ${NAS_ADDRESS}
+        https: false
+        username: ${SYNO_ADMIN}
+        password: ${SYNO_PASSWORD}
+        port: 5000
+    storageClasses:
+      delete:
+        isDefault: false
+        reclaimPolicy: Delete
+        volumeBindingMode: Immediate
+        parameters:
+          dsm: ${NAS_ADDRESS}
+          fsType: ext4
+          location: /volume1
+      retain:
+        isDefault: true
+        reclaimPolicy: Retain
+        volumeBindingMode: Immediate
+        parameters:
+          dsm: ${NAS_ADDRESS}
+          fsType: ext4
+          location: /volume1
+    volumeSnapshotClasses:
+      delete: { }
+        ## One of "Retain" or "Delete" (default):
+        # deletionPolicy: Delete
+        ## One of true or false (default):
+        #isDefault: false
+
+        ## Note that these parameters cannot get updated once deployed - any subsequent changes get ignored!
+        #parameters:
+        #  description: "Kubernetes CSI"
+        #  is_locked: "false"
+      retain:
+        deletionPolicy: Retain

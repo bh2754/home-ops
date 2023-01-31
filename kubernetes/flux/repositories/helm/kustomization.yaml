@@ -31,4 +31,5 @@ resources:
   - ./prometheus-community.yaml
   - ./rook-ceph.yaml
   - ./stakater.yaml
+  - ./synology-csi.yaml
   - ./weave-gitops.yaml
