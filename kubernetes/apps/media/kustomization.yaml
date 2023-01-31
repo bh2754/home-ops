@@ -17,4 +17,4 @@ resources:
   - ./tautulli/ks.yaml
   - ./tdarr/ks.yaml
   - ./webtop/ks.yaml
-  - ./abs/ks.yaml
+# - ./abs/ks.yaml
