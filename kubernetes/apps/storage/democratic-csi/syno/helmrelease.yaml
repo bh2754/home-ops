@@ -112,23 +112,23 @@ spec:
             description: "{{ parameters.[csi.storage.k8s.io/pvc/namespace] }}-{{ parameters.[csi.storage.k8s.io/pvc/name] }}"
 
             # btrfs thin provisioning
-            type: "FILE"
+            type: "BLUN"
             # tpws = Hardware-assisted zeroing
             # caw = Hardware-assisted locking
             # 3pc = Hardware-assisted data transfer
             # tpu = Space reclamation
             # can_snapshot = Snapshot
-            #dev_attribs:
-            #- dev_attrib: emulate_tpws
-            #  enable: 1
-            #- dev_attrib: emulate_caw
-            #  enable: 1
-            #- dev_attrib: emulate_3pc
-            #  enable: 1
-            #- dev_attrib: emulate_tpu
-            #  enable: 0
-            #- dev_attrib: can_snapshot
-            #  enable: 1
+            dev_attribs:
+              - dev_attrib: emulate_tpws
+                enable: 1
+              - dev_attrib: emulate_caw
+                enable: 1
+              - dev_attrib: emulate_3pc
+                enable: 1
+              - dev_attrib: emulate_tpu
+                enable: 0
+              - dev_attrib: can_snapshot
+                enable: 1
 
             # btfs thick provisioning
             # only zeroing and locking supported
