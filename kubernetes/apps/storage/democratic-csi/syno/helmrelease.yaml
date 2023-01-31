@@ -132,7 +132,7 @@ spec:
 
             # btfs thick provisioning
             # only zeroing and locking supported
-            type: "BLUN_THICK"
+            # type: "BLUN_THICK"
             # tpws = Hardware-assisted zeroing
             # caw = Hardware-assisted locking
             #dev_attribs:
@@ -142,7 +142,7 @@ spec:
             #  enable: 1
 
             # ext4 thinn provisioning UI sends everything with enabled=0
-            #type: "THIN"
+            type: "THIN"
 
             # ext4 thin with advanced legacy features set
             # can only alter tpu (all others are set as enabled=1)
