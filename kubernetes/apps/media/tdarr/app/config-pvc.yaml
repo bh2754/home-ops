@@ -12,8 +12,8 @@ spec:
   resources:
     requests:
       storage: 10Gi
-# storageClassName: longhorn
-  storageClassName: ceph-block
+# storageClassName: ceph-block
+  storageClassName: synology-iscsi
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -28,5 +28,5 @@ spec:
   resources:
     requests:
       storage: 10Gi
-# storageClassName: longhorn
-  storageClassName: ceph-block
+# storageClassName: ceph-block
+  storageClassName: synology-iscsi

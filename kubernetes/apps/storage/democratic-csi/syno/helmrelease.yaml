@@ -36,7 +36,7 @@ spec:
     storageClasses:
       - name: synology-iscsi
         defaultClass: false
-        reclaimPolicy: Delete
+        reclaimPolicy: Retain
         volumeBindingMode: Immediate
         allowVolumeExpansion: true
         parameters:
