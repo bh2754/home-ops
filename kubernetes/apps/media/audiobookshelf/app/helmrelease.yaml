@@ -24,7 +24,7 @@ spec:
   values:
     image:
       repository: ghcr.io/advplyr/audiobookshelf
-      tag: 2.2.13
+      tag: 2.2.14
       pullPolicy: IfNotPresent
     env:
       TZ: ${TIMEZONE}
