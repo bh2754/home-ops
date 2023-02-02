@@ -16,5 +16,5 @@ spec:
     requests:
       storage: 10Gi
 
-# storageClassName: longhorn
-  storageClassName: ceph-block
+# storageClassName: ceph-block
+  storageClassName: synology-iscsi
