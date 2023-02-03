@@ -36,8 +36,8 @@ spec:
     pruneIntervalDays: 14
     repository: whisparr-restic-secret
     cacheCapacity: 2Gi
-    volumeSnapshotClassName: csi-ceph-blockpool
-    storageClassName: ceph-block
-    cacheStorageClassName: ceph-block
+    volumeSnapshotClassName: synology-iscsi
+    storageClassName: synology-iscsi
+    cacheStorageClassName: synology-iscsi
     retain:
-      daily: 14
+      daily: 7
