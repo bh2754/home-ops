@@ -17,26 +17,43 @@ spec:
   install:
     createNamespace: true
     remediation:
-      retries: 5
+      retries: 3
   upgrade:
     remediation:
-      retries: 5
+      retries: 3
+  uninstall:
+    keepHistory: false
   values:
-    installCRDs: true
-    replicaCount: 5
-    extraArgs:
-      - --autogenInternals=false
-      - --clientRateLimitQPS=30
-      - --clientRateLimitBurst=60
+  # installCRDs: true
+  # replicaCount: 5
+  # extraArgs:
+    # - --autogenInternals=false
+    # - --clientRateLimitQPS=30
+    # - --clientRateLimitBurst=60
+  # serviceMonitor:
+    # enabled: true
+  # topologySpreadConstraints:
+    # - maxSkew: 1
+      # topologyKey: kubernetes.io/hostname
+      # whenUnsatisfiable: DoNotSchedule
+      # labelSelector:
+        # matchLabels:
+          # app.kubernetes.io/instance: kyverno
+    crds:
+      install: true
+    grafana:
+      enabled: true
     serviceMonitor:
       enabled: true
-    topologySpreadConstraints:
-      - maxSkew: 1
-        topologyKey: kubernetes.io/hostname
-        whenUnsatisfiable: DoNotSchedule
-        labelSelector:
-          matchLabels:
-            app.kubernetes.io/instance: kyverno
+    backgroundController:
+      serviceMonitor:
+        enabled: true
+    cleanupController:
+      serviceMonitor:
+        enabled: true
+    reportsController:
+      serviceMonitor:
+        enabled: true
     resources:
       requests:
         cpu: 92m
