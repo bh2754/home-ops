@@ -40,4 +40,4 @@ spec:
     storageClassName: synology-iscsi
     cacheStorageClassName: synology-iscsi
     retain:
-      daily: 14
+      daily: 7
