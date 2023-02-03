@@ -33,14 +33,14 @@ spec:
     schedule: "0 */12 * * *"
   restic:
     copyMethod: Snapshot
-    pruneIntervalDays: 14
+    pruneIntervalDays: 7
     repository: stash-config-restic-secret
     cacheCapacity: 2Gi
     volumeSnapshotClassName: csi-ceph-blockpool
     storageClassName: ceph-block
     cacheStorageClassName: ceph-block
     retain:
-      daily: 14
+      daily: 7
 ---
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
@@ -76,14 +76,14 @@ spec:
     schedule: "0 */12 * * *"
   restic:
     copyMethod: Snapshot
-    pruneIntervalDays: 14
+    pruneIntervalDays: 7
     repository: stash-cache-restic-secret
     cacheCapacity: 2Gi
     volumeSnapshotClassName: csi-ceph-blockpool
     storageClassName: ceph-block
     cacheStorageClassName: ceph-block
     retain:
-      daily: 14
+      daily: 7
 ---
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
@@ -119,14 +119,14 @@ spec:
     schedule: "0 */12 * * *"
   restic:
     copyMethod: Snapshot
-    pruneIntervalDays: 14
+    pruneIntervalDays: 7
     repository: stash-generated-restic-secret
     cacheCapacity: 2Gi
     volumeSnapshotClassName: csi-ceph-blockpool
     storageClassName: ceph-block
     cacheStorageClassName: ceph-block
     retain:
-      daily: 14
+      daily: 7
 ---
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
@@ -162,11 +162,11 @@ spec:
     schedule: "0 */12 * * *"
   restic:
     copyMethod: Snapshot
-    pruneIntervalDays: 14
+    pruneIntervalDays: 7
     repository: stash-metadata-restic-secret
     cacheCapacity: 2Gi
     volumeSnapshotClassName: csi-ceph-blockpool
     storageClassName: ceph-block
     cacheStorageClassName: ceph-block
     retain:
-      daily: 14
+      daily: 7

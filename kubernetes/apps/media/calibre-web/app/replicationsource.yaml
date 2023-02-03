@@ -33,11 +33,11 @@ spec:
     schedule: "0 */12 * * *"
   restic:
     copyMethod: Snapshot
-    pruneIntervalDays: 14
+    pruneIntervalDays: 7
     repository: calibre-web-restic-secret
     cacheCapacity: 2Gi
     volumeSnapshotClassName: csi-ceph-blockpool
     storageClassName: ceph-block
     cacheStorageClassName: ceph-block
     retain:
-      daily: 14
+      daily: 7
