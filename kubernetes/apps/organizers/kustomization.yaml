@@ -11,5 +11,5 @@ resources:
   - ./radarr/ks.yaml
   - ./readarr-audio/ks.yaml
   - ./readarr/ks.yaml
-  - ./sonarr/ks.yaml
+# - ./sonarr/ks.yaml
   - ./whisparr/ks.yaml
