@@ -25,7 +25,7 @@ spec:
         compression: bzip2
         maxParallel: 8
       destinationPath: s3://postgresql/
-      endpointURL: http://s3.bharris.co:9001
+      endpointURL: http://minio.storage.svc:9000
       serverName: postgres-v1
       s3Credentials:
         accessKeyId:
@@ -41,7 +41,7 @@ spec:
           compression: bzip2
           maxParallel: 8
         destinationPath: s3://postgresql/
-        endpointURL: http://s3.bharris.co:9001
+        endpointURL: http://minio.bharris.co:9000
         s3Credentials:
           accessKeyId:
             name: postgres-minio
