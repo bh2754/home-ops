@@ -39,6 +39,7 @@ spec:
       # labelSelector:
         # matchLabels:
           # app.kubernetes.io/instance: kyverno
+    replicaCount: 6
     crds:
       install: true
     grafana:
@@ -60,3 +61,10 @@ spec:
         memory: 1039M
       limits:
         memory: 1332M
+    topologySpreadConstraints:
+      - maxSkew: 1
+        topologyKey: kubernetes.io/hostname
+        whenUnsatisfiable: DoNotSchedule
+        labelSelector:
+          matchLabels:
+            app.kubernetes.io/instance: kyverno
