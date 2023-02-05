@@ -18,3 +18,4 @@ resources:
   - ./tdarr/ks.yaml
   - ./webtop/ks.yaml
 # - ./abs/ks.yaml
+  - ./sonarr/ks.yaml
