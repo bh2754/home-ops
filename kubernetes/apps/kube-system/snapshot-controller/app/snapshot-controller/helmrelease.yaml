@@ -44,6 +44,6 @@ spec:
         driver: org.democratic-csi.iscsi-synology
         annotations:
           snapshot.storage.kubernetes.io/is-default-class: "false"
-        deletionPolicy: delete
+        deletionPolicy: Delete
     serviceMonitor:
       create: true
