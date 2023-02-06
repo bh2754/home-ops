@@ -14,5 +14,5 @@ spec:
     requests:
       storage: 10Gi
 
-# storageClassName: ceph-block
-  storageClassName: synology-iscsi
+  storageClassName: ceph-block
+# storageClassName: synology-iscsi

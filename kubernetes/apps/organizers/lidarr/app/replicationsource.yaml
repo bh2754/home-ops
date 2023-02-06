@@ -36,8 +36,11 @@ spec:
     pruneIntervalDays: 7
     repository: lidarr-restic-secret
     cacheCapacity: 2Gi
-    volumeSnapshotClassName: synology-iscsi
-    storageClassName: synology-iscsi
-    cacheStorageClassName: synology-iscsi
+#   volumeSnapshotClassName: synology-iscsi
+#   storageClassName: synology-iscsi
+#   cacheStorageClassName: synology-iscsi
+    volumeSnapshotClassName: csi-ceph-blockpool
+    storageClassName: ceph-block
+    cacheStorageClassName: ceph-block
     retain:
       daily: 7
