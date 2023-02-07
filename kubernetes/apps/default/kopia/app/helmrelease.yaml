@@ -42,7 +42,8 @@ spec:
       pullPolicy: IfNotPresent
     env:
       TZ: "${TIMEZONE}"
-      KOPIA_PASSWORD: "none"
+    # KOPIA_PASSWORD: "none"
+      KOPIA_PASSWORD: ${KOPIA_PASSWORD}
     command: kopia
     args:
       - server
@@ -91,8 +92,9 @@ spec:
       snapshots:
         enabled: true
         type: nfs
-        server: "${NFS_SERVER}"
-        path: /volume1/kubernetes/kopia
+        server: "${QNAP}"
+      # path: /volume1/kubernetes/kopia
+        path: /kopia
         mountPath: /snapshots
     podAnnotations:
       configmap.reloader.stakater.com/reload: *app
