@@ -42,8 +42,8 @@ spec:
       pullPolicy: IfNotPresent
     env:
       TZ: "${TIMEZONE}"
-      KOPIA_PASSWORD: "none"
-    # KOPIA_PASSWORD: ${KOPIA_PASSWORD}
+    # KOPIA_PASSWORD: "none"
+      KOPIA_PASSWORD: ${SECRET_KOPIA_PASSWORD}
     command: kopia
     args:
       - server
