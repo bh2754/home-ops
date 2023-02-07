@@ -132,8 +132,8 @@ spec:
                         nfs:
                         # server: "${NFS_SERVER}"
                         # path: "/volume1/kubernetes/kopia"
-                          server: "${QNAP}"
-                          path: /kopia
+                          server: 10.0.109.10
+                          path: "/kopia"
                     affinity:
                       podAffinity:
                         requiredDuringSchedulingIgnoredDuringExecution:

@@ -41,7 +41,9 @@ spec:
             claimName: ${PVC}
         - name: snapshots
           nfs:
-            server: 10.0.109.29
-            path: /volume1/kubernetes/kopia
+          # server: 10.0.109.29
+          # path: /volume1/kubernetes/kopia
+            server: 10.0.109.10
+            path: /kopia
 #         persistentVolumeClaim:
 #           claimName: ${APP}-restore-pvc
