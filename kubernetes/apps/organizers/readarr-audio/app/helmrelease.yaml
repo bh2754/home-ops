@@ -89,7 +89,7 @@ spec:
         type: nfs
       # server: *nas
       # path: ${NFS_DOWNLOAD}
-        server: *nas
+        server: 10.0.109.10
         path: /Synology/Download
         mountPath: /downloads
     podAnnotations:
