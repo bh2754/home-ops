@@ -106,8 +106,10 @@ spec:
       download:
         enabled: true
         type: nfs
-        server: "${NFS_SERVER}"
-        path: ${NFS_DOWNLOAD}
+      # server: "${NFS_SERVER}"
+      # path: ${NFS_DOWNLOAD}
+        server: "${QNAP}"
+        path: /Synology/Download
         mountPath: /download
     resources:
       requests:

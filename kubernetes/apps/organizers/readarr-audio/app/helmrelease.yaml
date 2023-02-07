@@ -79,14 +79,18 @@ spec:
       books:
         enabled: true
         type: nfs
-        server: &nas "${NFS_SERVER}"
-        path: ${NFS_MEDIA}/audiobooks
+      # server: &nas "${NFS_SERVER}"
+      # path: ${NFS_MEDIA}/audiobooks
+        server: &nas "${QNAP}"
+        path: /Synology/audiobooks
         mountPath: /audiobooks
       downloads:
         enabled: true
         type: nfs
+      # server: *nas
+      # path: ${NFS_DOWNLOAD}
         server: *nas
-        path: ${NFS_DOWNLOAD}
+        path: /Synology/Download
         mountPath: /downloads
     podAnnotations:
       setGateway: "true"
