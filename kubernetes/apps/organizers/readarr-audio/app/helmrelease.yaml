@@ -81,7 +81,7 @@ spec:
         type: nfs
       # server: &nas "${NFS_SERVER}"
       # path: ${NFS_MEDIA}/audiobooks
-        server: &nas "${QNAP}"
+        server: &nas 10.0.109.10
         path: /Synology/audiobooks
         mountPath: /audiobooks
       downloads:
