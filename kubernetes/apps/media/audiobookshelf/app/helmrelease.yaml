@@ -77,7 +77,7 @@ spec:
         type: nfs
       # server: ${NFS_SERVER}
       # path: ${NFS_MEDIA}/audiobooks
-        server: ${QNAP}
+        server: 10.0.109.10
         path: /Synology/audiobooks
     resources:
       requests:
