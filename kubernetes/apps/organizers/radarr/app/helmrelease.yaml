@@ -103,15 +103,19 @@ spec:
       media:
         enabled: true
         type: nfs
-        server: "${NFS_SERVER}"
-        path: ${NFS_MEDIA}
+      # server: "${NFS_SERVER}"
+      # path: ${NFS_MEDIA}
+        server: 10.0.109.10
+        path: /Synology/Media
         mountPath: /media
         readOnly: false
       download:
         enabled: true
         type: nfs
-        server: "${NFS_SERVER}"
-        path: ${NFS_DOWNLOAD}
+      # server: "${NFS_SERVER}"
+      # path: ${NFS_DOWNLOAD}
+        server: 10.0.109.10
+        path: /Synology/Download
         mountPath: /download
         readOnly: false
 
