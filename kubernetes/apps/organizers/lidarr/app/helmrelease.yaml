@@ -51,7 +51,7 @@ spec:
         enabled: true
         existingClaim: lidarr-config-v1
       media:
-        enabled: false
+        enabled: true
         type: nfs
       # server: ${NFS_SERVER}
       # path: ${NFS_MUSIC}
