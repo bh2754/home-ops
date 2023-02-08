@@ -56,7 +56,7 @@ spec:
       # server: ${NFS_SERVER}
       # path: ${NFS_MUSIC}
         server: 10.0.109.10
-        path: /Synology/Music
+        path: /Synology/music
       downloads:
         enabled: true
         type: nfs
