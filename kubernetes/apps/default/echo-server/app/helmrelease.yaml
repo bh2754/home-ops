@@ -29,7 +29,6 @@ spec:
       repository: docker.io/jmalloc/echo-server
       tag: 0.3.4
       pullPolicy: IfNotPresent
-    imagePullSecrets: regcred
     service:
       main:
         ports:
