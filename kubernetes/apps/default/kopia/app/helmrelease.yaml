@@ -92,9 +92,8 @@ spec:
       snapshots:
         enabled: true
         type: nfs
-        server: 10.0.109.10
-      # path: /volume1/kubernetes/kopia
-        path: /kopia
+        server: 10.0.109.29
+        path: /volume1/kubernetes/kopia
         mountPath: /snapshots
     podAnnotations:
       configmap.reloader.stakater.com/reload: *app
