@@ -14,8 +14,8 @@ spec:
     size: 50Gi
     storageClass: ceph-block
   superuserSecret:
-  # name: postgres-superuser
-    name: cloudnative-secret
+    name: postgres-superuser
+  # name: cloudnative-secret
   monitoring:
     enablePodMonitor: true
   backup:
