@@ -27,6 +27,7 @@ spec:
     image:
       repository: msroest/sabnzbd_exporter
       tag: latest
+      pullPolicy: IfNotPresent
     env:
       TZ: "${TZ}"
       SABNZBD_BASEURLS: "http://sabnzbd.${SECRET_DOMAIN}"

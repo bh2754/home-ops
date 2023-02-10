@@ -28,6 +28,7 @@ spec:
       repository: lscr.io/linuxserver/webtop
       # https://github.com/linuxserver/docker-webtop#version-tags
       tag: ubuntu-kde
+      pullPolicy: IfNotPresent
     # https://github.com/linuxserver/docker-webtop
     env:
       TZ: "${TIMEZONE}"

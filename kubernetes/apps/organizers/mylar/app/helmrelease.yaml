@@ -28,6 +28,7 @@ spec:
     image:
       repository: ghcr.io/linuxserver/mylar3
       tag: latest
+      pullPolicy: IfNotPresent
     env:
       TZ: ${TZ}
       MYLAR__INSTANCE_NAME: Mylar

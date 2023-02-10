@@ -23,6 +23,7 @@ spec:
     image:
       repository: docker.io/dorowu/ubuntu-desktop-lxde-vnc
       tag: latest@sha256:775184eaa5bbc01bc4261a6c9596a642b3b43a433c1508637567bc724575964b
+      pullPolicy: IfNotPresent
 
     service:
       main:
