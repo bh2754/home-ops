@@ -34,6 +34,7 @@ spec:
     image:
       repository: docker.io/timberio/vector
       tag: 0.27.0-debian
+      pullPolicy: IfNotPresent
     args: ["--config", "/etc/vector/vector.yaml"]
     service:
       main:
