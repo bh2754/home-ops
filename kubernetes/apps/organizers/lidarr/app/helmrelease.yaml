@@ -60,7 +60,7 @@ spec:
         enabled: true
         type: nfs
         server: ${NFS_SERVER}
-        path: ${NFS_DOWNLOAD}
+        path: /volume1/Download
     ingress:
       main:
         enabled: true
