@@ -5,11 +5,11 @@ kind: Kustomization
 resources:
   # Flux-Kustomizations
   - ./lidarr/ks.yaml
-# - ./mylar/ks.yaml
+  - ./mylar/ks.yaml
 # - ./nzbhydra2/ks.yaml
   - ./prowlarr/ks.yaml
   - ./radarr/ks.yaml
 # - ./readarr-audio/ks.yaml
 # - ./readarr/ks.yaml
   - ./sonarr/ks.yaml
-# - ./whisparr/ks.yaml
+  - ./whisparr/ks.yaml
