@@ -54,17 +54,13 @@ spec:
       media:
         enabled: true
         type: nfs
-      # server: ${NFS_SERVER}
-      # path: ${NFS_MUSIC}
-        server: 10.0.109.10
-        path: /Synology/music
+        server: ${NFS_SERVER}
+        path: ${NFS_MUSIC}
       downloads:
         enabled: true
         type: nfs
-      # server: ${NFS_SERVER}
-      # path: ${NFS_DOWNLOAD}
-        server: 10.0.109.10
-        path: /Synology/Download
+        server: ${NFS_SERVER}
+        path: ${NFS_DOWNLOAD}
     ingress:
       main:
         enabled: true
