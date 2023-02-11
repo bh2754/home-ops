@@ -8,6 +8,6 @@ resources:
   - ./qbittorrent/ks.yaml
   - ./rdesktop/ks.yaml
   - ./sabnzbd/ks.yaml
-# - ./speedtest/ks.yaml
+  - ./speedtest/ks.yaml
   - ./vnc/ks.yaml
   - ./webtop/ks.yaml
