@@ -8,8 +8,8 @@ resources:
   - ./audiobookshelf/ks.yaml
   - ./calibre-web/ks.yaml
   - ./calibre/ks.yaml
-# - ./immich/ks.yaml
-# - ./komga/ks.yaml
+  - ./immich/ks.yaml
+  - ./komga/ks.yaml
 # - ./linux/ks.yaml
 # - ./plex/ks.yaml
 # - ./ombi/ks.yaml
