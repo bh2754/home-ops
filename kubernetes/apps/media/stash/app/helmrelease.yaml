@@ -90,21 +90,21 @@ spec:
         path: "${NFS_MEDIA}/shauna"
       generated:
         enabled: true
-        storageClass: longhorn
+        storageClass: ceph-block
         accessMode: ReadWriteOnce
         size: 10Gi
         mountPath: /generated
         existingClaim: stash-generated-v1
       metadata:
         enabled: true
-        storageClass: longhorn
+        storageClass: ceph-block
         accessMode: ReadWriteOnce
         size: 10Gi
         mountPath: /metadata
         existingClaim: stash-metadata-v1
       cache:
         enabled: true
-        storageClass: longhorn
+        storageClass: ceph-block
         accessMode: ReadWriteOnce
         size: 10Gi
         mountPath: /cache
