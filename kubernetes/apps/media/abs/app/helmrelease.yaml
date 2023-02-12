@@ -27,7 +27,7 @@ spec:
       tag: 2.2.15
       pullPolicy: IfNotPresent
     imagePullSecrets:
-      -name: regcred
+      - name: regcred
     env:
       TZ: ${TIMEZONE}
     service:
