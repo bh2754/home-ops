@@ -75,10 +75,8 @@ spec:
         enabled: true
         mountPath: /audiobooks
         type: nfs
-      # server: ${NFS_SERVER}
-      # path: ${NFS_MEDIA}/audiobooks
-        server: 10.0.109.10
-        path: /Synology/audiobooks
+        server: ${NFS_SERVER}
+        path: ${NFS_MEDIA}/audiobooks
     resources:
       requests:
         cpu: 15m
