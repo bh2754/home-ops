@@ -26,7 +26,8 @@ spec:
       repository: ghcr.io/advplyr/audiobookshelf
       tag: 2.2.15
       pullPolicy: IfNotPresent
-    imagePullSecrets: []
+    imagePullSecrets:
+      -name: regcred
     env:
       TZ: ${TIMEZONE}
     service:
