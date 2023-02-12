@@ -14,7 +14,7 @@ spec:
   resources:
     requests:
       storage: 10Gi
-  storageClassName: synology-iscsi
+  storageClassName: ceph-block
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -31,4 +31,4 @@ spec:
   resources:
     requests:
       storage: 10Gi
-  storageClassName: synology-iscsi
+  storageClassName: ceph-block
