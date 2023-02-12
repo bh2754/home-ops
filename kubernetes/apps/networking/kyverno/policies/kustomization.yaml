@@ -5,6 +5,7 @@ resources:
   - ./delete-cpu-limits.yaml
   - ./snapshot-cronjob-controller.yaml
   - ./sync-postgres-secret.yaml
+  - ./sync-dockercred-secret.yaml
   - ./apply-ingress-auth-annotations.yaml
 # - ./inject-tz.yaml
   - ./apply-ingress-whitelist-annotations.yaml
