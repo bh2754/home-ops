@@ -80,7 +80,7 @@ spec:
     ##
     service:
       type: LoadBalancer
-      externalIPs: ["${METALLB_INFLUXDB}"]
+      externalIPs: "10.0.111.28"
       externalTrafficPolicy: Local
     # annotations:
       # metallb.universe.tf/loadBalancerIPs: |-
