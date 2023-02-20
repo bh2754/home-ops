@@ -80,8 +80,8 @@ spec:
     ##
     service:
       type: LoadBalancer
+      externalIPs: ["${METALLB_INFLUXDB}"]
       externalTrafficPolicy: Local
-      loadBalancerIP: "${METTALLB_INFLUXDB}"
     # annotations:
       # metallb.universe.tf/loadBalancerIPs: |-
         # ${METTALB_INFLUXDB}
