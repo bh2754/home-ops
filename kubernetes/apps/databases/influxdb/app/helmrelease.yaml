@@ -80,9 +80,11 @@ spec:
     ##
     service:
       type: LoadBalancer
-      annotations:
-        metallb.universe.tf/loadBalancerIPs: |-
-          ${METTALB_INFLUXDB}
+      externalTrafficPolicy: Local
+      loadBalancerIP: "${METTALLB_INFLUXDB}"
+    # annotations:
+      # metallb.universe.tf/loadBalancerIPs: |-
+        # ${METTALB_INFLUXDB}
 
     ## Persist data to a persistent volume
     ##
