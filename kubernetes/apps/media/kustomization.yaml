@@ -13,7 +13,7 @@ resources:
   - ./linux/ks.yaml
 # - ./plex/ks.yaml
   - ./ombi/ks.yaml
-  - ./overseerr/ks.yaml
+# - ./overseerr/ks.yaml
   - ./stash/ks.yaml
   - ./tautulli/ks.yaml
   - ./tdarr/ks.yaml

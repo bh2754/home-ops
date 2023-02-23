@@ -30,14 +30,10 @@ metadata:
 spec:
   sourcePVC: overseerr-config-v1
   trigger:
-    schedule: "0 0 * * *"
+    schedule: "0 */12 * * *"
   restic:
     copyMethod: Snapshot
-    pruneIntervalDays: 10
+    pruneIntervalDays: 14
     repository: overseerr-restic-secret
-    cacheCapacity: 2Gi
-    volumeSnapshotClassName: csi-ceph-blockpool
-    storageClassName: ceph-block
     retain:
-      daily: 10
-      within: 3d
+      daily: 14
