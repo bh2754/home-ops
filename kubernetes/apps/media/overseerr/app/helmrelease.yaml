@@ -53,13 +53,13 @@ spec:
           external-dns.home.arpa/enabled: "true"
           external-dns/is-public: "true"
         hosts:
-          - host: "overseerr.${SECRET_DOMAIN}"
+          - host: "request.${SECRET_DOMAIN}"
             paths:
               - path: /
                 pathType: Prefix
         tls:
           - hosts:
-              - "overseerr.${SECRET_DOMAIN}"
+              - "request.${SECRET_DOMAIN}"
             secretName: "overseerr-tls"
     podSecurityContext:
       runAsUser: 1000
