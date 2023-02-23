@@ -53,7 +53,7 @@ spec:
           external-dns.home.arpa/enabled: "true"
           external-dns/is-public: "true"
         hosts:
-          - host: &host overseerr.${SECRET_DOMAIN}
+          - host: &host "overseerr.${SECRET_DOMAIN}"
             paths:
               - path: /
                 pathType: Prefix
