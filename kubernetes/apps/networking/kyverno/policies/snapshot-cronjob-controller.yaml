@@ -131,10 +131,10 @@ spec:
                           claimName: "{{ claimName }}"
                       - name: snapshots
                         nfs:
-                        # server: "${NFS_SERVER}"
-                        # path: "/volume1/kubernetes/kopia"
-                          server: 10.0.109.10
-                          path: "/kopia"
+                          server: "${NFS_SERVER}"
+                          path: "/volume1/kubernetes/kopia"
+                        # server: 10.0.109.10
+                        # path: "/kopia"
                     affinity:
                       podAffinity:
                         requiredDuringSchedulingIgnoredDuringExecution:
