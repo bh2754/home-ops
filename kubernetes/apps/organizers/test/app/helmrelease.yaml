@@ -29,7 +29,9 @@ spec:
       netshoot:
         enabled: false
     env:
-      UMASK: ""
+      UMASK: "002"
+      PUID: 1000
+      PGID: 1000
       TZ: ${TZ}
     envFrom:
       - secretRef:
