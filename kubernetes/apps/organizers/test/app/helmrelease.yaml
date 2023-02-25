@@ -39,8 +39,8 @@ spec:
       repository: ghcr.io/hotio/whisparr
       tag: latest
     podSecurityContext:
-      runAsGroup: 1000
-      runAsUser: 1000
+      runAsGroup: 1
+      runAsUser: 1
     securityContext:
       readOnlyRootFilesystem: false
       runAsNonRoot: false
