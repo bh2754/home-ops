@@ -25,7 +25,7 @@ spec:
     hostname: qbittorrent
     image:
       repository: ghcr.io/onedr0p/qbittorrent
-      tag: 4.5.1@sha256:e6c264e6afe298a95b97aaf827b7f8b4f6d3e2706a55d0dd88fc9b5161a70074
+      tag: 4.5.1@sha256:6140f5e897bcbebf5645a24d3cc810b8b60c5a564de3743c80cbe0cec090e4e7
       pullPoligy: IfNotPresent
     env:
       TZ: "${TZ}"
