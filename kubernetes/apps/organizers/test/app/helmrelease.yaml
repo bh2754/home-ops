@@ -112,4 +112,4 @@ spec:
         memory: 212M
         ephemeral-storage: "4Gi"
     podAnnotations:
-      setGateway: "true"
+      setGateway: "false"
