@@ -33,7 +33,7 @@ spec:
     # repository: ghcr.io/onedr0p/prowlarr-nightly
     # tag: 1.2.1.2588@sha256:4a224b5117355a0a049335f57c7fc404849259c44f4a9275c9b7651c62a710f0
       repository: ghcr.io/bh2754/prowlarr-nightly
-      tag: 1.3.1.2772@sha256:b384700b4f35473223735ea7fd144ffadb5d55ff95c14593a44eafcf0afa471b
+      tag: 1.3.1.2776@sha256:9af1318811af2ae880158d7e74bf349cbbba83124a33fc5a0617745b1e0cad34
       pullPolicy: IfNotPresent
     env:
       TZ: "${TIMEZONE}"
