@@ -30,8 +30,6 @@ spec:
         enabled: false
     env:
       UMASK: ""
-      PUID: 0
-      PGID: 0
       TZ: ${TZ}
     envFrom:
       - secretRef:
