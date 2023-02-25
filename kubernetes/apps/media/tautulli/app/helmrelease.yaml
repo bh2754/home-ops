@@ -26,8 +26,8 @@ spec:
       namespace: nginx
   values:
     image:
-      repository: ghcr.io/onedr0p/tautulli
-      tag: 2.11.1@sha256:7eed9224c97af9c4da9d00c0b637a37c15a4412d6d5a409631f17ad5a7e96cc4
+      repository: ghcr.io/bh2754/tautulli
+      tag: 2.11.1@sha256:bd75986850463a434aa9f6fb549d0bd27b62d92f4babc2575a8b5c50b6079911
       pullPolicy: IfNotPresent
     env:
       TZ: "${TZ}"

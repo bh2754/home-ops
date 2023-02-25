@@ -23,8 +23,6 @@ spec:
       retries: 5
   values:
     image:
-    # repository: ghcr.io/onedr0p/radarr-develop
-    # tag: 4.4.2.6956@sha256:f7b154a592d65d18170a329ff630b9447fd538158ec95bce8ce9a8d77e1d4941
       repository: ghcr.io/bh2754/radarr-nightly
       tag: 4.4.3.6966@sha256:2ec4c634912b54ba6f6c2bd51eea41a1a5228dd7373c521f9861a077a7fae0e3
       pullPolicy: IfNotPresent

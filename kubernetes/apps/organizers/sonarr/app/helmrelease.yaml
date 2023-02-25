@@ -28,8 +28,6 @@ spec:
     controller:
       replicas: 1
     image:
-    # repository: ghcr.io/onedr0p/sonarr
-    # tag: 3.0.9.1549
       repository: ghcr.io/bh2754/sonarr
       tag: 3.0.9.1549@sha256:51f177ee4dc79980b8ba293915292f93ed45c5c952d37b802fa5e291627a7c0f
       pullPolicy: IfNotPresent
