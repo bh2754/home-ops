@@ -41,6 +41,8 @@ spec:
     podSecurityContext:
       runAsGroup: 1
       runAsUser: 1
+      fsGroup: 1
+      fsGroupChangePolicy: "OnRootMismatch"
     securityContext:
       readOnlyRootFilesystem: false
       runAsNonRoot: false
