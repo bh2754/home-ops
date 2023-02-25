@@ -7,5 +7,5 @@ resources:
   - ./helmrelease.yaml
 # - ./replicationsource.yaml
 commonLabels:
-  app.kubernetes.io/name: test
-  app.kubernetes.io/instance: test
+  app.kubernetes.io/name: whisp
+  app.kubernetes.io/instance: whisp
