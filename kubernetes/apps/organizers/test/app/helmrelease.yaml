@@ -36,8 +36,8 @@ spec:
           name: whisparr-secret
     image:
       pullPolicy: IfNotPresent
-      repository: ghcr.io/bh2754/whisparr-nightly
-      tag: 2.0.0.131@sha256:d74c251e4e5660e9f63d23c904321c5a51c297e41ae37c20759ba60d50e383ec
+      repository: ghcr.io/hotio/whisparr
+      tag: latest
     podSecurityContext:
       runAsGroup: 0
       runAsUser: 0
