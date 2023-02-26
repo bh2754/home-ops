@@ -33,7 +33,6 @@ metadata:
   labels:
     app.kubernetes.io/name: nextcloud
     app.kubernetes.io/instance: nextcloud
-    snapshot.home.arpa/enabled: "true"
 spec:
   accessModes: ["ReadWriteOnce"]
   resources:

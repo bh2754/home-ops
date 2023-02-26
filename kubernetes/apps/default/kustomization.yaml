@@ -7,4 +7,4 @@ resources:
   - ./hajimari/ks.yaml
   - ./adguard/ks.yaml
   - ./kopia/ks.yaml
-# - ./nextcloud/ks.yaml
+  - ./nextcloud/ks.yaml

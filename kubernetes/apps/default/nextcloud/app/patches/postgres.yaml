@@ -11,6 +11,16 @@ spec:
         - name: init-db
           image: ghcr.io/bh2754/postgres-initdb:14.7
           imagePullPolicy: IfNotPresent
+          env:
+            - name: POSTGRES_HOST
+              value: postgres-rw.databases.svc.cluster.local
+            - name: POSTGRES_DB
+              value: authelia
+            - name: POSTGRES_SUPER_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-superuser
+                  key: password
           envFrom:
             - secretRef:
                 name: nextcloud-secret
