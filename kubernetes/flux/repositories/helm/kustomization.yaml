@@ -27,6 +27,7 @@ resources:
   - ./longhorn.yaml
   - ./metallb.yaml
   - ./metrics-server.yaml
+  - ./nextcloud.yaml
   - ./nfs.yaml
   - ./nfs-csi.yaml
   - ./piraeus.yaml
