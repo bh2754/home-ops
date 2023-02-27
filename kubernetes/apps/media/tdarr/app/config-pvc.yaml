@@ -20,8 +20,8 @@ kind: PersistentVolumeClaim
 metadata:
   name: tdarr-serverdata-v1
   namespace: media
-  labels:
-    snapshot.home.arpa/enabled: "true"
+# labels:
+  # snapshot.home.arpa/enabled: "true"
 spec:
   accessModes:
     - ReadWriteOnce
