@@ -47,7 +47,7 @@ spec:
       data:
         enabled: true
         mountPath: /app/server
-        existingClaim: tdarr-config-v1
+        existingClaim: tdarr-serverdata-v1
       shared:
         enabled: true
         type: nfs
@@ -100,10 +100,3 @@ spec:
                   # - "k8s-worker2"
                   # - "k8s-worker3"
     resources: {}
-    topologySpreadConstraints:
-      - maxSkew: 1
-        topologyKey: kubernetes.io/hostname
-        whenUnsatisfiable: DoNotSchedule
-        labelSelector:
-          matchLabels:
-            app.kubernetes.io/name: tdarr-worker
