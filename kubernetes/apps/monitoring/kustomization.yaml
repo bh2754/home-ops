@@ -10,7 +10,7 @@ resources:
 # - ./kubernetes-dashboard/ks.yaml
   - ./loki/ks.yaml
   - ./thanos/ks.yaml
-# - ./vector/ks.yaml
+  - ./vector/ks.yaml
 # - ./speedtest/ks.yaml
   - ./uptime/ks.yaml
   # Standard Resources
