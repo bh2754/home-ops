@@ -5,16 +5,16 @@ resources:
   # Pre Flux-Kustomizations
   - ./namespace.yaml
   # Flux-Kustomizations
-  - ./audiobookshelf/ks.yaml
-  - ./calibre-web/ks.yaml
-  - ./calibre/ks.yaml
-  - ./immich/ks.yaml
-  - ./komga/ks.yaml
-  - ./linux/ks.yaml
+# - ./audiobookshelf/ks.yaml
+# - ./calibre-web/ks.yaml
+# - ./calibre/ks.yaml
+# - ./immich/ks.yaml
+# - ./komga/ks.yaml
+# - ./linux/ks.yaml
 # - ./plex/ks.yaml
-  - ./ombi/ks.yaml
-  - ./overseerr/ks.yaml
-  - ./stash/ks.yaml
-  - ./tautulli/ks.yaml
-  - ./tdarr/ks.yaml
-  - ./webtop/ks.yaml
+# - ./ombi/ks.yaml
+# - ./overseerr/ks.yaml
+# - ./stash/ks.yaml
+# - ./tautulli/ks.yaml
+# - ./tdarr/ks.yaml
+# - ./webtop/ks.yaml
