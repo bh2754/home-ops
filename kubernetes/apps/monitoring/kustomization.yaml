@@ -6,12 +6,12 @@ resources:
   # Pre Flux-Kustomizations
   - ./namespace.yaml
   # Flux-Kustomizations
-  - ./grafana/ks.yaml
+# - ./grafana/ks.yaml
   - ./kube-prometheus-stack/ks.yaml
 # - ./kubernetes-dashboard/ks.yaml
-  - ./loki/ks.yaml
+# - ./loki/ks.yaml
 # - ./thanos/ks.yaml
-  - ./vector/ks.yaml
+# - ./vector/ks.yaml
 # - ./speedtest/ks.yaml
   - ./uptime/ks.yaml
   # Standard Resources
