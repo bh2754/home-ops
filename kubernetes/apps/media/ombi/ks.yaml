@@ -1,9 +1,8 @@
 ---
-# yaml-language-server: $schema=https://kubernetes-schemas.devbu.io/kustomization_v1beta2.json
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
-  name: cluster-apps-ombi-app
+  name: cluster-apps-ombi
   namespace: flux-system
   labels:
     substitution.flux.home.arpa/enabled: "true"
