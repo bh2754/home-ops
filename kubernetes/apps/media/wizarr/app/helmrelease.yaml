@@ -67,10 +67,10 @@ spec:
       fsGroup: 568
       fsGroupChangePolicy: OnRootMismatch
     persistence:
-      - name: config
-        enabled: true
-        mountPath: /data/database
-        existingClaim: wizarr-config-v1
+      name: config
+      enabled: true
+      mountPath: /data/database
+      existingClaim: wizarr-config-v1
     resources:
       requests:
         cpu: 10m
