@@ -10,3 +10,4 @@ resources:
 # - ./inject-tz.yaml
   - ./apply-ingress-whitelist-annotations.yaml
   - ./apply-ingress-external-dns-annotations.yaml
+  - ./remove-cpu-limits.yaml
