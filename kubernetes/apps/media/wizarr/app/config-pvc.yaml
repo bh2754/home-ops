@@ -15,4 +15,3 @@ spec:
       storage: 10Gi
 
   storageClassName: ceph-block
-# storageClassName: synology-iscsi
