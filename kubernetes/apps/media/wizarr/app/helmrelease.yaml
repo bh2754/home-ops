@@ -66,8 +66,9 @@ spec:
       runAsGroup: 568
       fsGroup: 568
       fsGroupChangePolicy: OnRootMismatch
-    volumeClaimTemplates:
+    persistence:
       - name: config
+        enabled: true
         mountPath: /data/database
         existingClaim: wizarr-config-v1
     resources:
