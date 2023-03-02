@@ -58,12 +58,12 @@ spec:
         config:
           osdsPerDevice: "1"
         nodes:
-        # - name: k8s-master1
-          # devices:
-            # - name: "/dev/sdb"
-        # - name: k8s-master2
-          # devices:
-            # - name: "/dev/sdb"
+          - name: k8s-master1
+            devices:
+              - name: "/dev/sdb"
+          - name: k8s-master2
+            devices:
+              - name: "/dev/sdb"
           - name: k8s-master3
             devices:
               - name: "/dev/sdb"
