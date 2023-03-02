@@ -39,7 +39,7 @@ spec:
         reloader.stakater.com/auto: "true"
     image:
       repository: ghcr.io/bh2754/home-assistant
-      tag: 2023.3.0@sha256:c0e3e336821419e86ab26d7e82d83b4548a760057c31dcd3871b60b35c8453db
+      tag: 2023.3.1@sha256:c3fbfbcfb9e85914e889969f57301da40befe97f959588aebf3bd500aa451bd5
     env:
       TZ: ${TZ}
       POSTGRES_HOST: postgres-rw.databases.svc.cluster.local
