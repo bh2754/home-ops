@@ -11,6 +11,7 @@ spec:
   dependsOn:
     - name: cluster-apps-onepassword-connect
     - name: cluster-apps-pod-gateway
+    - name: cluster-apps-rook-ceph-cluster
     - name: cluster-apps-ingress-nginx
   path: ./kubernetes/apps/organizers/sonarr/app
   prune: true

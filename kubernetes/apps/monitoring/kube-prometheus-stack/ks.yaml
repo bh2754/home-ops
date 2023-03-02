@@ -7,6 +7,10 @@ metadata:
   labels:
     substitution.flux.home.arpa/enabled: "true"
 spec:
+  dependsOn:
+    - name: cluster-apps-rook-ceph-cluster
+    - name: cluster-apps-thanos
+    - name: cluster-apps-onepassword-connect
   path: ./kubernetes/apps/monitoring/kube-prometheus-stack/app
   prune: true
   sourceRef:
