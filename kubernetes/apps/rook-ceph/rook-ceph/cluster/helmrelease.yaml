@@ -23,7 +23,7 @@ spec:
       retries: 3
   values:
     monitoring:
-      enabled: true
+      enabled: false
       createPrometheusRules: true
     ingress:
       dashboard:
@@ -52,7 +52,6 @@ spec:
         enabled: true
         urlPrefix: /
         ssl: false
-        port: 7027
       storage:
         useAllNodes: false
         useAllDevices: false
