@@ -26,7 +26,7 @@ spec:
   values:
     image:
       repository: ghcr.io/bh2754/lidarr-nightly
-      tag: 1.1.4.2984@sha256:5e0bd0e8e19012d6a01a74663d940480b0e5cdd3f46a2d7da5052ffe86329009
+      tag: 1.1.4.2984@sha256:db727c9ec5142039e0430fa990acabbeebb93567eea92904885937c9aa7c8862
       pullPolicy: IfNotPresent
     env:
       TZ: ${TZ}
