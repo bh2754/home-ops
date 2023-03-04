@@ -13,14 +13,12 @@
     "github>bh2754/home-ops//.github/renovate/commitMessage.json5",
     "github>bh2754/home-ops//.github/renovate/labels.json5",
     "github>bh2754/home-ops//.github/renovate/semanticCommits.json5",
-    "helpers:pinGitHubActionDigests"
   ],
   "platform": "github",
-  "onboarding": false,
-  "requireConfig": "optional",
-  "dependencyDashboardTitle": "Renovate Dashboard 🤖",
-  "suppressNotifications": ["prIgnoreNotification"],
+  "username": "bh2754-tinker[bot],
+  "gitAuthor": "bh2754-tinker <125862257+bh2754-tinker[bot]@users.noreply.github.com>",
   "rebaseWhen": "conflicted",
+  "repositories": ["bh2754/home-ops"].
   "commitBodyTable": true,
   "schedule": [
     "every weekday",
