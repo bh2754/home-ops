@@ -18,7 +18,7 @@
   "username": "bh2754-tinker[bot]",
   "gitAuthor": "bh2754-tinker <125862257+bh2754-tinker[bot]@users.noreply.github.com>",
   "rebaseWhen": "conflicted",
-  "repositories": ["bh2754/home-ops"].
+  "repositories": ["bh2754/home-ops"],
   "commitBodyTable": true,
   "schedule": [
     "every weekday",
