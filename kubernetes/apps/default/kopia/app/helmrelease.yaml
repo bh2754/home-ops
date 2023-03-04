@@ -24,7 +24,7 @@ spec:
   values:
     initContainers:
       wait-for-repo:
-        image: ghcr.io/bh2754/kopia:0.12.1@sha256:da96c4101897632a2a1f86504f6d0b0557aafc8466d020a78f5e267f4bcc27af
+        image: ghcr.io/bh2754/kopia:0.12.1@sha256:9c24b69c1387115e604a0dbc5f0e8354004679f43753e82b2e0954acd0a96f60
         command:
           - /bin/bash
           - -c
@@ -38,7 +38,7 @@ spec:
             mountPath: /snapshots
     image:
       repository: ghcr.io/bh2754/kopia
-      tag: 0.12.1@sha256:da96c4101897632a2a1f86504f6d0b0557aafc8466d020a78f5e267f4bcc27af
+      tag: 0.12.1@sha256:9c24b69c1387115e604a0dbc5f0e8354004679f43753e82b2e0954acd0a96f60
       pullPolicy: IfNotPresent
     env:
       TZ: "${TIMEZONE}"
