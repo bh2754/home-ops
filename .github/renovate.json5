@@ -15,7 +15,7 @@
     "github>bh2754/home-ops//.github/renovate/semanticCommits.json5",
   ],
   "platform": "github",
-  "username": "bh2754-tinker[bot],
+  "username": "bh2754-tinker[bot]",
   "gitAuthor": "bh2754-tinker <125862257+bh2754-tinker[bot]@users.noreply.github.com>",
   "rebaseWhen": "conflicted",
   "repositories": ["bh2754/home-ops"].
