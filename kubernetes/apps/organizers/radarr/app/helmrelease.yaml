@@ -24,7 +24,7 @@ spec:
   values:
     image:
       repository: ghcr.io/bh2754/radarr-nightly
-      tag: 4.4.3.6983@sha256:77376bbafe706b7295e74aba9b7a33619a70cea32099279373e3f77888090ff4
+      tag: 4.4.3.6991@sha256:8cf0d8327b0e4426d1c49bc4c956d04e7b31ff3fa03c7293b9b43f6b11df7298
       pullPolicy: IfNotPresent
     env:
       TZ: "${TZ}"
