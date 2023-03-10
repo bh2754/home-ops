@@ -2,19 +2,19 @@
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
 metadata:
-  name: mylar-restic
+  name: whisparr-restic
   namespace: organizers
 spec:
   secretStoreRef:
     kind: ClusterSecretStore
     name: onepassword-connect
   target:
-    name: mylar-restic-secret
+    name: whisparr-restic-secret
     creationPolicy: Owner
     template:
       engineVersion: v2
       data:
-        RESTIC_REPOSITORY: '{{ .REPOSITORY_TEMPLATE }}/mylar'
+        RESTIC_REPOSITORY: '{{ .REPOSITORY_TEMPLATE }}/whisparr'
         RESTIC_PASSWORD: '{{ .RESTIC_PASSWORD }}'
         AWS_ACCESS_KEY_ID: '{{ .AWS_ACCESS_KEY_ID }}'
         AWS_SECRET_ACCESS_KEY: '{{ .AWS_SECRET_ACCESS_KEY }}'
@@ -25,22 +25,24 @@ spec:
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationSource
 metadata:
-  name: mylar
+  name: whisparr
   namespace: organizers
 spec:
-  sourcePVC: mylar-config-v1
+  sourcePVC: whisparr-config-v1
   trigger:
-    schedule: "0 */12 * * *"
+    schedule: "0 0 * * *"
   restic:
     copyMethod: Snapshot
-    pruneIntervalDays: 7
-    repository: mylar-restic-secret
+    pruneIntervalDays: 10
+    repository: whisparr-restic-secret
     cacheCapacity: 2Gi
-  # volumeSnapshotClassName: synology-iscsi
-  # storageClassName: synology-iscsi
-  # cacheStorageClassName: synology-iscsi
     volumeSnapshotClassName: csi-ceph-blockpool
     storageClassName: ceph-block
     cacheStorageClassName: ceph-block
+    moverSecurityContext:
+      runAsUser: 568
+      runAsGroup: 568
+      fsGroup: 568
     retain:
-      daily: 7
+      daily: 10
+      within: 3d
