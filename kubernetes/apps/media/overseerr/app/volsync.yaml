@@ -2,19 +2,19 @@
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
 metadata:
-  name: uptime-restic
-  namespace: monitoring
+  name: overseerr-restic
+  namespace: media
 spec:
   secretStoreRef:
     kind: ClusterSecretStore
     name: onepassword-connect
   target:
-    name: uptime-restic-secret
+    name: overseerr-restic-secret
     creationPolicy: Owner
     template:
       engineVersion: v2
       data:
-        RESTIC_REPOSITORY: '{{ .REPOSITORY_TEMPLATE }}/uptime'
+        RESTIC_REPOSITORY: '{{ .REPOSITORY_TEMPLATE }}/overseerr'
         RESTIC_PASSWORD: '{{ .RESTIC_PASSWORD }}'
         AWS_ACCESS_KEY_ID: '{{ .AWS_ACCESS_KEY_ID }}'
         AWS_SECRET_ACCESS_KEY: '{{ .AWS_SECRET_ACCESS_KEY }}'
@@ -25,19 +25,18 @@ spec:
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationSource
 metadata:
-  name: uptime
-  namespace: monitoring
+  name: overseerr
+  namespace: media
 spec:
-  sourcePVC: uptime-config-v1
+  sourcePVC: overseerr-config-v1
   trigger:
-    schedule: "0 */12 * * *"
+    schedule: "0 0 * * *"
   restic:
     copyMethod: Snapshot
-    pruneIntervalDays: 14
-    repository: uptime-restic-secret
-    cacheCapacity: 2Gi
-    volumeSnapshotClassName: csi-ceph-blockpool
-    storageClassName: ceph-block
-    cacheStorageClassName: ceph-block
-    retain:
-      daily: 14
+    pruneIntervalDays: 10
+    repository: overseerr-restic-secret
+    podSecurityContext:
+      runAsUser: 568
+      runAsGroup: 568
+      fsGroup: 568
+      fsGroupChangePolicy: OnRootMismatch

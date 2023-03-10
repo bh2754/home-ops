@@ -2,19 +2,19 @@
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
 metadata:
-  name: qbittorrent-restic
-  namespace: downloaders
+  name: calibre-restic
+  namespace: media
 spec:
   secretStoreRef:
     kind: ClusterSecretStore
     name: onepassword-connect
   target:
-    name: qbittorrent-restic-secret
+    name: calibre-restic-secret
     creationPolicy: Owner
     template:
       engineVersion: v2
       data:
-        RESTIC_REPOSITORY: '{{ .REPOSITORY_TEMPLATE }}/qbittorrent'
+        RESTIC_REPOSITORY: '{{ .REPOSITORY_TEMPLATE }}/calibre'
         RESTIC_PASSWORD: '{{ .RESTIC_PASSWORD }}'
         AWS_ACCESS_KEY_ID: '{{ .AWS_ACCESS_KEY_ID }}'
         AWS_SECRET_ACCESS_KEY: '{{ .AWS_SECRET_ACCESS_KEY }}'
@@ -25,19 +25,24 @@ spec:
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationSource
 metadata:
-  name: qbittorrent
-  namespace: downloaders
+  name: calibre
+  namespace: media
 spec:
-  sourcePVC: qbittorrent-config-v1
+  sourcePVC: calibre-config-v1
   trigger:
-    schedule: "0 */12 * * *"
+    schedule: "0 0 * * *"
   restic:
     copyMethod: Snapshot
-    pruneIntervalDays: 7
-    repository: qbittorrent-restic-secret
+    pruneIntervalDays: 10
+    repository: calibre-restic-secret
     cacheCapacity: 2Gi
     volumeSnapshotClassName: csi-ceph-blockpool
     storageClassName: ceph-block
     cacheStorageClassName: ceph-block
+    moverSecurityContext:
+      runAsUser: 568
+      runAsGroup: 568
+      fsGroup: 568
     retain:
-      daily: 7
+      daily: 10
+      within: 3d
