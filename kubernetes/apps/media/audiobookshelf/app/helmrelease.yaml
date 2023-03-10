@@ -28,6 +28,8 @@ spec:
       pullPolicy: IfNotPresent
     env:
       TZ: ${TIMEZONE}
+      AUDIOBOOKSHELF_UID: 568
+      AUDIOBOOKSHELF_GID: 568
     service:
       main:
         ports:
@@ -54,9 +56,9 @@ spec:
               - *host
             secretName: &tls "audiobookshelf-tls"
     podSecurityContext:
-      runAsUser: 0
-      runAsGroup: 0
-      fsGroup: 0
+      runAsUser: 568
+      runAsGroup: 568
+      fsGroup: 568
       fsGroupChangePolicy: "OnRootMismatch"
       supplementalGroups:
         - 100

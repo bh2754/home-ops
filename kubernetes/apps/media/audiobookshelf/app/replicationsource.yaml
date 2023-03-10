@@ -30,17 +30,22 @@ metadata:
 spec:
   sourcePVC: abs-config-v1
   trigger:
-    schedule: "0 */12 * * *"
+    schedule: "0 0 * * *"
   restic:
     copyMethod: Snapshot
-    pruneIntervalDays: 7
+    pruneIntervalDays: 10
     repository: audiobookshelf-config-restic-secret
     cacheCapacity: 2Gi
     volumeSnapshotClassName: csi-ceph-blockpool
     storageClassName: ceph-block
     cacheStorageClassName: ceph-block
+    moverSecurityContext:
+      runAsUser: 568
+      runAsGroup: 568
+      fsGroup: 568
     retain:
-      daily: 7
+      daily: 10
+      within: 3d
 ---
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
@@ -73,14 +78,19 @@ metadata:
 spec:
   sourcePVC: abs-metadata-v1
   trigger:
-    schedule: "0 */12 * * *"
+    schedule: "0 0 * * *"
   restic:
     copyMethod: Snapshot
-    pruneIntervalDays: 7
+    pruneIntervalDays: 10
     repository: audiobookshelf-metadata-restic-secret
     cacheCapacity: 2Gi
     volumeSnapshotClassName: csi-ceph-blockpool
     storageClassName: ceph-block
     cacheStorageClassName: ceph-block
+    moverSecurityContext:
+      runAsUser: 568
+      runAsGroup: 568
+      fsGroup: 568
     retain:
-      daily: 7
+      daily: 10
+      within: 3d
