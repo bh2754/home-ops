@@ -30,6 +30,8 @@ spec:
       TZ: ${TIMEZONE}
       AUDIOBOOKSHELF_UID: 568
       AUDIOBOOKSHELF_GID: 568
+      CONFIG_PATH: /config
+      METADATA_PATH: /config/metadata
     service:
       main:
         ports:
@@ -60,19 +62,15 @@ spec:
       runAsGroup: 568
       fsGroup: 568
       fsGroupChangePolicy: "OnRootMismatch"
-      supplementalGroups:
-        - 100
-    podAnnotations:
-      backup.velero.io/backup-volumes: config,metadata
     persistence:
       config:
         enabled: true
         mountPath: /config
         existingClaim: abs-config-v1
-      metadata:
+      cache:
         enabled: true
-        mountPath: /metadata
-        existingClaim: abs-metadata-v1
+        mountPath: /.npm
+        type: emptyDir
       media:
         enabled: true
         mountPath: /audiobooks
