@@ -39,11 +39,13 @@ spec:
     volumeSnapshotClassName: csi-ceph-blockpool
     storageClassName: ceph-block
     cacheStorageClassName: ceph-block
-    podSecurityContext:
+    moverSecurityContext:
       runAsUser: 568
       runAsGroup: 568
       fsGroup: 568
-      fsGroupChangePolicy: OnRootMismatch
+    retain:
+      daily: 10
+      within: 3d
 ---
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
@@ -85,11 +87,13 @@ spec:
     volumeSnapshotClassName: csi-ceph-blockpool
     storageClassName: ceph-block
     cacheStorageClassName: ceph-block
-    podSecurityContext:
+    moverSecurityContext:
       runAsUser: 568
       runAsGroup: 568
       fsGroup: 568
-      fsGroupChangePolicy: OnRootMismatch
+    retain:
+      daily: 10
+      within: 3d
 ---
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
@@ -131,11 +135,13 @@ spec:
     volumeSnapshotClassName: csi-ceph-blockpool
     storageClassName: ceph-block
     cacheStorageClassName: ceph-block
-    podSecurityContext:
+    moverSecurityContext:
       runAsUser: 568
       runAsGroup: 568
       fsGroup: 568
-      fsGroupChangePolicy: OnRootMismatch
+    retain:
+      daily: 10
+      within: 3d
 ---
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
@@ -177,8 +183,10 @@ spec:
     volumeSnapshotClassName: csi-ceph-blockpool
     storageClassName: ceph-block
     cacheStorageClassName: ceph-block
-    podSecurityContext:
+    moverSecurityContext:
       runAsUser: 568
       runAsGroup: 568
       fsGroup: 568
-      fsGroupChangePolicy: OnRootMismatch
+    retain:
+      daily: 10
+      within: 3d
