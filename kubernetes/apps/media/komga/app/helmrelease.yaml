@@ -42,7 +42,7 @@ spec:
           main:
             image:
               repository: docker.io/gotson/komga
-              tag: 1.10.3
+              tag: 1.10.4
             env:
               TZ: America/Chicago
               KOMGA_CONFIGDIR: /config
