@@ -1,0 +1,46 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: &app snapscheduler
+  namespace: &ns volsync
+spec:
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: *app
+  dependsOn:
+    - name: snapshot-controller
+      namespace: kube-system
+  path: ./kubernetes/apps/volsync/snapscheduler/app
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+    namespace: flux-system
+  targetNamespace: *ns
+  interval: 30m
+  retryInterval: 1m
+  timeout: 3m
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: *app1 snapscheduler-schedules
+  namespace: flux-system
+spec:
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: *app1
+  dependsOn:
+    - name: snapscheduler
+      namespace: volsync
+  path: ./kubernetes/apps/volsync/snapscheduler/schedules
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: home-kubernetes
+  targetNamespace: *ns
+  wait: true
+  interval: 30m
+  retryInterval: 1m
+  timeout: 3m
