@@ -22,10 +22,6 @@ spec:
     remediation:
       retries: 3
   dependsOn:
-    - name: onepassword-connect
-      namespace: external-secrets
-    - name: internal-ingress-nginx
-      namespace: network
     - name: rook-ceph-cluster
       namespace: rook-ceph
   uninstall:
