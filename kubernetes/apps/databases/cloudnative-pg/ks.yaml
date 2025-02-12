@@ -5,9 +5,9 @@ metadata:
   name: cloudnative-pg-app
   namespace: databases
 spec:
-  commonMetadata:
-    labels:
-      app.kubernetes.io/name: cloudnative-pg-app
+# commonMetadata:
+#   labels:
+#     app.kubernetes.io/name: cloudnative-pg-app
   path: ./kubernetes/apps/databases/cloudnative-pg/app
   prune: true
   dependsOn:
