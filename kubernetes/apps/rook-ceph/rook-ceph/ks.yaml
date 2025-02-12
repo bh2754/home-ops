@@ -3,7 +3,7 @@ apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
   name: &app rook-ceph-app
-  namespace: &namespace rook-ceph
+  namespace: rook-ceph
 spec:
   commonMetadata:
     labels:
@@ -13,7 +13,7 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  targetNamespace: *namespace
+  targetNamespace: rook-ceph
   interval: 30m
   retryInterval: 1m
   timeout: 3m
@@ -35,7 +35,7 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  targetNamespace: *namespace
+  targetNamespace: rook-ceph
   interval: 30m
   retryInterval: 1m
   timeout: 5m
