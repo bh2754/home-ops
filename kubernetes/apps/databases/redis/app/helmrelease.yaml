@@ -52,4 +52,3 @@ spec:
     pdb:
       create: true
       minAvailable: 1
-      maxUnavailable: 2
