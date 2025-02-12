@@ -5,8 +5,8 @@ resources:
   - ./config-pvc.yaml
   - ./externalsecret.yaml
   - ./helmrelease.yaml
-  - ./volsync.yaml
-  - ../../../../templates/gatus/external
+# - ./volsync.yaml
+# - ../../../../templates/gatus/external
 commonLabels:
   app.kubernetes.io/name: prowlarr
   app.kubernetes.io/instance: prowlarr
