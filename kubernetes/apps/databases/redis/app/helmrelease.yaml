@@ -51,5 +51,5 @@ spec:
         interval: 1m
     pdb:
       create: true
-      minAvailable: "1"
-      maxUnavailable: "2"
+      minAvailable: 1
+      maxUnavailable: 2
