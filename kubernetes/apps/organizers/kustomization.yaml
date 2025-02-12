@@ -8,7 +8,7 @@ resources:
 #  - ./lidarr/ks.yaml
 #   - ./mylar/ks.yaml
    - ./prowlarr/ks.yaml
-#  - ./radarr/ks.yaml
+   - ./radarr/ks.yaml
 #  - ./readarr-audio/ks.yaml
 #  - ./readarr/ks.yaml
-#   - ./sonarr/ks.yaml
+   - ./sonarr/ks.yaml

@@ -19,9 +19,10 @@ env:
 
 includes:
   bootstrap: .taskfiles/bootstrap
+  ES: .taskfiles/ES
   talos: .taskfiles/talos
   template: .taskfiles/template
-  volsync: .taskfiles/volsync
+  volsync: ~/home-ops/.taskfiles/volsync
 
 tasks:
 
