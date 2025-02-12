@@ -1,5 +1,5 @@
 ---
-apiVersion: helm.toolkit.fluxcd.io/v2beta2
+apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: &app redis
@@ -9,24 +9,27 @@ spec:
   chart:
     spec:
       chart: redis
-      version: 18.7.0
+      version: 20.6.0
       sourceRef:
         kind: HelmRepository
         name: bitnami
         namespace: flux-system
   install:
-    createNamespace: true
     remediation:
       retries: 3
   upgrade:
     cleanupOnFail: true
     remediation:
       retries: 3
+  dependsOn:
+    - name: rook-ceph-cluster
+      namespace: rook-ceph
   uninstall:
     keepHistory: false
   values:
-    global:
-      storageClass: ceph-block
+    serviceAccount:
+      create: true
+      name: "redis"
     auth:
       enabled: false
       sentinel: false
@@ -41,10 +44,11 @@ spec:
       masterSet: redis-master
       getMasterTimeout: 10
       startupProbe:
-        failureThreshold: 3
+        failureThreshold: 2
       persistence:
         enabled: false
     metrics:
       enabled: true
       serviceMonitor:
         enabled: true
+        interval: 1m
