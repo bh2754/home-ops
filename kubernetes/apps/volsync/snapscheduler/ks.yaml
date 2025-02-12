@@ -25,7 +25,7 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: *app1 snapscheduler-schedules
+  name: &app1 snapscheduler-schedules
   namespace: flux-system
 spec:
   commonMetadata:
