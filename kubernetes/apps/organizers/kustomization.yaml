@@ -7,7 +7,7 @@ components:
 resources:
 #  - ./lidarr/ks.yaml
 #   - ./mylar/ks.yaml
-#  - ./prowlarr/ks.yaml
+   - ./prowlarr/ks.yaml
 #  - ./radarr/ks.yaml
 #  - ./readarr-audio/ks.yaml
 #  - ./readarr/ks.yaml
