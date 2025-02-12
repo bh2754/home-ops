@@ -1,0 +1,15 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: organizers
+components:
+  - ../../flux/components/common
+#resources:
+  # Flux-Kustomizations
+#  - ./lidarr/ks.yaml
+#   - ./mylar/ks.yaml
+#  - ./prowlarr/ks.yaml
+#  - ./radarr/ks.yaml
+#  - ./readarr-audio/ks.yaml
+#  - ./readarr/ks.yaml
+#   - ./sonarr/ks.yaml
