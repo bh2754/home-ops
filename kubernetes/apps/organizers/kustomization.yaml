@@ -4,8 +4,7 @@ kind: Kustomization
 namespace: organizers
 components:
   - ../../flux/components/common
-#resources:
-  # Flux-Kustomizations
+resources:
 #  - ./lidarr/ks.yaml
 #   - ./mylar/ks.yaml
 #  - ./prowlarr/ks.yaml
