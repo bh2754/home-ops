@@ -49,3 +49,7 @@ spec:
       serviceMonitor:
         enabled: true
         interval: 1m
+    pdb:
+      create: true
+      minAvailable: "1"
+      maxUnavailable: "2"
