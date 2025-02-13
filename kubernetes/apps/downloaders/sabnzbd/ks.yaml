@@ -3,33 +3,26 @@ apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
   name: &app sabnzbd
-  namespace: flux-system
-  labels:
-    substitution.flux.home.arpa/enabled: "true"
+  namespace: &namespace downloaders
 spec:
-  targetNamespace: &namespace downloaders
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
+  targetNamespace: *namespace
   dependsOn:
-    - name: rook-ceph-cluster
     - name: onepassword-connect
+      namespace: external-secrets
     - name: pod-gateway
+      namespace: vpn
+    - name: rook-ceph-cluster
+      namespace: rook-ceph
     - name: volsync
+      namespace: volsync
   path: ./kubernetes/apps/downloaders/sabnzbd/app
   prune: true
   sourceRef:
     kind: GitRepository
-    name: home-kubernetes
-  healthChecks:
-    - apiVersion: helm.toolkit.fluxcd.io/v2beta1
-      kind: HelmRelease
-      name: sabnzbd
-      namespace: downloaders
-  interval: 30m
+    name: flux-system
+    namespace: flux-system
   retryInterval: 1m
   timeout: 3m
-  postBuild:
-    substitute:
-      APP: *app
-      NS: *namespace
