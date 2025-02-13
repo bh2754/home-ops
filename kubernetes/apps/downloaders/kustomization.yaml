@@ -5,4 +5,4 @@ namespace: downloaders
 components:
   - ../../flux/components/common
 resources:
-# - ./sabnzbd/ks.yaml
+  - ./sabnzbd/ks.yaml
