@@ -10,16 +10,20 @@ spec:
       app.kubernetes.io/name: *app
   dependsOn:
     - name: onepassword-connect
+      namespace: external-secrets
     - name: pod-gateway
+      namespace: vpn
     - name: rook-ceph-cluster
+      namespace: rook-ceph
     - name: volsync
+      namespace: volsync
   path: ./kubernetes/apps/organizers/sonarr/app
   prune: true
   sourceRef:
     kind: GitRepository
     name: flux-system
     namespace: flux-system
-  targetNamespace: &namespace organizers
+  targetNamespace: *namespace
   interval: 30m
   retryInterval: 1m
   timeout: 3m
