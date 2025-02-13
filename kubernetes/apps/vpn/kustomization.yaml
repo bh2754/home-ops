@@ -6,4 +6,5 @@ namespace: vpn
 components:
   - ../../flux/components/common
 resources:
-# - ./pod-gateway/ks.yaml
+ - ./namespace.yaml 
+ - ./pod-gateway/ks.yaml
