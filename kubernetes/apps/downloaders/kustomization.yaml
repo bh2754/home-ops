@@ -10,9 +10,9 @@ patches:
   - patch: |
       - op: add
         path: /metadata/labels/routed-gateway
-        value: "true"
+        value: true
       - op: add
         path: /metadata/annotations/volsync.backube/privileged-movers
-        value: "true"
+        value: true
     target:
       kind: Namespace
