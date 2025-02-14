@@ -7,10 +7,10 @@ components:
 resources:
   - ./sabnzbd/ks.yaml
 patches:
-  - patch: |
-      - op: add
-        path: /metadata/labels/routed-gateway
-        value: true
+  - patch: |-
+#     - op: add
+#       path: /metadata/labels/routed-gateway
+#       value: true
       - op: add
         path: /metadata/annotations/volsync.backube/privileged-movers
         value: true
