@@ -52,7 +52,7 @@ spec:
 #             repository: ghcr.io/bh2754/readarr-nightly
 #             tag: 0.4.0.2593@sha256:dc025ff557d487f2e7dcd5d0fe61b0150c0d2e4b55157b3f64f8f452e28bffaf
               repository: ghcr.io/bh2754/readarr-develop
-              tag: 0.4.11.2747@sha256:e364fd7f26100bd0ecc4676ae2bd3c2b2ce3623bfd4078f7828e30fef076c3d0
+              tag: 0.4.12.2753@sha256:9e13affb38bef54183cb5fd88125349aed4b25a7b781b16b156c12838b2062f8
             env:
               READARR__AUTH__METHOD: External
               READARR__AUTH__REQUIRED: DisabledForLocalAddresses
