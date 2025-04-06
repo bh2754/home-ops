@@ -4,6 +4,6 @@ kind: Kustomization
 namespace: vpn
 resources:
   - ./device-plugin.yaml
-# - ./helmrelease.yaml
+  - ./helmrelease.yaml
   - ./externalsecret.yaml
   # - ./networkpolicy.yaml
