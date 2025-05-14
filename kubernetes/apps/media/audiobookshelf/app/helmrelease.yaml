@@ -28,7 +28,7 @@ spec:
       audiobookshelf:
         pod:
           annotations:
-            setGateway: "true"
+            setGateway: "false"
           securityContext:
 #           runAsNonRoot: true
             runAsUser: 568
