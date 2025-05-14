@@ -1,0 +1,96 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: audiobookshelf
+  namespace: media
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: app-template
+      version: 3.2.1
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      strategy: rollback
+      retries: 3
+  dependsOn:
+    - name: onepassword-connect
+      namespace: external-secrets
+    - name: ingress-nginx-external
+      namespace: network
+    - name: authelia
+      namespace: security
+    - name: rook-ceph-cluster
+      namespace: rook-ceph
+  values:
+    controllers:
+      audiobookshelf:
+        pod:
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 568
+            runAsGroup: 568
+            fsGroup: 568
+            fsGroupChangePolicy: OnRootMismatch
+            seccompProfile: { type: RuntimeDefault }
+        containers:
+          app:
+            image:
+              repository: ghcr.io/advplyr/audiobookshelf
+              tag: 2.11.0@sha256:725c287ac1b56f8115dfc7fca75d8490976af59466f893fbf344711bd117f8cb
+            env:
+              AUDIOBOOKSHELF_UID: 568
+              AUDIOBOOKSHELF_GID: 568
+              CONFIG_PATH: /config
+              METADATA_PATH: /config/metadata
+            securityContext:
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: true
+              capabilities: { drop: ["ALL"] }
+            resources:
+              requests:
+                cpu: 100m
+                memory: 150Mi
+              limits:
+                memory: 300Mi
+    service:
+      app:
+        controller: audiobookshelf
+        ports:
+          http:
+            port: 80
+    ingress:
+      app:
+        className: external
+        annotations:
+          external-dns.alpha.kubernetes.io/target: external.${DOMAIN}
+        hosts:
+          - host: abs.${SECRET_DOMAIN}
+            paths:
+              - path: /
+                service:
+                  identifier: app
+                  port: http
+    persistence:
+      config:
+        existingClaim: abs-config-v1
+      cache:
+        type: emptyDir
+        globalMounts:
+          - path: /.npm
+      media:
+        type: nfs
+        server: ${NFS_SERVER}
+        path: ${NFS_MEDIA}
+        globalMounts:
+          - path: /media
+            readOnly: true
