@@ -97,7 +97,7 @@
      routed_namespaces:
        - downloaders
        - organizers
-
+       - media
      settings:
        VPN_INTERFACE: "wg0"
        VXLAN_ID: "43"
