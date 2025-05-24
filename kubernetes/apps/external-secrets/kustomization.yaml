@@ -19,4 +19,4 @@ components:
   - ../../flux/components/common
 resources:
   - ./external-secrets/ks.yaml
-  - ./onepassword-connect/ks.yaml
+# - ./onepassword-connect/ks.yaml
