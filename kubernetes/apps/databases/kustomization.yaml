@@ -5,8 +5,8 @@ namespace: databases
 components:
   - ../../flux/components/common
 resources:
-  - ./cloudnative-pg/ks.yaml
+# - ./cloudnative-pg/ks.yaml
 # - ./influxdb/ks.yaml
-# - ./redis/ks.yaml
+  - ./redis/ks.yaml
 # - ./dragonfly/ks.yaml
 # - ./crunchy-pg/ks.yaml
