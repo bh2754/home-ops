@@ -41,7 +41,7 @@ spec:
           app:
             image:
               repository: ghcr.io/bh2754/sabnzbd
-              tag: 4.5.1@sha256:27e8cb26f1e0aeff79570e1ce3fb4de84a56a4dd6e445e02c62b45b78535312d
+              tag: 4.5.1@sha256:c39b1abf214bc98c8dd3c5c06551c366f1d3b85e212ac72e213c80730901b64a
 
             env:
               TZ: ${TIMEZONE}
