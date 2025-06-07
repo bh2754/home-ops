@@ -18,5 +18,5 @@ namespace: external-secrets
 components:
   - ../../flux/components/common
 resources:
-# - ./external-secrets/ks.yaml
-# - ./onepassword-connect/ks.yaml
+  - ./external-secrets/ks.yaml
+  - ./onepassword-connect/ks.yaml
