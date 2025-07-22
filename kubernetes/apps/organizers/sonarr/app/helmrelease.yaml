@@ -116,7 +116,11 @@ spec:
         type: nfs
         server: ${NFS_SERVER}
         path: ${NFS_MEDIA}
+        globalMounts:
+          - path: /data/nas-media
       download:
         type: nfs
         server: ${NFS_SERVER}
         path: ${NFS_DOWNLOAD}
+        globalMounts:
+          - path: /data/nas-downloads
