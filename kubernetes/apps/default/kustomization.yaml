@@ -7,4 +7,3 @@ components:
   - ../../flux/components/common
 resources:
   - ./echo-server/ks.yaml
-  - ./generic-device-plugin/ks.yaml
