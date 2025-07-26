@@ -5,4 +5,4 @@ namespace: kyverno
 components:
   - ../../flux/components/common
 resources:
-  - ./kyverno/ks.yaml
+# - ./kyverno/ks.yaml
