@@ -14,7 +14,7 @@ metadata:
       to matching Namespaces if those labels are not included.
 spec:
   mutateExistingOnPolicyUpdate: true
-  generateExistingOnPolicyUpdate: true
+  generateExisting: true
   rules:
     - name: add-goldilocks-labels
       match:
