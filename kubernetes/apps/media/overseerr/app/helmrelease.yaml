@@ -29,8 +29,8 @@ spec:
       namespace: external-secrets
     - name: internal-ingress-nginx
       namespace: network
-    - name: authelia
-      namespace: security
+#   - name: authelia
+#     namespace: security
     - name: rook-ceph-cluster
       namespace: rook-ceph
   values:
