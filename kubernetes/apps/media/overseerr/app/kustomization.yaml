@@ -5,5 +5,5 @@ namespace: media
 resources:
   - ./helmrelease.yaml
   - ./config-pvc.yaml
-  - ./volsync.yaml
-  - ../../../../templates/gatus/external
+# - ./volsync.yaml
+# - ../../../../templates/gatus/external
