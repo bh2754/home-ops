@@ -37,7 +37,7 @@ spec:
       repository: "chronograf"
       ## DockerHub is now the preferred repo
       ## alternative: quay.io/influxdb/chronograf
-      tag: 1.10.7
+      tag: 1.10.8
       pullPolicy: IfNotPresent
 
     ## Specify a service type
