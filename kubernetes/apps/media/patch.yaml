@@ -1,0 +1,8 @@
+# namespace-patch.yaml
+ apiVersion: v1
+ kind: Namespace
+ metadata:
+   name: my-namespace # Target the specific namespace to patch
+   labels:
+     environment: production
+

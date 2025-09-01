@@ -1,0 +1,9 @@
+# patch-namespace-labels.yaml
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: downloaders # Target the specific namespace
+  labels:
+    routed-gateway: "true"
+  annotations:
+    volsync.backube/privileged-movers: "true"

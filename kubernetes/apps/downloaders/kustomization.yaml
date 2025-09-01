@@ -6,3 +6,8 @@ components:
   - ../../flux/components/common
 resources:
   - ./sabnzbd/ks.yaml
+patches:
+  - path: patch.yaml
+    target:
+      kind: Namespace
+      name: downloaders
