@@ -7,7 +7,7 @@ components:
 resources:
   - ./sabnzbd/ks.yaml
 patches:
-  - path: ~/home-ops/kubernetes/apps/downloaders/patch.yaml
+  - path: ./patch.yaml
     target:
       kind: Namespace
       name: downloaders
