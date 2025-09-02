@@ -12,3 +12,11 @@ resources:
 #  - ./readarr-audio/ks.yaml
 #  - ./readarr/ks.yaml
    - ./sonarr/ks.yaml
+patches:
+  - target:
+      kind: Namespace
+      name: not-used
+    patch: |-
+      - op: add
+        path: /metadata/labels
+        value: {"routed-gateway": "true"}
