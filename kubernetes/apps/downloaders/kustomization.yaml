@@ -7,7 +7,10 @@ components:
 resources:
   - ./sabnzbd/ks.yaml
 patches:
-  - path: ./patch.yaml
-    target:
+  - target:
       kind: Namespace
-      name: downloaders
+      name: not-used
+    patch: |-
+      - op: add
+        path: /metadata/labels
+        value: {"routed-gateway": "true"}
