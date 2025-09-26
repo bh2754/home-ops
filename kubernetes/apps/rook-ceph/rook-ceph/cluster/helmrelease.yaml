@@ -61,6 +61,7 @@ spec:
           - name: k8s-master1
             devices:
               - name: "/dev/sdb" 
+              - name: "/dev/sdc"
           - name: k8s-master2
             devices:
               - name: "/dev/sdb"
