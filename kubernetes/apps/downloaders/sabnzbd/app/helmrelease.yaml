@@ -43,7 +43,7 @@ spec:
 #              repository: ghcr.io/bh2754/sabnzbd
 #              tag: 4.5.3@sha256:dde7d698da0e19a2ee742dd9799fd98b58ebece76c9173ad24c80459e84f4c2b
               repository: ghcr.io/home-operations/sabnzbd
-              tag: 4.5.3
+              tag: 4.5.5
             env:
               TZ: ${TIMEZONE}
               SABNZBD__PORT: &port 8080
