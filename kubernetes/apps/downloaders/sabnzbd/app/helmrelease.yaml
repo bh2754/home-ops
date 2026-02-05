@@ -43,10 +43,11 @@ spec:
               VPN_SERVICE_PROVIDER: mullvad
               VPN_PORT_FORWARDING: off
               FIREWALL_OUTBOUND_SUBNETS: 10.43.0.0/16,10.42.0.0/16 # Allow access to k8s subnets
-#              FIREWALL_INPUT_PORTS: "8080,9999"
-#              HEALTH_SERVER_ADDRESS: ":9999"
+              FIREWALL_INPUT_PORTS: "8080,9999"
+              HEALTH_SERVER_ADDRESS: "127.0.0.1:9999"
               TZ: America/Chicago
               WIREGUARD_MTU: 1300
+
             envFrom:
               - secretRef:
                   name: sabnzbd-vpn-secret
