@@ -1,0 +1,164 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: &app sabnzbd
+  namespace: downloaders
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: app-template
+      version: 3.5.1
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      strategy: rollback
+      retries: 3
+  dependsOn:
+    - name: onepassword-connect
+      namespace: external-secrets
+    - name: internal-ingress-nginx
+      namespace: network
+    - name: rook-ceph-cluster
+      namespace: rook-ceph
+  values:
+    controllers:
+      sabnzbd:
+        annotations:
+          reloader.stakater.com/auto: "true"
+        pod:
+          annotations:
+            setGateway: "true"
+        containers:
+          app:
+            image:
+              repository: ghcr.io/bh2754/sabnzbd
+              tag: 4.4.0@sha256:00fdb8285e0d91397cf17c1d5ac79ab2a80348f82a86b8a0c49f3d30312e0c2d
+
+            env:
+              TZ: ${TIMEZONE}
+              SABNZBD__PORT: &port 8080
+              SABNZBD__HOST_WHITELIST_ENTRIES: >-
+                sabnzbd,
+                sabnzbd.media,
+                sabnzbd.downloaders,
+                sabnzbd.downloaders.svc,
+                sabnzbd.default.svc,
+                sabnzbd.default.svc.cluster,
+                sabnzbd.default.svc.cluster.local,
+                sabnzbd.${SECRET_DOMAIN}
+            envFrom:
+            - secretRef:
+                name: sabnzbd-secret
+            probes:
+              liveness: &probes
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /api?mode=version
+                    port: *port
+                  initialDelaySeconds: 0
+                  periodSeconds: 10
+                  timeoutSeconds: 1
+                  failureThreshold: 3
+              readiness: *probes
+            resources:
+              requests:
+                cpu: 10m
+                memory: 100Mi
+              limits:
+                memory: 12Gi
+            securityContext:
+      #       runAsNonRoot: true
+              runAsUser: 568
+              runAsGroup: 568
+              fsGroup: 568
+              fsGroupChangePolicy: OnRootMismatch
+              supplementalGroups: [10000]
+              seccompProfile: { type: RuntimeDefault }
+          gluetun:
+            env:
+              - name: VPN_SERVICE_PROVIDER
+    #           value: custom
+                value: mullvad
+              - name: VPN_TYPE
+                value: wireguard
+              - name: VPN_INTERFACE
+                value: wg0
+              - name: FIREWALL
+                value: "off"
+              - name: DOT
+                value: "on"
+              - name: HEALTH_VPN_DURATION_INITIAL
+                value: 30s
+              - name: LOG_LEVEL
+                value: debug
+              - name: VPN_ENDPOINT_PORT
+                value: 51820
+              - name: FIREWALL_OUTBOUND_SUBNETS
+                value: "10.0.0.0/8,192.168.0.0/16"
+              - name: DNS_ADDRESS
+                value: 1.1.1.1
+    #         - name: WIREGUARD_MTU
+    #           value: 1320
+            envFrom:
+              - secretRef:
+                  name: sabnzbd-vpn-secret
+            resources:
+              limits:
+                squat.ai/tun: "1"
+            image:
+              repository: ghcr.io/qdm12/gluetun
+              tag: v3.40.0
+            securityContext:
+              capabilities:
+                add:
+                  - NET_ADMIN
+              allowPrivilegeEscalation: false
+
+
+    service:
+      app:
+        controller: *app
+        ports:
+          http:
+            port: *port
+    ingress:
+      app:
+        className: internal
+#       annotations:
+#         external-dns.alpha.kubernetes.io/target: internal.${SECRET_DOMAIN}
+        hosts:
+        - host: "{{ .Release.Name }}.${SECRET_DOMAIN}"
+          paths:
+          - path: /
+            service:
+              identifier: app
+              port: http
+    persistence:
+      config:
+        existingClaim: sabnzbd-config-v1
+      download:
+        type: nfs
+        server: 10.0.109.29
+        path: /volume1/Download
+      logs:
+        type: emptyDir
+        globalMounts:
+          - path: /config/logs
+      incomplete:
+        type: emptyDir
+      media:
+        enabled: true
+        type: nfs
+        server: "${NFS_SERVER}"
+        path: ${NFS_MEDIA}

@@ -1,0 +1,29 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: &app sabnzbd
+  namespace: &namespace downloaders
+spec:
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: *app
+  targetNamespace: *namespace
+#  dependsOn:
+#    - name: onepassword-connect
+#      namespace: external-secrets
+#    - name: pod-gateway
+#      namespace: vpn
+#    - name: rook-ceph-cluster
+#      namespace: rook-ceph
+#    - name: volsync
+#      namespace: volsync
+  path: ./kubernetes/apps/downloaders/sabnzbd/app
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+    namespace: flux-system
+  retryInterval: 1m
+  timeout: 3m
+  interval: 5m
