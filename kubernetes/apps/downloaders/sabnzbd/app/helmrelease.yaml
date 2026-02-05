@@ -28,8 +28,8 @@ spec:
         annotations:
           reloader.stakater.com/auto: "true"
         pod:
-#          annotations:
-#            setGateway: "true"
+          annotations:
+            setGateway: "true"
         containers:
           app:
             image:
