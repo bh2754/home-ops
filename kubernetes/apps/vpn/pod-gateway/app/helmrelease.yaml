@@ -51,7 +51,7 @@
            - name: VPN_INTERFACE
              value: wg0
            - name: FIREWALL
-             value: "on"
+             value: "off"
            - name: DOT
              value: "on"
            - name: HEALTH_VPN_DURATION_INITIAL
