@@ -1,0 +1,91 @@
+---
+clusterName: kubernetes
+
+talosVersion: "${talosVersion}"
+kubernetesVersion: "${kubernetesVersion}"
+
+endpoint: https://10.0.111.10:6443
+additionalApiServerCertSans: &sans
+  - "127.0.0.1"
+  - "10.0.111.10"
+additionalMachineCertSans: *sans
+
+clusterPodNets: ["10.42.0.0/16"]
+clusterSvcNets: ["10.43.0.0/16"]
+
+# Disable built-in CNI to use Cilium
+cniConfig:
+  name: none
+
+nodes:
+  - hostname: "master1"
+    ipAddress: "10.0.111.11"
+    installDisk: "/dev/sda"
+    machineSpec:
+      secureboot: false
+    talosImageURL: factory.talos.dev/installer/903b2da78f99adef03cbbd4df6714563823f63218508800751560d3bc3557e40
+    controlPlane: true
+    networkInterfaces:
+      - deviceSelector:
+          hardwareAddr: "00:50:56:b6:72:42"
+        dhcp: false
+        addresses:
+          - "10.0.111.11/24"
+        routes:
+          - gateway: "10.0.111.1"
+            network: 0.0.0.0/0
+        mtu: 9000
+        vip:
+          ip: "10.0.111.10"
+  - hostname: "master2"
+    ipAddress: "10.0.111.12"
+    installDisk: "/dev/sda"
+    machineSpec:
+      secureboot: false
+    talosImageURL: factory.talos.dev/installer/903b2da78f99adef03cbbd4df6714563823f63218508800751560d3bc3557e40
+    controlPlane: true
+    networkInterfaces:
+      - deviceSelector:
+          hardwareAddr: "00:50:56:b6:91:36"
+        dhcp: false
+        addresses:
+          - "10.0.111.12/24"
+        routes:
+          - gateway: "10.0.111.1"
+            network: 0.0.0.0/0
+        mtu: 9000
+        vip:
+          ip: "10.0.111.10"
+  - hostname: "master3"
+    ipAddress: "10.0.111.13"
+    installDisk: "/dev/sda"
+    machineSpec:
+      secureboot: false
+    talosImageURL: factory.talos.dev/installer/903b2da78f99adef03cbbd4df6714563823f63218508800751560d3bc3557e40
+    controlPlane: true
+    networkInterfaces:
+      - deviceSelector:
+          hardwareAddr: "00:50:56:b6:dd:d6"
+        dhcp: false
+        addresses:
+          - "10.0.111.13/24"
+        routes:
+          - gateway: "10.0.111.1"
+            network: 0.0.0.0/0
+        mtu: 9000
+        vip:
+          ip: "10.0.111.10"
+
+# Global patches
+patches:
+  - "@./patches/global/machine-files.yaml"
+  - "@./patches/global/machine-kubelet.yaml"
+  - "@./patches/global/machine-network.yaml"
+  - "@./patches/global/machine-sysctls.yaml"
+  - "@./patches/global/machine-time.yaml"
+
+# Controller patches
+controlPlane:
+  patches:
+    - "@./patches/controller/cluster.yaml"
+
