@@ -51,19 +51,19 @@ spec:
               - secretRef:
                   name: sabnzbd-vpn-secret
 
-            probes:
-              liveness: &probe
-                enabled: true
-                custom: true
-                spec:
-                  exec: &exec
-                    command: [/gluetun-entrypoint, healthcheck]
-                  periodSeconds: 60
-              startup:
-                <<: *probe
-                spec:
-                  exec: *exec
-                  periodSeconds: 3
+#            probes:
+#              liveness: &probe
+#                enabled: true
+#                custom: true
+#                spec:
+#                  exec: &exec
+#                    command: [/gluetun-entrypoint, healthcheck]
+#                  periodSeconds: 60
+#              startup:
+#                <<: *probe
+#                spec:
+#                  exec: *exec
+#                  periodSeconds: 3
 
             lifecycle:
               postStart:
