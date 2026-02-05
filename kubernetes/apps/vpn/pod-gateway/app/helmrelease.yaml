@@ -32,68 +32,89 @@ spec:
     image:
       repository: ghcr.io/angelnu/pod-gateway
       tag: v1.13.0@sha256:a5b032e15f7570493977b330a5a86dcffebb807d35685ad803e47afb62d105f2
-    DNS: 172.16.1.1
-    addons:
-      netshoot:
-        enabled: true
-      vpn:
-        enabled: true
-        type: gluetun
-        image:
-          repository: ghcr.io/qdm12/gluetun
-          tag: v3.41.0@sha256:6b54856716d0de56e5bb00a77029b0adea57284cf5a466f23aad5979257d3045
-        env:
-          - name: VPN_SERVICE_PROVIDER
-            value: custom
-          - name: VPN_TYPE
-            value: wireguard
-          - name: VPN_INTERFACE
-            value: wg0
-          - name: FIREWALL
-            value: "off"
-          - name: DOT
-            value: "off"
-          - name: VPN_ENDPOINT_PORT
-            value: 51820
-          - name: LOG_LEVEL
-            value: debug
-        envFrom:
-          - secretRef:
-              name: pod-gateway-secret
-        securityContext:
-          capabilities:
-            add: ["NET_ADMIN"]
-        networkPolicy:
-          enabled: true
-          egress:
-            - to:
-                - ipBlock:
-                    cidr: 0.0.0.0/0
-              ports:
-                - port: 51820
-                  protocol: UDP
-            - to:
-                - namespaceSelector: {}
-    publicPorts:
-      - IP: 10
-        hostname: qbittorrent-vpn-0
-        ports:
-          - port: 59982
-            type: udp
-          - port: 59982
-            type: tcp
-    routed_namespaces: ["downloaders"]
-    settings:
-      VPN_INTERFACE: "wg0"
-      VXLAN_ID: "43"
-      VXLAN_IP_NETWORK: "172.16.1"
-      VPN_BLOCK_OTHER_TRAFFIC: "true"
-      VPN_TRAFFIC_PORT: "51820"
-      DNS_LOCAL_CIDRS: "local"
-      NOT_ROUTED_TO_GATEWAY_CIDRS: "10.0.0.0/8 172.16.0.0/12 192.168.0.0/16"
-      VPN_LOCAL_CIDRS: "10.0.0.0/8 172.16.0.0/12 192.168.0.0/16"
-    webhook:
-      gatewayDefault: false
-      image:
-        repository: ghcr.io/angelnu/gateway-admision-controller
-        tag: v3.12.0@sha256:6f6ab596afd5fef0ca4648eadfb21cd37ba86fa5afa8b85edcc072976a61fbed
+     DNS: 172.16.1.1
+     addons:
+       netshoot:
+         enabled: true
+       vpn:
+         enabled: true
+         type: gluetun
+         image:
+           repository: ghcr.io/qdm12/gluetun
+           tag: v3.40.0@sha256:2b42bfa046757145a5155acece417b65b4443c8033fb88661a8e9dcf7fda5a00
+         env:
+           - name: VPN_SERVICE_PROVIDER
+ #           value: custom
+             value: mullvad
+           - name: VPN_TYPE
+             value: wireguard
+           - name: VPN_INTERFACE
+             value: wg0
+           - name: FIREWALL
+             value: "off"
+           - name: DOT
+             value: "on"
+           - name: HEALTH_VPN_DURATION_INITIAL
+             value: 30s
+           - name: LOG_LEVEL
+             value: debug
+           - name: VPN_ENDPOINT_PORT
+             value: 51820
+ #         - name: DNS_ADDRESS
+ #           value: 1.1.1.1
+ #         - name: WIREGUARD_MTU
+ #           value: 1320
+         envFrom:
+           - secretRef:
+               name: mullvad-secret
+ #             name: nord-secret
+         securityContext:
+           capabilities:
+             add: ["NET_ADMIN"]
+         resources:
+           limits:
+             squat.ai/tun: "1"
+         networkPolicy:
+           enabled: true
+           egress:
+             - to:
+                 - ipBlock:
+                     cidr: 0.0.0.0/0
+               ports:
+                 - port: 51820
+                   protocol: UDP
+             - to:
+                 - namespaceSelector: {}
+     publicPorts:
+       - IP: 10
+         hostname: qbittorrent-vpn-0
+         ports:
+           - port: 56202
+             type: udp
+           - port: 56202
+             type: tcp
+
+     routed_namespaces:
+       - downloaders
+       - organizers
+
+     settings:
+       VPN_INTERFACE: "wg0"
+       VXLAN_ID: "43"
+       VXLAN_IP_NETWORK: "172.16.1"
+       VPN_BLOCK_OTHER_TRAFFIC: "true"
+       VPN_TRAFFIC_PORT: "51820"
+       DNS_LOCAL_CIDRS: "local"
+       NOT_ROUTED_TO_GATEWAY_CIDRS: "10.0.0.0/8 192.168.0.0/16"
+       VPN_LOCAL_CIDRS: "10.0.0.0/8 192.168.0.0/16"
+       IPTABLES_NFT: "yes"
+
+     webhook:
+       gatewayDefault: false
+       gatewayAnnotation: setGateway
+       gatewayLabel: setGateway
+       namespaceSelector:
+         label: "routed-gateway"
+       image:
+         repository: ghcr.io/angelnu/gateway-admision-controller
+         tag: v3.10.0@sha256:a8ed630613de277244dfe203cd11d05905d7eeba8d8c41e399b02ee9a847b2f5
