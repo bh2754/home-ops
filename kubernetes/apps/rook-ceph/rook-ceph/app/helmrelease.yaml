@@ -1,0 +1,28 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: rook-ceph-operator
+  namespace: rook-ceph
+spec:
+  interval: 15m
+  timeout: 15m
+  chartRef:
+    kind: OCIRepository
+    name: rook-ceph
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    remediation:
+      retries: 3
+  values:
+    crds:
+      enabled: true
+    monitoring:
+      enabled: true
+  # image:
+    # repository: rook/ceph
+    # tag: v1.11.0-14.gd70d8ad60
+    # pullPolicy: IfNotPresent
