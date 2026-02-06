@@ -17,11 +17,11 @@ spec:
     remediation:
       strategy: rollback
       retries: 3
-#  dependsOn:
-#    - name: onepassword-connect
-#      namespace: external-secrets
-#    - name: rook-ceph-cluster
-#      namespace: rook-ceph
+  dependsOn:
+    - name: onepassword-connect
+      namespace: external-secrets
+    - name: rook-ceph-cluster
+      namespace: rook-ceph
   values:
     controllers:
       sabnzbd:
@@ -34,42 +34,58 @@ spec:
           gluetun:
             image:
               repository: ghcr.io/qdm12/gluetun
-              tag: v3.41.0@sha256:6b54856716d0de56e5bb00a77029b0adea57284cf5a466f23aad5979257d3045
-
+              tag: v3.41.0
             env:
-              VPN_INTERFACE: wg0
-              VPN_TYPE: "wireguard"
-              FIREALL: off
+              DNS_ADDRESS: "192.168.60.1"
+              DOT: "off"
+              FIREWALL_INPUT_PORTS: 80,8388,9999
+              FIREWALL_OUTBOUND_SUBNETS: 10.0.0.0/8,192.168.0.0/16
+              FIREWALL_VPN_INPUT_PORTS: 8080
+              HEALTH_SERVER_ADDRESS: :9999
+              HEALTH_TARGET_ADDRESS: cloudflare.com:443
+              VPN_TYPE: wireguard
+              VPN_INTERFACE: tun0
               VPN_SERVICE_PROVIDER: mullvad
-              HEALTH_SERVER_ADDRESS: "127.0.0.1:9999"
-              TZ: America/Chicago
-               WIREGUARD_MTU: 1320
+              WIREGUARD_MTU: 1420
             envFrom:
               - secretRef:
                   name: sabnzbd-vpn-secret
- 
-#            probes:
-#              liveness: &probe
-#                enabled: true
-#                custom: true
-#                spec:
-#                  exec: &exec
-#                    command: [/gluetun-entrypoint, healthcheck]
-#                  periodSeconds: 60
-#              startup:
-#                <<: *probe
-#                spec:
-#                  exec: *exec
-#                  periodSeconds: 3
-
-#            lifecycle:
-#              postStart:
-#                exec:
-#                  command:
-#                    - /bin/sh
-#                    - -c
-#                    - (ip rule del table 51820; ip -6 rule del table 51820) || true
-
+            probes:
+              liveness:
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /
+                    port: 9999
+                  timeoutSeconds: 10
+                  periodSeconds: 30
+                  failureThreshold: 5
+              startup:
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /
+                    port: 9999
+                  initialDelaySeconds: 10
+                  periodSeconds: 10
+                  failureThreshold: 5
+            restartPolicy: Always
+            securityContext:
+              capabilities:
+                add:
+                  - NET_ADMIN
+              allowPrivilegeEscalation: false
+            lifecycle:
+              postStart:
+                exec:
+                  command:
+                    [
+                      "/bin/sh",
+                      "-c",
+                      "(ip rule del table 51820; ip -6 rule del table 51820) || true",
+                    ]
             resources:
               requests:
                 cpu: 10m
@@ -82,9 +98,8 @@ spec:
             restartPolicy: Always
 
             securityContext:
-              privileged: true
-              runAsUser: 0
-              runAsGroup: 0
+              runAsUser: 568
+              runAsGroup: 568
               capabilities:
                 add:
 #                  - NET_RAW
