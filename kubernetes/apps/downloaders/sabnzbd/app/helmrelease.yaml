@@ -43,7 +43,7 @@ spec:
               VPN_SERVICE_PROVIDER: mullvad
               HEALTH_SERVER_ADDRESS: "127.0.0.1:9999"
               TZ: America/Chicago
-#              WIREGUARD_MTU: 1300
+               WIREGUARD_MTU: 1320
             envFrom:
               - secretRef:
                   name: sabnzbd-vpn-secret
