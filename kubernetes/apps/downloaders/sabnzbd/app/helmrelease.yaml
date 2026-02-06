@@ -37,22 +37,17 @@ spec:
               tag: v3.41.0@sha256:6b54856716d0de56e5bb00a77029b0adea57284cf5a466f23aad5979257d3045
 
             env:
-              DOT: on
               VPN_INTERFACE: wg0
-              VPN_TYPE: wireguard
+              VPN_TYPE: "wireguard"
               FIREALL: off
               VPN_SERVICE_PROVIDER: mullvad
-              VPN_PORT_FORWARDING: off
-#              FIREWALL_OUTBOUND_SUBNETS: 10.43.0.0/16,10.42.0.0/16 # Allow access to k8s subnets
-#              FIREWALL_INPUT_PORTS: "8080,9999"
               HEALTH_SERVER_ADDRESS: "127.0.0.1:9999"
               TZ: America/Chicago
-              WIREGUARD_MTU: 1300
-
+#              WIREGUARD_MTU: 1300
             envFrom:
               - secretRef:
                   name: sabnzbd-vpn-secret
-
+         
 #            probes:
 #              liveness: &probe
 #                enabled: true
@@ -87,14 +82,14 @@ spec:
             restartPolicy: Always
 
             securityContext:
-              privileged: true
-              runAsUser: 0
-              runAsGroup: 0
+#              privileged: true
+#              runAsUser: 0
+#              runAsGroup: 0
               capabilities:
                 add:
-                  - NET_RAW
+#                  - NET_RAW
                   - NET_ADMIN
-                  - SYS_MODULE
+#                  - SYS_MODULE
         containers:
           app:
             image:
