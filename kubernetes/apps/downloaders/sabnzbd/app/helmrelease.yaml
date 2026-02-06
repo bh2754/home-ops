@@ -47,7 +47,7 @@ spec:
             envFrom:
               - secretRef:
                   name: sabnzbd-vpn-secret
-         
+ 
 #            probes:
 #              liveness: &probe
 #                enabled: true
@@ -62,13 +62,13 @@ spec:
 #                  exec: *exec
 #                  periodSeconds: 3
 
-            lifecycle:
-              postStart:
-                exec:
-                  command:
-                    - /bin/sh
-                    - -c
-                    - (ip rule del table 51820; ip -6 rule del table 51820) || true
+#            lifecycle:
+#              postStart:
+#                exec:
+#                  command:
+#                    - /bin/sh
+#                    - -c
+#                    - (ip rule del table 51820; ip -6 rule del table 51820) || true
 
             resources:
               requests:
@@ -82,9 +82,9 @@ spec:
             restartPolicy: Always
 
             securityContext:
-#              privileged: true
-#              runAsUser: 0
-#              runAsGroup: 0
+              privileged: true
+              runAsUser: 0
+              runAsGroup: 0
               capabilities:
                 add:
 #                  - NET_RAW
