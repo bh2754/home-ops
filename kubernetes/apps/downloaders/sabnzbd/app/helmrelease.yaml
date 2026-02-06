@@ -72,11 +72,6 @@ spec:
                   periodSeconds: 10
                   failureThreshold: 5
             restartPolicy: Always
-            securityContext:
-              capabilities:
-                add:
-                  - NET_ADMIN
-              allowPrivilegeEscalation: false
             lifecycle:
               postStart:
                 exec:
@@ -94,8 +89,6 @@ spec:
               limits:
                 memory: 512Mi
                 squat.ai/tun: "1"
-
-            restartPolicy: Always
 
             securityContext:
               runAsUser: 568
