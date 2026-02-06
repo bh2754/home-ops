@@ -72,6 +72,11 @@ spec:
                   periodSeconds: 10
                   failureThreshold: 5
             restartPolicy: Always
+            securityContext:
+              capabilities:
+                add:
+                  - NET_ADMIN
+              allowPrivilegeEscalation: false
             lifecycle:
               postStart:
                 exec:
@@ -81,6 +86,8 @@ spec:
                       "-c",
                       "(ip rule del table 51820; ip -6 rule del table 51820) || true",
                     ]
+
+
             resources:
               requests:
                 cpu: 10m
@@ -90,14 +97,6 @@ spec:
                 memory: 512Mi
                 squat.ai/tun: "1"
 
-            securityContext:
-              runAsUser: 568
-              runAsGroup: 568
-              capabilities:
-                add:
-#                  - NET_RAW
-                  - NET_ADMIN
-#                  - SYS_MODULE
         containers:
           app:
             image:
