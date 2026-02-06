@@ -94,7 +94,7 @@
        - organizers
 
      settings:
-       VPN_INTERFACE: "wg0"
+       VPN_INTERFACE: "tun"
        VXLAN_ID: "43"
        VXLAN_IP_NETWORK: "172.16.1"
        VPN_BLOCK_OTHER_TRAFFIC: "false"
