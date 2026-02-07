@@ -131,4 +131,4 @@ spec:
       wg-conf:
         enabled: true
         type: secret
-          secretName: wg-conf
+        secretName: wg-conf
