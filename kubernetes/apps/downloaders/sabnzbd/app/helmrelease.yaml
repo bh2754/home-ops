@@ -41,7 +41,10 @@ spec:
               runAsUser: 0
               runAsGroup: 0
               runAsNonRoot: false
-              capabilities: { add: ["NET_ADMIN"] }
+              capabilities:
+                add:
+                  - "NET_ADMIN"
+                  - "SYS_MODULE"
 #              allowPrivilegeEscalation: true
         containers:
           netshoot:
