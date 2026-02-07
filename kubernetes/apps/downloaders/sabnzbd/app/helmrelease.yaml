@@ -130,5 +130,5 @@ spec:
           - path: /media
       wg-conf:
         enabled: true
-        type: secret
-        secretName: wg-conf
+        type: configMap
+        configMap: wg-conf
