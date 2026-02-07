@@ -102,7 +102,7 @@ spec:
                   timeoutSeconds: 10
             resources:
               limits:
-                squat.ip/tun: 1
+                kernel.org/tun: 1
             restartPolicy: Always
             securityContext:
               <<: *securityContext
