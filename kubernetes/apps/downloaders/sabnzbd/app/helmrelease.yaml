@@ -38,8 +38,8 @@ spec:
                   name: wg-conf
             securityContext:
               privileged: true
-#              runAsUser: 0
-#              runAsGroup: 0
+              runAsUser: 0
+              runAsGroup: 0
               runAsNonRoot: false
               capabilities: { add: ["NET_ADMIN"] }
 #              allowPrivilegeEscalation: true
@@ -58,6 +58,10 @@ spec:
 #              tag: 4.5.3@sha256:dde7d698da0e19a2ee742dd9799fd98b58ebece76c9173ad24c80459e84f4c2b
               repository: ghcr.io/home-operations/sabnzbd
               tag: 4.5.5
+            securityContext:
+              runAsUser: 568
+              runAsGroup: 568
+
             env:
               TZ: ${TIMEZONE}
               SABNZBD__PORT: &port 8080
