@@ -77,6 +77,7 @@ spec:
               VPN_INTERFACE: wg0
 #              VPN_IPV6_SERVER: off
               VPN_TYPE: wireguard
+              VPN_SERVICE_PROVIDER: mullvad
               TZ: America/Chicago
             envFrom:
               - secretRef:
