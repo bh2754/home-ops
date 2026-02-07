@@ -164,7 +164,7 @@ spec:
     route:
       sabnzbd:
         hostnames:
-          - "${APP_SUBDOMAIN:-${APP}}.kantai.xyz"
+          - "sabnzbd.bharris.vip"
         parentRefs:
           - name: envoy-internal
             namespace: network
