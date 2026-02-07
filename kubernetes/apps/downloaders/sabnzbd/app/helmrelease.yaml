@@ -131,8 +131,8 @@ spec:
           - path: /media
       wg-conf:
         enabled: true
-        type: configMap
-        name: wg-config
+        type: secret
+        name: wg-conf
         globalMounts:
           - path: /config/wg_confs/wg0.conf
             subPath: wg0.conf
