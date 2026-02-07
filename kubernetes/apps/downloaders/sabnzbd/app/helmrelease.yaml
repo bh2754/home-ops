@@ -131,7 +131,7 @@ spec:
       wg-conf:
         enabled: true
         type: configMap
-        name: wg-conf
+        name: wg-config
         globalMounts:
           - path: /config/wg_confs/wg0.conf
             subPath: wg0.conf
