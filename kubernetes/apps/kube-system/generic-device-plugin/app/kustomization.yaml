@@ -7,6 +7,7 @@ resources:
   - ./ocirepository.yaml
 configMapGenerator:
   - name: generic-device-plugin-configmap
+    namespace: kube-system
     files:
       - ./configs/config.yaml
 generatorOptions:
