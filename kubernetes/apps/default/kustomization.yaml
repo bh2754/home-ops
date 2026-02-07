@@ -10,4 +10,4 @@ resources:
   - ./namespace.yaml
   - ./echo/ks.yaml
 # - ./device-plugin.yaml
-  - ./gluetun/ks.yaml
+# - ./gluetun/ks.yaml
