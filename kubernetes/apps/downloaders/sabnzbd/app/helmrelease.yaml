@@ -72,8 +72,8 @@ spec:
               LOG_LEVEL: debug
               PUBLICIP_API: cloudflare
               STORAGE_FILEPATH: "" # prevent memory spike and avoid I/O
-              UPDATER_PERIOD: 24h
-              VERSION_INFORMATION: off
+#             UPDATER_PERIOD: 24h
+#             VERSION_INFORMATION: off
               VPN_INTERFACE: wg0
               VPN_IPV6_SERVER: off
               VPN_TYPE: wireguard
@@ -133,13 +133,13 @@ spec:
         globalMounts:
           - path: /tmp
             subPath: tmp
-      gluetun:
-        existingClaim: gluetun-update
-        advancedMounts:
-          sabnzbd:
-            gluetun:
-              - path: /gluetun
-                readOnly: true
+#      gluetun:
+#        existingClaim: gluetun-update
+#        advancedMounts:
+#          sabnzbd:
+#            gluetun:
+#              - path: /gluetun
+#                readOnly: true
       download:
         type: nfs
         server: 10.0.109.29
