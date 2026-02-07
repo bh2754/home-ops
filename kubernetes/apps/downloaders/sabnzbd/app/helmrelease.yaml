@@ -131,4 +131,4 @@ spec:
       wg-conf:
         enabled: true
         type: configMap
-        configMap: wg-conf
+        name: wg-conf
