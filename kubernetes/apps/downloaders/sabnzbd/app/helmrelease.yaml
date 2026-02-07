@@ -92,6 +92,8 @@ spec:
                 memory: 100Mi
               limits:
                 memory: 12Gi
+                squat.ai/tun: "1"
+
     defaultPodOptions:
       securityContext:
 #       runAsNonRoot: true
