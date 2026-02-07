@@ -37,11 +37,12 @@ spec:
               - secretRef:
                   name: wg-conf
             securityContext:
+              privileged: true
               runAsUser: 0
               runAsGroup: 0
               runAsNonRoot: false
               capabilities: { add: ["NET_ADMIN"] }
-              allowPrivilegeEscalation: true
+#              allowPrivilegeEscalation: true
         containers:
           app:
             image:

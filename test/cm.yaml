@@ -2,14 +2,16 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: wg-config
+  name: wg-conf
   namespace: downloaders
 data:
   wg0.conf: |
     [Interface]
+    # Device: Clear Squid
     PrivateKey = +N9rg/+KA1EWJV4kzUfKBsl/7Lyq4IrAoJPgtewxvWA=
     Address = 10.74.199.231/32
     DNS = 10.64.0.1
+
     [Peer]
     PublicKey = DfmNHT84TTS6JcJJfZJwT7tZZVgKIKRJU/2AE5sJ6A4=
     AllowedIPs = 0.0.0.0/0
