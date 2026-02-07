@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: vpn-shell
+  labels:
+    app: vpn-shell
+spec:
+  initContainers:
+  - image: linuxserver/wireguard:latest
+    restartPolicy: Always
+    name: wg
+    env:
+    - name: TZ
+      value: "America/Chicago"
+    volumeMounts:
+    - name: wg-conf
+      mountPath: /etc/wireguard/
+      readOnly: true
+    securityContext:
+      privileged: true
+      runAsUser: 0
+      runAsGroup: 0
+      capabilities:
+        add:
+        - NET_ADMIN
+  containers:
+  - image: ubuntu
+    command:
+      - tail
+      - "-f"
+      - "/dev/null"
+    imagePullPolicy: IfNotPresent
+    name: ubuntu
+  restartPolicy: Always
+  volumes:
+  - name: wg-conf
+    secret:
+      secretName: wg-conf

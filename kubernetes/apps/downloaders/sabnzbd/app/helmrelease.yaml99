@@ -27,21 +27,57 @@ spec:
       sabnzbd:
         annotations:
           reloader.stakater.com/auto: "true"
+#        pod:
+#          annotations:
+#            setGateway: "true"
         initContainers:
           gluetun:
             image:
-              repository:  linuxserver/wireguard
+              repository: ghcr.io/qdm12/gluetun
               tag: latest
             restartPolicy: Always
+            env:
+#              DNS_ADDRESS: "192.168.60.1"
+              DNS_SERVER: "on"
+              FIREWALL_OUTBOUND_SUBNETS: 10.42.0.0/16,10.43.0.0/16
+              FIREWALL_VPN_INPUT_PORTS: "80,8000,9999,8080,8088"
+              HEALTH_SERVER_ADDRESS: :9999
+              HEALTH_TARGET_ADDRESSES: github.com:443
+              VPN_TYPE: wireguard
+              VPN_INTERFACE: wg0
+              VPN_SERVICE_PROVIDER: mullvad
+              WIREGUARD_MTU: 1420
             envFrom:
               - secretRef:
-                  name: wg-conf
+                  name: sabnzbd-vpn-secret
             securityContext:
               runAsUser: 0
               runAsGroup: 0
               runAsNonRoot: false
               capabilities: { add: ["NET_ADMIN"] }
               allowPrivilegeEscalation: true
+            resources:
+              limits:
+                squat.ai/tun: "1"
+            probes:
+              liveness:
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /
+                    port: 9999
+                  periodSeconds: 30
+                  failureThreshold: 3
+              startup:
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /
+                    port: 9999
+                  failureThreshold: 30
+                  periodSeconds: 10
         containers:
           app:
             image:
@@ -128,7 +164,4 @@ spec:
         path: /volume1/Media
         globalMounts:
           - path: /media
-      wg-conf:
-        enabled: true
-        type: secret
-          secretName: wg-conf
+
