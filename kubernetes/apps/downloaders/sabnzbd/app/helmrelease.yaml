@@ -38,8 +38,8 @@ spec:
                   name: wg-conf
             securityContext:
               privileged: true
-              runAsUser: 0
-              runAsGroup: 0
+#              runAsUser: 0
+#              runAsGroup: 0
               runAsNonRoot: false
               capabilities: { add: ["NET_ADMIN"] }
 #              allowPrivilegeEscalation: true
