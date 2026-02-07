@@ -146,3 +146,6 @@ spec:
         path: /volume1/Media
         globalMounts:
           - path: /media
+      wg-conf:
+        type: secret
+        name: wg-conf
