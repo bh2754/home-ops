@@ -28,7 +28,7 @@ spec:
         annotations:
           reloader.stakater.com/auto: "true"
         initContainers:
-          gluetun:
+          wg:
             image:
               repository:  linuxserver/wireguard
               tag: latest
@@ -60,7 +60,7 @@ spec:
                 sabnzbd.default.svc,
                 sabnzbd.default.svc.cluster,
                 sabnzbd.default.svc.cluster.local,
-                sabnzbd.bharris.xyz
+                sabnzbd.bharris.vip
             envFrom:
             - secretRef:
                 name: sabnzbd-secret
@@ -101,7 +101,7 @@ spec:
     route:
       app:
         hostnames:
-          - "{{ .Release.Name }}.bharris.xyz"
+          - "{{ .Release.Name }}.bharris.vip"
         parentRefs:
           - name: envoy-internal
             namespace: network
@@ -132,3 +132,8 @@ spec:
         enabled: true
         type: configMap
         name: wg-conf
+        globalMounts:
+          - path: /config/wg_confs/wg0.conf
+            subPath: wg0.conf
+            readOnly: true
+
