@@ -6,4 +6,5 @@ resources:
   - ./device-plugin.yaml
   - ./helmrelease.yaml
   - ./externalsecret.yaml
-  # - ./networkpolicy.yaml
+#  - ./ocirepository.yaml
+#  - ./networkpolicy.yaml
