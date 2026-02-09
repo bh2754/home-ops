@@ -4,6 +4,7 @@ kind: Namespace
 metadata:
   name: organizers
   labels:
-    routed-gatway: "true"
+    routed-gateway: "true"
+    goldilocks.fairwinds.com/enabled: "true"
   annotations:
-    kustomize.toolkit.fluxcd.io/prune: disabled
+    volsync.backube/privileged-movers: "true"
