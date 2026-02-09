@@ -58,6 +58,8 @@
              value: "off"
            - name: DOT
              value: "on"
+           - name: "DNS_UPSTREAM_RESOLVER_TYPE"
+             value: "plain"
            - name: HEALTH_VPN_DURATION_INITIAL
              value: 30s
            - name: LOG_LEVEL
