@@ -10,4 +10,4 @@ resources:
   - ./namespace.yaml
   # Flux-Kustomizations
 #  - ./sonarr/ks.yaml
-   - ./prowlarr/ks.yaml
+  - ./prowlarr/ks.yaml
