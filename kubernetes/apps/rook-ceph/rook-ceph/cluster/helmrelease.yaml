@@ -87,9 +87,9 @@ spec:
           - name: master2
             devices:
               - name: /dev/sdb
-#          - name: master3
-#            devices:
-#              - name: /dev/sdb
+          - name: master3
+            devices:
+              - name: /dev/sdb
       resources:
         mgr:
           limits:
