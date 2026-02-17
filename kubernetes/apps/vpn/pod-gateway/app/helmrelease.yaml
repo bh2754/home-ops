@@ -57,15 +57,15 @@
            - name: FIREWALL
              value: "off"
            - name: DOT
-             value: "off"
+             value: "on"
            - name: HEALTH_VPN_DURATION_INITIAL
              value: 30s
            - name: LOG_LEVEL
              value: debug
            - name: VPN_ENDPOINT_PORT
              value: 51820
-           - name: DNS_ADDRESS
-             value: 1.1.1.1
+#           - name: DNS_ADDRESS
+#             value: 1.1.1.1
            - name: WIREGUARD_MTU
              value: 1320
            - name: IPTABLES_NFT
