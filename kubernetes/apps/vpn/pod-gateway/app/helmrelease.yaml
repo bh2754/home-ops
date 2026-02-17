@@ -70,6 +70,8 @@
              value: 1320
            - name: IPTABLES_NFT
              value: "yes"
+           - name: PUBLIC_API
+             value: cloudflare
           # Configure the container-specific securityContext
          envFrom:
            - secretRef:
