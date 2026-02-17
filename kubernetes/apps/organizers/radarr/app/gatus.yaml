@@ -1,0 +1,19 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: radarr-gatus-ep
+  namespace: organizers
+  labels:
+    gatus.io/enabled: "true"
+data:
+  config.yaml: |
+    endpoints:
+      - name: Radarr
+        group: Organizers
+        url: https://radarr.bharris.vip
+        interval: 1m
+        client:
+          dns-resolver: tcp://10.0.111.20:53
+        conditions:
+          - "[STATUS] == 200"
