@@ -55,9 +55,9 @@
            - name: VPN_TYPE
              value: wireguard
            - name: FIREWALL
-             value: "off"
-           - name: DOT
              value: "on"
+           - name: DOT
+             value: "off"
            - name: HEALTH_VPN_DURATION_INITIAL
              value: 30s
            - name: LOG_LEVEL
