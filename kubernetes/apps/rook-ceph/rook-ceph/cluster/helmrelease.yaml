@@ -39,19 +39,22 @@ spec:
     operatorNamespace: rook-ceph
     route:
       dashboard:
-        annotations:
-          glance/show: "true"
-          glance/name: Rook Ceph
-          glance/icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/rook.png
-          glance/description: Rook Ceph Dashboard
+#        annotations:
+#          glance/show: "true"
+#          glance/name: Rook Ceph
+#          glance/icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/rook.png
+#          glance/description: Rook Ceph Dashboard
         host:
           name: rook.bharris.vip
           path: /
           pathType: PathPrefix
         parentRefs:
-          - name: internal
-            namespace: kube-system
-            sectionName: https
+          - name: envoy-internal
+            namespace: network
+
+#          - name: internal
+#            namespace: kube-system
+#            sectionName: https
     cephClusterSpec:
       network:
         provider: host
