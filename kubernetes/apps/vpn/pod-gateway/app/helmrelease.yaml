@@ -57,7 +57,7 @@
            - name: FIREWALL
              value: "off"
            - name: DOT
-             value: "off"
+             value: "no"
            - name: HEALTH_VPN_DURATION_INITIAL
              value: 30s
            - name: LOG_LEVEL
