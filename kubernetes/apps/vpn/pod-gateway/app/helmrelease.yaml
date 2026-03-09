@@ -72,7 +72,9 @@
            - name: IPTABLES_NFT
              value: "yes"
            - name: PUBLICIP_API
-             value: cloudflare
+             value: "cloudflare"
+           - name: PUBLICIP_ENABLED
+             value: "no"
           # Configure the container-specific securityContext
          envFrom:
            - secretRef:
