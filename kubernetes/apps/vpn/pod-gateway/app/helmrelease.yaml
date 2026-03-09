@@ -76,7 +76,8 @@
           # Configure the container-specific securityContext
          envFrom:
            - secretRef:
-               name: mullvad-secret
+               name: nord-secret
+#               name: mullvad-secret
          securityContext:
            capabilities:
              add:
