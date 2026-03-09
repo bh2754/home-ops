@@ -8,4 +8,4 @@ resources:
   - ./namespace.yaml
   # Flux-Kustomizations
   - ./angelnu.yaml
-# - ./pod-gateway/ks.yaml
+  - ./pod-gateway/ks.yaml
