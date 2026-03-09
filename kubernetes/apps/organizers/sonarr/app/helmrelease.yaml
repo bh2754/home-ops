@@ -29,7 +29,7 @@ spec:
           reloader.stakater.com/auto: "true"
         pod:
           annotations:
-            setGateway: "true"
+            setGateway: "false"
           securityContext:
             runAsNonRoot: true
             runAsUser: 568
