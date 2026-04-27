@@ -22,8 +22,8 @@ spec:
       namespace: external-secrets
     - name: rook-ceph-cluster
       namespace: rook-ceph
-    - name: pod-gateway
-      namespace: vpn
+#    - name: pod-gateway
+#      namespace: vpn
   values:
     controllers:
       radarr:
