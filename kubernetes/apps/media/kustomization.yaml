@@ -9,7 +9,7 @@ components:
 resources:
   - ./namespace.yaml
   # Flux-Kustomizations
-  - ./audiobookshelf/ks.yaml
+#  - ./audiobookshelf/ks.yaml
 # - ./jellyfin/ks.yaml
 #  - ./komga/ks.yaml 
 #  - ./ombi/ks.yaml
