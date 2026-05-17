@@ -1,0 +1,32 @@
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: evicted-pod-cleaner
+spec:
+  schedule: "*/30 * * * *"
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          serviceAccountName: evicted-pod-cleaner
+          restartPolicy: Never
+          containers:
+            - name: kubectl
+              image: alpine/kubectl:1.34.0
+              command:
+                - /bin/sh
+                - -c
+              args:
+                - |
+                  set -euo pipefail
+                  kubectl get pods --all-namespaces --field-selector=status.phase=Failed -o jsonpath='{range .items[?(@.status.reason=="Evicted")]}{.metadata.namespace} {.metadata.name}{"\n"}{end}' \
+                  | while read namespace pod; do
+                      if [ -n "$namespace" ] && [ -n "$pod" ]; then
+                        echo "Deleting evicted pod ${namespace}/${pod}"
+                        kubectl delete pod "$pod" -n "$namespace" --ignore-not-found
+                      fi
+                    done
