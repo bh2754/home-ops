@@ -16,7 +16,7 @@ spec:
           restartPolicy: Never
           containers:
             - name: kubectl
-              image: alpine/kubectl:1.34.0
+              image: alpine/kubectl:1.36.1
               command:
                 - /bin/sh
                 - -c
