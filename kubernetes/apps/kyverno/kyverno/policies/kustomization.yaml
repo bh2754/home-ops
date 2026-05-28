@@ -1,4 +1,3 @@
-  GNU nano 7.2                                               kubernetes/apps/kyverno/kyverno/app/kustomization.yaml
 ---
 # yaml-language-server: $schema=https://json.schemastore.org/kustomization
 apiVersion: kustomize.config.k8s.io/v1beta1
