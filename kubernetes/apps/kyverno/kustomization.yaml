@@ -5,7 +5,7 @@ kind: Kustomization
 namespace: kyverno
 
 components:
-  - ../../components/sops.yaml
+  - ../../components/sops
 
 resources:
   - ./namespace.yaml
