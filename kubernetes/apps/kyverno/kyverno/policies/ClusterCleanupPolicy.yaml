@@ -1,5 +1,5 @@
 ---
-apiVersion: kyverno.io/v2beta1
+apiVersion: DeletingPolicy
 kind: DeletingPolicy
 metadata:
   name: cleanup-evicted-pods
