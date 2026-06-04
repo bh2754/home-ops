@@ -5,7 +5,7 @@ kind: Kustomization
 metadata:
   name: kube-cleanup-operator
 spec:
-  targetNamespace: system
+  targetNamespace: kube-system
   path: ./kubernetes/apps/kube-system/kube-cleanup-operator/app
   sourceRef:
     kind: GitRepository
