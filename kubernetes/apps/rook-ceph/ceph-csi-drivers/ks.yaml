@@ -6,7 +6,7 @@ metadata:
   name: ceph-csi-drivers
 spec:
   dependsOn:
-    - name: rook-ceph
+    - name: rook-ceph-app
       namespace: rook-ceph
   interval: 1h
   path: ./kubernetes/apps/rook-ceph/ceph-csi-drivers/app
