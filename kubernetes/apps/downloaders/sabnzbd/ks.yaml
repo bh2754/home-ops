@@ -14,8 +14,8 @@ spec:
       namespace: external-secrets
 #    - name: pod-gateway
 #      namespace: vpn
-    - name: rook-ceph-cluster
-      namespace: rook-ceph
+#    - name: rook-ceph-cluster
+#      namespace: rook-ceph
 #    - name: volsync
 #      namespace: volsync
   path: ./kubernetes/apps/downloaders/sabnzbd/app
