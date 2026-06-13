@@ -5,5 +5,5 @@ kind: Kustomization
 namespace: rook-ceph
 resources:
   - ./ocirepository.yaml
-#  - ./helmrelease.yaml
+  - ./helmrelease.yaml
 #  - ./sa.yaml
