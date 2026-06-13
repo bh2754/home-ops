@@ -13,7 +13,7 @@ spec:
     drivers:
       cephfs:
         enabled: false
-         name: "ceph-csi-cephfs-nodeplugin-sa"
+        name: ceph-csi-cephfs-nodeplugin-sa
       nfs:
         enabled: false
       nvmeof:
