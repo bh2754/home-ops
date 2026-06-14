@@ -85,9 +85,9 @@ spec:
         config:
           osdsPerDevice: "1"
         nodes:
-#          - name: master1
-#            devices:
-#              - name: /dev/sdb
+          - name: master1
+            devices:
+              - name: /dev/sdb
           - name: master2
             devices:
               - name: /dev/sdb
