@@ -6,6 +6,6 @@ components:
   - ../../components/sops
 
 resources:
-#  - ./namespace.yaml
+  - ./namespace.yaml
   # Flux-Kustomizations
   - ./sabnzbd/ks.yaml
