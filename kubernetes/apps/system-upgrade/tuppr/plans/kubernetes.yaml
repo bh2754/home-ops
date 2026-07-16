@@ -6,7 +6,7 @@ metadata:
   name: kubernetes
 spec:
   kubernetes:
-    version: ${KUBERNETES_VERSION}
+    version: 1.36.2
   healthChecks:
     - apiVersion: ceph.rook.io/v1
       kind: CephCluster

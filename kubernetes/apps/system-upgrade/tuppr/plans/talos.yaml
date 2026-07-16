@@ -6,7 +6,7 @@ metadata:
   name: talos
 spec:
   talos:
-    version: ${TALOS_VERSION}
+    version: 1.13.4
   policy:
     placement: hard
     rebootMode: powercycle
