@@ -27,7 +27,7 @@ spec:
   dependsOn:
     - name: tuppr-controller
   targetNamespace: system-upgrade
-  path: ./kubernetes/apps/system-upgrade/tuppr/upgrades
+  path: ./kubernetes/apps/system-upgrade/tuppr/plans
   prune: true
   sourceRef:
     kind: GitRepository
